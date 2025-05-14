@@ -1,0 +1,22 @@
+{
+	"name": "backend-area",
+	"version": "1",
+	"description": "Area Belakang ClinicZ",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon index.js"
+	},
+	"keywords": [],
+	"author": "Muhammad Ridho",
+	"license": "ISC",
+	"dependencies": {
+		"@tensorflow/tfjs": "^4.22.0",
+		"@tensorflow/tfjs-node": "^4.22.0",
+		"cookie-parser": "^1.4.7",
+		"cors": "^2.8.5",
+		"dotenv": "^16.5.0",
+		"express": "^5.1.0",
+		"path": "^0.12.7"
+	}
+}
