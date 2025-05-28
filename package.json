@@ -11,12 +11,14 @@
 	"author": "Muhammad Ridho",
 	"license": "ISC",
 	"dependencies": {
-		"@tensorflow/tfjs": "^4.22.0",
-		"@tensorflow/tfjs-node": "^4.22.0",
+		"bcrypt": "^6.0.0",
 		"cookie-parser": "^1.4.7",
 		"cors": "^2.8.5",
 		"dotenv": "^16.5.0",
 		"express": "^5.1.0",
+		"formidable": "^3.5.4",
+		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.14.3",
 		"path": "^0.12.7"
 	}
 }
