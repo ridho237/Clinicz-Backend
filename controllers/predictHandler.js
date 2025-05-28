@@ -40,7 +40,7 @@ const predictObat = async (req, res) => {
 	}
 };
 
-const RekomendasiCollab = async (req, res) => {
+const rekomendasiCollab = async (req, res) => {
 	try {
 		const { obat, penyakit } = req.body;
 
@@ -66,4 +66,4 @@ const RekomendasiCollab = async (req, res) => {
 	}
 };
 
-module.exports = { predictPenyakit, predictObat, RekomendasiCollab };
+module.exports = { predictPenyakit, predictObat, rekomendasiCollab };
