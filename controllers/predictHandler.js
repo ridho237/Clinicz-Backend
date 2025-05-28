@@ -1,5 +1,6 @@
 const { classifyPenyakit } = require('../services/classification_penyakit');
 const { classifyObat } = require('../services/classification_obat');
+const { recommendObat } = require('../services/collab_recommender');
 
 const predictPenyakit = async (req, res) => {
 	try {
@@ -39,4 +40,30 @@ const predictObat = async (req, res) => {
 	}
 };
 
-module.exports = { predictPenyakit, predictObat };
+const RekomendasiCollab = async (req, res) => {
+	try {
+		const { obat, penyakit } = req.body;
+
+		if (!obat || !penyakit) {
+			return res.status(400).json({ status: 'fail', message: 'Input obat dan penyakit harus disediakan.' });
+		}
+
+		const result = recommendObat(obat, penyakit);
+
+		if (result.length === 0) {
+			return res
+				.status(200)
+				.json({ status: 'success', message: 'Tidak ada rekomendasi lain untuk penyakit tersebut.', data: [] });
+		}
+
+		res.status(200).json({
+			status: 'success',
+			message: 'Rekomendasi obat berdasarkan kemiripan berhasil ditemukan.',
+			data: result,
+		});
+	} catch (error) {
+		res.status(500).json({ status: 'fail', message: `Error saat merekomendasikan obat: ${error.message}` });
+	}
+};
+
+module.exports = { predictPenyakit, predictObat, RekomendasiCollab };
