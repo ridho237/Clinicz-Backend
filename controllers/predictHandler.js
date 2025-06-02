@@ -75,7 +75,7 @@ const chatbot = async (req, res) => {
 
 	try {
 		const response = await fetch(
-			`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+			`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
 			{
 				method: 'POST',
 				headers: {
@@ -85,7 +85,6 @@ const chatbot = async (req, res) => {
 					contents: [
 						{
 							parts: [{ text: userMessage }],
-							role: 'user',
 						},
 					],
 				}),
@@ -94,7 +93,6 @@ const chatbot = async (req, res) => {
 
 		const data = await response.json();
 		const geminiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Gemini tidak membalas.';
-
 		res.json({ reply: geminiReply });
 	} catch (error) {
 		console.error(error);

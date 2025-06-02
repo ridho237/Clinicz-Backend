@@ -51,3 +51,9 @@ const startServer = async () => {
 		console.error('Stack trace:', error.stack);
 	}
 };
+
+// === RUN SERVER ===
+startServer().catch((err) => {
+	console.error('❌ Unexpected error starting server:', err.message);
+	console.error('Stack trace:', err.stack);
+});
