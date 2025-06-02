@@ -19,7 +19,7 @@ const startServer = async () => {
 
 	// === MIDDLEWARE ===
 	app.use(express.json());
-	app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+	app.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }));
 	app.use(express.urlencoded({ extended: true }));
 	app.use(cookieParser());
 	app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -39,7 +39,6 @@ const startServer = async () => {
 		app.get('/', (req, res) => {
 			res.send('Hai ini API Server 1 Untuk Clinicz-App!');
 		});
-
 		app.use('/', predict);
 		app.use('/user', user);
 
@@ -52,9 +51,3 @@ const startServer = async () => {
 		console.error('Stack trace:', error.stack);
 	}
 };
-
-// === RUN SERVER ===
-startServer().catch((err) => {
-	console.error('❌ Unexpected error starting server:', err.message);
-	console.error('Stack trace:', err.stack);
-});

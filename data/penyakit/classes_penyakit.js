@@ -34,9 +34,9 @@ const penyakitLabels = {
 	32: 'Alopecia',
 	33: 'Konjungtivitis',
 	34: 'Penyakit Katup Jantung',
-	35: 'Keraritis Jamur',
+	35: 'Keratitis Jamur',
 	36: 'Serangan Jantung',
-	37: 'Keraritis Herpes Simpleks',
+	37: 'Keratitis Herpes Simpleks',
 	38: 'Otitis Media',
 	39: 'Maag',
 	40: 'Vertigo',
@@ -46,4 +46,5 @@ const penyakitLabels = {
 	44: 'Ensefalitis',
 	45: 'Hepatitis',
 };
+
 module.exports = { penyakitLabels };

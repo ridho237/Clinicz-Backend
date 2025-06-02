@@ -66,4 +66,40 @@ const rekomendasiCollab = async (req, res) => {
 	}
 };
 
-module.exports = { predictPenyakit, predictObat, rekomendasiCollab };
+const chatbot = async (req, res) => {
+	const userMessage = req.body.message;
+
+	if (!userMessage) {
+		return res.status(400).json({ error: 'Field "message" harus ada di body' });
+	}
+
+	try {
+		const response = await fetch(
+			`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					contents: [
+						{
+							parts: [{ text: userMessage }],
+							role: 'user',
+						},
+					],
+				}),
+			}
+		);
+
+		const data = await response.json();
+		const geminiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Gemini tidak membalas.';
+
+		res.json({ reply: geminiReply });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Gagal mendapatkan respons dari Gemini' });
+	}
+};
+
+module.exports = { predictPenyakit, predictObat, rekomendasiCollab, chatbot };
