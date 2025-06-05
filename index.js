@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 // === ROUTES ===
 const user = require('./routes/user');
 const predict = require('./routes/predict');
+const maps = require('./routes/maps');
+const article = require('./routes/article');
 const { loadModelA, loadModelB } = require('./services/loadmodel');
 
 // === ENV CONFIG ===
@@ -41,6 +43,8 @@ const startServer = async () => {
 		});
 		app.use('/', predict);
 		app.use('/user', user);
+		app.use('/', maps);
+		app.use('/article', article);
 
 		// === START SERVER ===
 		app.listen(port, () => {
