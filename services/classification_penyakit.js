@@ -1,7 +1,10 @@
 const tf = require('@tensorflow/tfjs-node');
+const { allWordsPenyakit } = require('../data/penyakit/all_word');
 const { penyakitLabels } = require('../data/penyakit/classes_penyakit');
-const { allWords } = require('../data/penyakit/all_word');
 const { deskripsiPenyakit } = require('../data/penyakit/desc_penyakit');
+const { penyebabPenyakit } = require('../');
+const { pencegahanPenyakit } = require('../');
+const { sumberPenyakit } = require('../');
 
 async function classifyPenyakit(modelA, text) {
 	const inputGejala = preprocessSingleInput(text);
@@ -18,8 +21,11 @@ async function classifyPenyakit(modelA, text) {
 
 	const namaPenyakit = penyakitLabels[maxIndex];
 	const deskripsi = deskripsiPenyakit[namaPenyakit] ?? 'Maaf Deskripsi belum tersedia.';
+	const penyebab = penyebabPenyakit[penyebabPenyakit] ?? 'Maaf Penyebab belum tersedia.';
+	const pencegahan = pencegahanPenyakit[pencegahanPenyakit] ?? 'Maaf Pencegahan belum tersedia.';
+	const sumber = sumberPenyakit[sumberPenyakit] ?? 'Maaf Sumber belum tersedia.';
 
-	return [{ penyakit: namaPenyakit, deskripsi: deskripsi }];
+	return [{ penyakit: namaPenyakit, deskripsi: deskripsi, penyebab: penyebab, pencegahan: pencegahan, sumber: sumber }];
 }
 
 function preprocessSingleInput(text) {
@@ -33,10 +39,10 @@ function preprocessSingleInput(text) {
 	let strConverted = [];
 
 	for (let w of strArr) {
-		if (allWords[w] === undefined) {
+		if (allWordsPenyakit[w] === undefined) {
 			strConverted.push(1);
 		} else {
-			strConverted.push(allWords[w]);
+			strConverted.push(allWordsPenyakit[w]);
 		}
 	}
 

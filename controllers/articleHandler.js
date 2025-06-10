@@ -1,47 +1,70 @@
-const { scrapeHalodocArticles, scrapeArticleContent } = require('../utils/articleScraper');
+const mongoose = require('mongoose');
+const Article = require('../model/articleSchema');
 
-let cachedArticles = [];
-
-const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
-
-const getHalodocArticles = async (req, res) => {
+const getArticle = async (req, res) => {
 	try {
-		const list = await scrapeHalodocArticles();
-		const articles = [];
+		const data = await Article.find();
+		const articles = data.map((article) => ({
+			id: article._id,
+			title: article.title,
+			date: article.date,
+			img: article.img,
+			tag: article.tag,
+		}));
 
-		for (const item of list) {
-			if (!item.url) continue;
+		res.json(articles);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Gagal Mendapatkan data article' });
+	}
+};
 
-			const detail = await scrapeArticleContent(item.url);
+const getArticleById = async (req, res) => {
+	const { id } = req.params;
 
-			articles.push({
-				...item,
-				content: detail.content,
-			});
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		return res.status(400).json({ error: 'ID tidak valid' });
+	}
 
-			await sleep(1000); // Delay 1 detik
+	try {
+		const article = await Article.findById(id);
+		if (!article) {
+			return res.status(404).json({ error: 'Artikel tidak ditemukan' });
 		}
 
-		cachedArticles = articles;
-		res.json({ source: 'halodoc', count: articles.length, articles });
-	} catch (err) {
-		console.error(err);
-		res.status(500).json({ error: 'Gagal scraping artikel' });
+		let htmlContent = Array.isArray(article.content) ? article.content.map((p) => `<p>${p}</p>`).join('') : article.content;
+		let doctor = article.doctor;
+		if (doctor?.sources) {
+			let plainText = article.doctor.sources;
+
+			plainText = plainText
+				.replace(/\\u003c/g, '<')
+				.replace(/\\u003e/g, '>')
+				.replace(/\\u0026/g, '&');
+
+			if (plainText.startsWith('"') && plainText.endsWith('"')) {
+				plainText = plainText.slice(1, -1);
+			}
+
+			plainText = plainText.replace(/\\n/g, ' ').replace(/\n/g, ' ').replace(/\s+/g, ' ');
+			doctor.sources = plainText;
+		}
+
+		res.json({
+			id: article._id,
+			title: article.title,
+			date: article.date,
+			content: htmlContent,
+			img: article.img,
+			tag: article.tag,
+			doctor: doctor,
+			source: article.source,
+			url: article.url,
+		});
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Gagal mengambil artikel' });
 	}
 };
 
-const getArticlesByLabel = async (req, res) => {
-	const { label } = req.params;
-	if (!cachedArticles.length) {
-		return res.status(400).json({ error: 'Data belum tersedia. Panggil /halodoc dulu.' });
-	}
-
-	const filtered = cachedArticles.filter((a) => a.label.toLowerCase() === label.toLowerCase());
-
-	res.json({ label, count: filtered.length, articles: filtered });
-};
-
-module.exports = {
-	getHalodocArticles,
-	getArticlesByLabel,
-};
+module.exports = { getArticle, getArticleById };

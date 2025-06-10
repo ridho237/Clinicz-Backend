@@ -11,7 +11,6 @@
 	"author": "Muhammad Ridho",
 	"license": "ISC",
 	"dependencies": {
-		"@tensorflow/tfjs-node": "^4.22.0",
 		"axios": "^1.9.0",
 		"bcrypt": "^6.0.0",
 		"cheerio": "^1.0.0",
@@ -21,6 +20,7 @@
 		"express": "^5.1.0",
 		"formidable": "^3.5.4",
 		"jsonwebtoken": "^9.0.2",
+		"mongodb": "^6.17.0",
 		"mongoose": "^8.14.3",
 		"path": "^0.12.7"
 	}

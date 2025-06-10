@@ -1,6 +1,6 @@
 const { classifyPenyakit } = require('../services/classification_penyakit');
 const { classifyObat } = require('../services/classification_obat');
-const { recommendObat } = require('../services/collab_recommender');
+const { recommendObat } = require('../services/collaboration_recommender');
 
 const predictPenyakit = async (req, res) => {
 	try {
@@ -40,7 +40,7 @@ const predictObat = async (req, res) => {
 	}
 };
 
-const rekomendasiCollab = async (req, res) => {
+const rekomendasiObat = async (req, res) => {
 	try {
 		const { obat, penyakit } = req.body;
 
@@ -100,4 +100,4 @@ const chatbot = async (req, res) => {
 	}
 };
 
-module.exports = { predictPenyakit, predictObat, rekomendasiCollab, chatbot };
+module.exports = { predictPenyakit, predictObat, rekomendasiObat, chatbot };

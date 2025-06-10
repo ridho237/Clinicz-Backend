@@ -7,10 +7,10 @@ const cookieParser = require('cookie-parser');
 
 // === ROUTES ===
 const user = require('./routes/user');
-const predict = require('./routes/predict');
+// const bot = require('./routes/bot');/
 const maps = require('./routes/maps');
 const article = require('./routes/article');
-const { loadModelA, loadModelB } = require('./services/loadmodel');
+// const { loadModelA, loadModelB } = require('./services/loadmodel');/
 
 // === ENV CONFIG ===
 require('dotenv').config();
@@ -28,10 +28,10 @@ const startServer = async () => {
 
 	try {
 		// === LOAD MODEL ===
-		const modelA = await loadModelA();
-		app.modelA = modelA;
-		const modelB = await loadModelB();
-		app.modelB = modelB;
+		// const modelA = await loadModelA();
+		// app.modelA = modelA;
+		// const modelB = await loadModelB();
+		// app.modelB = modelB;
 
 		// === MONGODB CONNECTION ===
 		await mongoose.connect(MONGODB_URI);
@@ -41,10 +41,11 @@ const startServer = async () => {
 		app.get('/', (req, res) => {
 			res.send('Hai ini API Server 1 Untuk Clinicz-App!');
 		});
-		app.use('/', predict);
-		app.use('/user', user);
+
+		// app.use('/', bot)//;
+		app.use('/', user);
 		app.use('/', maps);
-		app.use('/article', article);
+		app.use('/', article);
 
 		// === START SERVER ===
 		app.listen(port, () => {

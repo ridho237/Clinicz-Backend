@@ -1,8 +1,8 @@
 const express = require('express');
 const article = express.Router();
-const { getHalodocArticles, getArticlesByLabel } = require('../controllers/articleHandler');
+const { getArticle, getArticleById } = require('../controllers/articleHandler');
 
-article.get('/', getHalodocArticles);
-article.get('/label/:label', getArticlesByLabel);
+article.get('/article', getArticle);
+article.get('/article/:id', getArticleById);
 
 module.exports = article;

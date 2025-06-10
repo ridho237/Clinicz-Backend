@@ -2,6 +2,12 @@ const tf = require('@tensorflow/tfjs-node');
 const { allWordsObat } = require('../data/obat/all_word');
 const { obatLabels } = require('../data/obat/classes_obat');
 const { deskripsiObat } = require('../data/obat/desc_obat');
+const { kandunganObat } = require('../data/obat/kandungan_obat');
+const { dosisObat } = require('../data/obat/dosis_obat');
+const { aturanPakaiObat } = requiree('../data/obat/aturanPakai_obat');
+const { efekSampingObat } = require('../data/obat/efekSamping_obat');
+const { linkStoreObat } = require('../data/obat/link_obat');
+const { sumberObat } = require('../data/obat/sumber_obat');
 
 async function classifyObat(modelB, gejalaText, penyakitText) {
 	const [inputGejala, inputPenyakit] = preprocessDualInput(gejalaText, penyakitText);
@@ -18,9 +24,26 @@ async function classifyObat(modelB, gejalaText, penyakitText) {
 	}
 
 	const namaObat = obatLabels[maxIndex];
-	const deskripsi = deskripsiObat[namaObat] ?? 'Maaf Deskripsi belum tersedia.';
+	const deskripsi = deskripsiObat[deskripsiObat] ?? 'Maaf Data deskripsi obat tersebut belum tersedia.';
+	const kandungan = kandunganObat[kandunganObat] ?? 'Maaf Data kandungan obat tersebut belum tersedia.';
+	const dosis = dosisObat[dosisObat] ?? 'Maaf Data dosis obat tersebut belum tersedia.';
+	const aturanPakai = aturanPakaiObat[aturanPakaiObat] ?? 'Maaf Data aturan pakai obat tersebut belum tersedia.';
+	const efekSamping = efekSampingObat[efekSampingObat] ?? 'Maaf Data efek samping obat tersebut belum tersedia.';
+	const linkStore = linkStoreObat[linkStoreObat] ?? 'Maaf Data link Obat tersebut belum tersedia.';
+	const sumber = sumberObat[sumberObat] ?? 'Maaf Data sumber Obat tersebut belum tersedia.';
 
-	return [{ obat: namaObat, deskripsi: deskripsi }];
+	return [
+		{
+			obat: namaObat,
+			deskripsi: deskripsi,
+			kandungan: kandungan,
+			dosis: dosis,
+			aturanPakai: aturanPakai,
+			efekSamping: efekSamping,
+			linkStore: linkStore,
+			sumber: sumber,
+		},
+	];
 }
 
 function preprocessDualInput(gejalaText, penyakitText) {
