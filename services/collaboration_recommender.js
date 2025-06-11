@@ -1,11 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+const { transposeDrugData, parseTokoLink } = require('../utils/transpose');
 
 // Load cosine similarity matrix dan data obat
 const cosineMatrix = JSON.parse(
 	fs.readFileSync(path.join(__dirname, '../model/obat_recomender/cosine_similarity_matrix.json'))
 );
-const drugsData = JSON.parse(fs.readFileSync(path.join(__dirname, '../model/obat_recomender/drug_reference_data.json')));
+const rawDrugData = JSON.parse(fs.readFileSync(path.join(__dirname, '../model/obat_recomender/drug_reference_data.json')));
+
+const drugsData = transposeDrugData(rawDrugData);
 
 function recommendObat(obatUtama, penyakit) {
 	// Penanganan khusus untuk penyakit seperti Hepatitis
@@ -34,8 +37,8 @@ function recommendObat(obatUtama, penyakit) {
 				dosis: item.Dosis || '-',
 				aturanPakai: item['Aturan Pakai'] || '-',
 				efekSamping: item['Efek Samping'] || '-',
-				tokoOnline1: item['Toko Online 1'] || '-',
-				tokoOnline2: item['Toko Online 2'] || '-',
+				tokoOnline1: parseTokoLink(item['Toko Online 1']),
+				tokoOnline2: parseTokoLink(item['Toko Online 2']),
 				similarity: parseFloat(similarity.toFixed(3)),
 			};
 		})

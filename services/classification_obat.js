@@ -4,10 +4,11 @@ const { obatLabels } = require('../data/obat/classes_obat');
 const { deskripsiObat } = require('../data/obat/desc_obat');
 const { kandunganObat } = require('../data/obat/kandungan_obat');
 const { dosisObat } = require('../data/obat/dosis_obat');
-const { aturanPakaiObat } = requiree('../data/obat/aturanPakai_obat');
+const { aturanPakaiObat } = require('../data/obat/aturanPakai_obat');
 const { efekSampingObat } = require('../data/obat/efekSamping_obat');
-const { linkStoreObat } = require('../data/obat/link_obat');
+const { linkObatSatu, linkObatDua } = require('../data/obat/link_obat');
 const { sumberObat } = require('../data/obat/sumber_obat');
+const { imagesObat } = require('../data/obat/images_obat');
 
 async function classifyObat(modelB, gejalaText, penyakitText) {
 	const [inputGejala, inputPenyakit] = preprocessDualInput(gejalaText, penyakitText);
@@ -24,13 +25,15 @@ async function classifyObat(modelB, gejalaText, penyakitText) {
 	}
 
 	const namaObat = obatLabels[maxIndex];
-	const deskripsi = deskripsiObat[deskripsiObat] ?? 'Maaf Data deskripsi obat tersebut belum tersedia.';
-	const kandungan = kandunganObat[kandunganObat] ?? 'Maaf Data kandungan obat tersebut belum tersedia.';
-	const dosis = dosisObat[dosisObat] ?? 'Maaf Data dosis obat tersebut belum tersedia.';
-	const aturanPakai = aturanPakaiObat[aturanPakaiObat] ?? 'Maaf Data aturan pakai obat tersebut belum tersedia.';
-	const efekSamping = efekSampingObat[efekSampingObat] ?? 'Maaf Data efek samping obat tersebut belum tersedia.';
-	const linkStore = linkStoreObat[linkStoreObat] ?? 'Maaf Data link Obat tersebut belum tersedia.';
-	const sumber = sumberObat[sumberObat] ?? 'Maaf Data sumber Obat tersebut belum tersedia.';
+	const deskripsi = deskripsiObat[namaObat] ?? 'Maaf Data deskripsi obat tersebut belum tersedia.';
+	const kandungan = kandunganObat[namaObat] ?? 'Maaf Data kandungan obat tersebut belum tersedia.';
+	const dosis = dosisObat[namaObat] ?? 'Maaf Data dosis obat tersebut belum tersedia.';
+	const aturanPakai = aturanPakaiObat[namaObat] ?? 'Maaf Data aturan pakai obat tersebut belum tersedia.';
+	const efekSamping = efekSampingObat[namaObat] ?? 'Maaf Data efek samping obat tersebut belum tersedia.';
+	const linkStoreSatu = linkObatSatu[namaObat] ?? 'Maaf Data link Obat tersebut belum tersedia.';
+	const linkStoreDua = linkObatDua[namaObat] ?? 'Maaf Data link Obat tersebut belum tersedia.';
+	const sumber = sumberObat[namaObat] ?? 'Maaf Data sumber Obat tersebut belum tersedia.';
+	const gambar = imagesObat[namaObat] ?? 'Maaf Data sumber Obat tersebut belum tersedia.';
 
 	return [
 		{
@@ -40,8 +43,10 @@ async function classifyObat(modelB, gejalaText, penyakitText) {
 			dosis: dosis,
 			aturanPakai: aturanPakai,
 			efekSamping: efekSamping,
-			linkStore: linkStore,
+			'link Store 1': linkStoreSatu,
+			'link Store 2': linkStoreDua,
 			sumber: sumber,
+			gambar: gambar,
 		},
 	];
 }

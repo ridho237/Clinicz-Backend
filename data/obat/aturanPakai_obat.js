@@ -1,4 +1,4 @@
-const aturanPakai = {
+const aturanPakaiObat = {
 	'Bodrex Migra': 'Dapat dikonsumsi sesudah makan',
 	'Panadol Extra': 'Dapat dikonsumsi sebelum atau setelah makan',
 	'Farsifen Plus': 'Dapat dikonsumsi setalah makan untuk menghindari terjadinya iritasi pada lambung',
@@ -119,4 +119,4 @@ const aturanPakai = {
 	Duspatalin: 'Dikonsumsi 20 menit sebelum makan',
 };
 
-module.exports = { aturanPakai };
+module.exports = { aturanPakaiObat };

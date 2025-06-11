@@ -2,9 +2,9 @@ const tf = require('@tensorflow/tfjs-node');
 const { allWordsPenyakit } = require('../data/penyakit/all_word');
 const { penyakitLabels } = require('../data/penyakit/classes_penyakit');
 const { deskripsiPenyakit } = require('../data/penyakit/desc_penyakit');
-const { penyebabPenyakit } = require('../');
-const { pencegahanPenyakit } = require('../');
-const { sumberPenyakit } = require('../');
+const { penyebabPenyakit } = require('../data/penyakit/penyebab_penyakit');
+const { pencegahanPenyakit } = require('../data/penyakit/pencegahan_penyakit');
+const { sumberPenyakit } = require('../data/penyakit/sumber_penyakit');
 
 async function classifyPenyakit(modelA, text) {
 	const inputGejala = preprocessSingleInput(text);
@@ -21,9 +21,9 @@ async function classifyPenyakit(modelA, text) {
 
 	const namaPenyakit = penyakitLabels[maxIndex];
 	const deskripsi = deskripsiPenyakit[namaPenyakit] ?? 'Maaf Deskripsi belum tersedia.';
-	const penyebab = penyebabPenyakit[penyebabPenyakit] ?? 'Maaf Penyebab belum tersedia.';
-	const pencegahan = pencegahanPenyakit[pencegahanPenyakit] ?? 'Maaf Pencegahan belum tersedia.';
-	const sumber = sumberPenyakit[sumberPenyakit] ?? 'Maaf Sumber belum tersedia.';
+	const penyebab = penyebabPenyakit[namaPenyakit] ?? 'Maaf Penyebab belum tersedia.';
+	const pencegahan = pencegahanPenyakit[namaPenyakit] ?? 'Maaf Pencegahan belum tersedia.';
+	const sumber = sumberPenyakit[namaPenyakit] ?? 'Maaf Sumber belum tersedia.';
 
 	return [{ penyakit: namaPenyakit, deskripsi: deskripsi, penyebab: penyebab, pencegahan: pencegahan, sumber: sumber }];
 }
