@@ -25,6 +25,7 @@ const startServer = async () => {
 	app.use(express.urlencoded({ extended: true }));
 	app.use(cookieParser());
 	app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+	app.use('/data/obat/images', express.static(path.join(__dirname, 'data/obat/images')));
 
 	try {
 		// === LOAD MODEL ===
