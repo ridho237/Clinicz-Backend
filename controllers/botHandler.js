@@ -1,4 +1,5 @@
 const PredictionHistory = require('../model/mongodb_schema/predictionHistorySchema');
+const ChatHistory = require('../model/mongodb_schema/chatHistory');
 const { classifyPenyakit } = require('../services/classification_penyakit');
 const { classifyObat } = require('../services/classification_obat');
 const { recommendObat } = require('../services/collaboration_recommender');
@@ -42,10 +43,12 @@ const predictObat = async (req, res) => {
 			output: obatPredictions,
 		});
 
+		const simpleOutput = obatPredictions.map(({ obat, deskripsi }) => ({ obat, deskripsi }));
+
 		res.status(200).json({
 			status: 'success',
 			message: 'Prediksi obat berhasil',
-			data: obatPredictions,
+			data: simpleOutput,
 		});
 	} catch (error) {
 		res.status(400).json({
@@ -53,6 +56,27 @@ const predictObat = async (req, res) => {
 			message: `Gagal memprediksi obat: ${error.message}`,
 		});
 	}
+};
+
+const getDetailPredictObat = (req, res) => {
+	const { namaObat } = req.params;
+
+	if (!namaObat) {
+		return res.status(404).json({ status: 'fail', message: 'Detail obat tidak ditemukan.' });
+	}
+
+	const detail = {
+		obat: namaObat,
+		deskripsi: deskripsiObat[namaObat],
+		kandungan: kandunganObat[namaObat] ?? 'Belum tersedia',
+		dosis: dosisObat[namaObat] ?? 'Belum tersedia',
+		aturanPakai: aturanPakaiObat[namaObat] ?? 'Belum tersedia',
+		efekSamping: efekSampingObat[namaObat] ?? 'Belum tersedia',
+		sumber: sumberObat[namaObat] ?? 'Belum tersedia',
+		gambar: imagesObat[namaObat] ?? 'Belum tersedia',
+	};
+
+	return res.status(200).json({ status: 'success', data: detail });
 };
 
 const rekomendasiObat = async (req, res) => {
@@ -81,8 +105,32 @@ const rekomendasiObat = async (req, res) => {
 	}
 };
 
+const getDetailObatRekomendasi = (req, res) => {
+	const { namaObat } = req.params;
+
+	if (!namaObat) {
+		return res.status(404).json({ status: 'fail', message: 'Detail obat rekomendasi tidak ditemukan.' });
+	}
+
+	const detail = {
+		obat: namaObat,
+		deskripsi: deskripsiObat[namaObat] ?? 'Belum tersedia',
+		kandungan: kandunganObat[namaObat] ?? 'Belum tersedia',
+		dosis: dosisObat[namaObat] ?? 'Belum tersedia',
+		aturanPakai: aturanPakaiObat[namaObat] ?? 'Belum tersedia',
+		efekSamping: efekSampingObat[namaObat] ?? 'Belum tersedia',
+		'link Store 1': linkObatSatu[namaObat] ?? 'Belum tersedia',
+		'link Store 2': linkObatDua[namaObat] ?? 'Belum tersedia',
+		sumber: sumberObat[namaObat] ?? 'Belum tersedia',
+		gambar: imagesObat[namaObat] ?? 'Belum tersedia',
+	};
+
+	return res.status(200).json({ status: 'success', data: detail });
+};
+
 const chatbot = async (req, res) => {
 	const userMessage = req.body.message;
+	const user = req.user;
 
 	if (!userMessage) {
 		return res.status(400).json({ error: 'Field "message" harus ada di body' });
@@ -108,6 +156,15 @@ const chatbot = async (req, res) => {
 
 		const data = await response.json();
 		const geminiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Gemini tidak membalas.';
+
+		const chat = new ChatHistory({
+			userId: user.id,
+			userMessage,
+			geminiReply,
+		});
+
+		await chat.save();
+
 		res.json({ reply: geminiReply });
 	} catch (error) {
 		console.error(error);
@@ -117,7 +174,9 @@ const chatbot = async (req, res) => {
 
 const getRiwayatPenyakit = async (req, res) => {
 	try {
-		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'penyakit' }).sort({ createdAt: -1 });
+		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'penyakit' }).sort({
+			createdAt: -1,
+		});
 
 		const result = histories.map((history) => ({
 			id: history._id,
@@ -134,7 +193,9 @@ const getRiwayatPenyakit = async (req, res) => {
 
 const getRiwayatObat = async (req, res) => {
 	try {
-		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'obat' }).sort({ createdAt: -1 });
+		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'obat' }).sort({
+			createdAt: -1,
+		});
 
 		const result = histories.map((history) => ({
 			id: history._id,
@@ -171,10 +232,12 @@ const getRiwayatById = async (req, res) => {
 };
 
 module.exports = {
+	chatbot,
 	predictPenyakit,
 	predictObat,
-	chatbot,
+	getDetailPredictObat,
 	rekomendasiObat,
+	getDetailObatRekomendasi,
 	getRiwayatPenyakit,
 	getRiwayatObat,
 	getRiwayatById,

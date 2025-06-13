@@ -26,7 +26,6 @@ const startServer = async () => {
 	app.use(express.urlencoded({ extended: true }));
 	app.use(cookieParser());
 	app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-	app.use('/data/obat/images', express.static(path.join(__dirname, 'data/obat/images')));
 
 	try {
 		// === LOAD MODEL ===
@@ -44,9 +43,9 @@ const startServer = async () => {
 			res.send('Hai ini API Server 1 Untuk Clinicz-App!');
 		});
 
-		app.use('/', bot);
-		app.use('/', shop);
-		app.use('/', user);
+		app.use('/bot', bot);
+		app.use('/shop', shop);
+		app.use('/user', user);
 		app.use('/', maps);
 		app.use('/', article);
 

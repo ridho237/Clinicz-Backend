@@ -18,7 +18,7 @@ function parseTokoLink(text) {
 	const [label, link] = text.split('\n');
 	if (!label || !link) return [];
 
-	const key = label.trim().replace(/:$/, ''); // hapus ":" di akhir jika ada
+	const key = label.trim().replace(/:$/, '');
 	return [{ [key]: link.trim() }];
 }
 

@@ -1,17 +1,17 @@
 const fs = require('fs');
 const path = require('path');
-const { transposeDrugData, parseTokoLink } = require('../utils/transpose');
+const { transposeDrugData, parseTokoLink } = require('../utils/dataFormatter');
 
-// Load cosine similarity matrix dan data obat
 const cosineMatrix = JSON.parse(
 	fs.readFileSync(path.join(__dirname, '../model/obat_recomender/cosine_similarity_matrix.json'))
 );
-const rawDrugData = JSON.parse(fs.readFileSync(path.join(__dirname, '../model/obat_recomender/drug_reference_data.json')));
+const rawDrugData = JSON.parse(
+	fs.readFileSync(path.join(__dirname, '../model/obat_recomender/all_drugs_data_model.json'))
+);
 
 const drugsData = transposeDrugData(rawDrugData);
 
 function recommendObat(obatUtama, penyakit) {
-	// Penanganan khusus untuk penyakit seperti Hepatitis
 	if (penyakit === 'Hepatitis') {
 		return [
 			{
@@ -21,12 +21,9 @@ function recommendObat(obatUtama, penyakit) {
 		];
 	}
 
-	// Filter kandidat berdasarkan penyakit yang sama
 	const kandidatObat = drugsData.filter((item) => item['Disease (Penyakit)'] === penyakit);
-
 	if (kandidatObat.length === 0) return [];
 
-	// Hitung similarity dan bangun list rekomendasi
 	const rekomendasi = kandidatObat
 		.map((item) => {
 			const similarity = cosineMatrix[obatUtama]?.[item.Obat] ?? 0;

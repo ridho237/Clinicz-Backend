@@ -1,14 +1,15 @@
 const tf = require('@tensorflow/tfjs-node');
 const { allWordsObat } = require('../data/obat/all_word');
-const { obatLabels } = require('../data/obat/classes_obat');
-const { deskripsiObat } = require('../data/obat/desc_obat');
-const { kandunganObat } = require('../data/obat/kandungan_obat');
-const { dosisObat } = require('../data/obat/dosis_obat');
-const { aturanPakaiObat } = require('../data/obat/aturanPakai_obat');
-const { efekSampingObat } = require('../data/obat/efekSamping_obat');
-const { linkObatSatu, linkObatDua } = require('../data/obat/link_obat');
-const { sumberObat } = require('../data/obat/sumber_obat');
-const { imagesObat } = require('../data/obat/images_obat');
+const {
+	obatLabels,
+	deskripsiObat,
+	kandunganObat,
+	dosisObat,
+	aturanPakaiObat,
+	efekSampingObat,
+	sumberObat,
+	imagesObat,
+} = require('../data/obat/data_obat');
 
 async function classifyObat(modelB, gejalaText, penyakitText) {
 	if (gejalaText?.toLowerCase().includes('Hepatitis') && penyakitText?.toLowerCase().includes('hepatitis')) {
@@ -39,8 +40,6 @@ async function classifyObat(modelB, gejalaText, penyakitText) {
 	const dosis = dosisObat[namaObat] ?? 'Maaf Data dosis obat tersebut belum tersedia.';
 	const aturanPakai = aturanPakaiObat[namaObat] ?? 'Maaf Data aturan pakai obat tersebut belum tersedia.';
 	const efekSamping = efekSampingObat[namaObat] ?? 'Maaf Data efek samping obat tersebut belum tersedia.';
-	const linkStoreSatu = linkObatSatu[namaObat] ?? 'Maaf Data link Obat tersebut belum tersedia.';
-	const linkStoreDua = linkObatDua[namaObat] ?? 'Maaf Data link Obat tersebut belum tersedia.';
 	const sumber = sumberObat[namaObat] ?? 'Maaf Data sumber Obat tersebut belum tersedia.';
 	const gambar = imagesObat[namaObat] ?? 'Maaf Data sumber Obat tersebut belum tersedia.';
 
@@ -52,8 +51,6 @@ async function classifyObat(modelB, gejalaText, penyakitText) {
 			dosis: dosis,
 			aturanPakai: aturanPakai,
 			efekSamping: efekSamping,
-			'link Store 1': linkStoreSatu,
-			'link Store 2': linkStoreDua,
 			sumber: sumber,
 			gambar: gambar,
 		},

@@ -4,7 +4,9 @@ const authMiddleware = require('../middleware/middleware');
 const {
 	predictPenyakit,
 	predictObat,
+	getDetailPredictObat,
 	rekomendasiObat,
+	getDetailObatRekomendasi,
 	chatbot,
 	getRiwayatPenyakit,
 	getRiwayatObat,
@@ -14,7 +16,9 @@ const {
 model.post('/chat', chatbot);
 model.post('/predict-penyakit', authMiddleware, predictPenyakit);
 model.post('/predict-obat', authMiddleware, predictObat);
+model.get('/predict-obat/:namaObat', getDetailPredictObat);
 model.post('/rekomendasi-obat', authMiddleware, rekomendasiObat);
+model.get('/rekomendasi-obat/:namaObat', getDetailObatRekomendasi);
 model.get('/riwayat-penyakit', authMiddleware, getRiwayatPenyakit);
 model.get('/riwayat-obat', authMiddleware, getRiwayatObat);
 model.get('/riwayat/:id', authMiddleware, getRiwayatById);

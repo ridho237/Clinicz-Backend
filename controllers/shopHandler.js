@@ -1,12 +1,16 @@
-const { obatLabels } = require('../data/obat/classes_obat');
-const { deskripsiObat } = require('../data/obat/desc_obat');
-const { kandunganObat } = require('../data/obat/kandungan_obat');
-const { dosisObat } = require('../data/obat/dosis_obat');
-const { aturanPakaiObat } = require('../data/obat/aturanPakai_obat');
-const { efekSampingObat } = require('../data/obat/efekSamping_obat');
-const { linkObatSatu, linkObatDua } = require('../data/obat/link_obat');
-const { sumberObat } = require('../data/obat/sumber_obat');
-const { imagesObat } = require('../data/obat/images_obat');
+const {
+	obatLabels,
+	deskripsiObat,
+	kandunganObat,
+	dosisObat,
+	aturanPakaiObat,
+	efekSampingObat,
+	linkObatSatu,
+	linkObatDua,
+	sumberObat,
+	imagesObat,
+} = require('../data/obat/data_obat');
+const { parseTokoLink } = require('../utils/dataFormatter');
 
 const getObat = async (req, res) => {
 	try {
@@ -38,10 +42,17 @@ const getObatByName = async (req, res) => {
 		const dosis = dosisObat[nama] ?? 'Maaf Data dosis obat tersebut belum tersedia.';
 		const aturanPakai = aturanPakaiObat[nama] ?? 'Maaf Data aturan pakai obat tersebut belum tersedia.';
 		const efekSamping = efekSampingObat[nama] ?? 'Maaf Data efek samping obat tersebut belum tersedia.';
-		const linkStoreSatu = linkObatSatu[nama] ?? 'Maaf Data link Obat tersebut belum tersedia.';
-		const linkStoreDua = linkObatDua[nama] ?? 'Maaf Data link Obat tersebut belum tersedia.';
 		const sumber = sumberObat[nama] ?? 'Maaf Data sumber Obat tersebut belum tersedia.';
 		const gambar = imagesObat[nama] ?? 'Maaf Data gambar Obat tersebut belum tersedia.';
+		const rawLinkStoreSatu = linkObatSatu[nama] ?? null;
+		const rawLinkStoreDua = linkObatDua[nama] ?? null;
+
+		const linkStoreSatu = rawLinkStoreSatu
+			? parseTokoLink(rawLinkStoreSatu)
+			: 'Maaf Data link Obat tersebut belum tersedia.';
+		const linkStoreDua = rawLinkStoreDua
+			? parseTokoLink(rawLinkStoreDua)
+			: 'Maaf Data link Obat tersebut belum tersedia.';
 
 		res.json({
 			nama,
