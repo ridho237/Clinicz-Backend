@@ -1,10 +1,10 @@
-const User = require('../model/userSchema');
+const User = require('../model/mongodb_schema/userSchema');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const formidable = require('formidable');
 const fs = require('fs');
 const path = require('path');
-
+const uploadDir = path.join(__dirname, '../uploads');
 require('dotenv').config();
 
 const COOKIE_OPTIONS = {
@@ -13,7 +13,6 @@ const COOKIE_OPTIONS = {
 	sameSite: 'none',
 };
 
-const uploadDir = path.join(__dirname, '../uploads');
 if (!fs.existsSync(uploadDir)) {
 	fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -37,7 +36,7 @@ const signUp = async (req, res) => {
 
 			let profileImageUrl = '';
 
-			if (files.profileImage && files.profileImage[0]) {
+			if (files.profileImage ?? files.profileImage[0]) {
 				const file = files.profileImage[0];
 
 				if (!file.filepath) {
@@ -137,7 +136,7 @@ const updateProfile = async (req, res) => {
 			if (fields.username?.[0]) user.username = fields.username[0];
 			if (fields.email?.[0]) user.email = fields.email[0];
 
-			if (files.profileImage && files.profileImage[0]) {
+			if (files.profileImage ?? files.profileImage[0]) {
 				const file = files.profileImage[0];
 
 				if (!file.filepath) {

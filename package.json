@@ -11,6 +11,7 @@
 	"author": "Muhammad Ridho",
 	"license": "ISC",
 	"dependencies": {
+		"@tensorflow/tfjs-node": "^4.22.0",
 		"axios": "^1.9.0",
 		"bcrypt": "^6.0.0",
 		"cheerio": "^1.0.0",

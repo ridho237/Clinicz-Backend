@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Article = require('../model/articleSchema');
+const Article = require('../model/mongodb_schema/articleSchema');
 
 const getArticle = async (req, res) => {
 	try {

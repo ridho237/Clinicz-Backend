@@ -1,15 +1,22 @@
 const express = require('express');
 const model = express.Router();
-const { predictPenyakit, predictObat, rekomendasiObat, chatbot } = require('../controllers/botHandler');
+const authMiddleware = require('../middleware/middleware');
+const {
+	predictPenyakit,
+	predictObat,
+	rekomendasiObat,
+	chatbot,
+	getRiwayatPenyakit,
+	getRiwayatObat,
+	getRiwayatById,
+} = require('../controllers/botHandler');
 
-// model route
-model.post('/predict/penyakit', predictPenyakit);
-model.post('/predict/obat', predictObat);
-model.post('/rekomendasi-obat', rekomendasiObat);
 model.post('/chat', chatbot);
-
-// riwayat route
-model.get('/history/all', authMiddleware, getAllRiwayat);
-model.get('/history/:id', authMiddleware, getRiwayatById);
+model.post('/predict-penyakit', authMiddleware, predictPenyakit);
+model.post('/predict-obat', authMiddleware, predictObat);
+model.post('/rekomendasi-obat', authMiddleware, rekomendasiObat);
+model.get('/riwayat-penyakit', authMiddleware, getRiwayatPenyakit);
+model.get('/riwayat-obat', authMiddleware, getRiwayatObat);
+model.get('/riwayat/:id', authMiddleware, getRiwayatById);
 
 module.exports = model;

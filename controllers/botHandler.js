@@ -1,4 +1,4 @@
-const PredictionHistory = require('../models/PredictionHistory');
+const PredictionHistory = require('../model/mongodb_schema/predictionHistorySchema');
 const { classifyPenyakit } = require('../services/classification_penyakit');
 const { classifyObat } = require('../services/classification_obat');
 const { recommendObat } = require('../services/collaboration_recommender');
@@ -81,31 +81,71 @@ const rekomendasiObat = async (req, res) => {
 	}
 };
 
-const getAllRiwayat = async (req, res) => {
+const chatbot = async (req, res) => {
+	const userMessage = req.body.message;
+
+	if (!userMessage) {
+		return res.status(400).json({ error: 'Field "message" harus ada di body' });
+	}
+
 	try {
-		const histories = await PredictionHistory.find({ userId: req.user.id }).sort({ createdAt: -1 });
-
-		const simpleHistory = histories.map((history) => {
-			let nama = '';
-			if (history.type === 'penyakit') {
-				nama = history.input.text;
-			} else if (history.type === 'obat') {
-				nama = history.input.penyakit;
-			} else if (history.type === 'rekomendasi') {
-				nama = history.input.penyakit;
+		const response = await fetch(
+			`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					contents: [
+						{
+							parts: [{ text: userMessage }],
+						},
+					],
+				}),
 			}
+		);
 
-			return {
-				id: history._id,
-				type: history.type,
-				nama,
-				createdAt: history.createdAt,
-			};
-		});
-
-		res.status(200).json({ status: 'success', data: simpleHistory });
+		const data = await response.json();
+		const geminiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Gemini tidak membalas.';
+		res.json({ reply: geminiReply });
 	} catch (error) {
-		res.status(500).json({ status: 'fail', message: `Gagal mengambil riwayat: ${error.message}` });
+		console.error(error);
+		res.status(500).json({ error: 'Gagal mendapatkan respons dari Gemini' });
+	}
+};
+
+const getRiwayatPenyakit = async (req, res) => {
+	try {
+		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'penyakit' }).sort({ createdAt: -1 });
+
+		const result = histories.map((history) => ({
+			id: history._id,
+			type: history.type,
+			nama: history.input.text,
+			createdAt: history.createdAt,
+		}));
+
+		res.status(200).json({ status: 'success', data: result });
+	} catch (error) {
+		res.status(500).json({ status: 'fail', message: `Gagal mengambil riwayat penyakit: ${error.message}` });
+	}
+};
+
+const getRiwayatObat = async (req, res) => {
+	try {
+		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'obat' }).sort({ createdAt: -1 });
+
+		const result = histories.map((history) => ({
+			id: history._id,
+			type: history.type,
+			nama: history.input.penyakit,
+			createdAt: history.createdAt,
+		}));
+
+		res.status(200).json({ status: 'success', data: result });
+	} catch (error) {
+		res.status(500).json({ status: 'fail', message: `Gagal mengambil riwayat obat: ${error.message}` });
 	}
 };
 
@@ -130,4 +170,12 @@ const getRiwayatById = async (req, res) => {
 	}
 };
 
-module.exports = { predictPenyakit, predictObat, rekomendasiObat, getAllRiwayat, getRiwayatById };
+module.exports = {
+	predictPenyakit,
+	predictObat,
+	chatbot,
+	rekomendasiObat,
+	getRiwayatPenyakit,
+	getRiwayatObat,
+	getRiwayatById,
+};
