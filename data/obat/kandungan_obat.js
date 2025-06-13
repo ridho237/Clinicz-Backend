@@ -90,7 +90,6 @@ const kandunganObat = {
 	Floxigra: 'Ciprofloxacin',
 	'Flagyl Forte': 'Metronidazole 500 mg',
 	Metronidazole: 'Metronidazole',
-	'-': '-',
 	Duspatalin: 'Mebeverine Hydrochloride 135 mg',
 };
 

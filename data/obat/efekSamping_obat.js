@@ -169,7 +169,6 @@ const efekSampingObat = {
 		'Konsumsi obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti mengantuk, sakit kepala, pusing, mual, muntah, gangguan pernapasan, timbul ruam pada beberapa bagian tubuh, nyeri pada bagian dada, diare, sembelit, hingga dapat menyebabkan kejang-kejang',
 	Metronidazole:
 		'Konsumsi obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti sakit kepala, pusing, mual, muntah, nyeri pada bagian dada, diare, sembelit, kehilangan nafsu makan, gangguan pada koordinasi gerakan tubuh, halusinasi, leukopenia, vertigo, hinga yang paling parah dapat membuat pasien menjadi kejang-kejang',
-	'-': '-',
 	Duspatalin:
 		'Konsumsi obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti pusing, badan menjadi lelah, terjadi pembengkakan pada beberapa area, seperti kulit, wajah, leher, lidah, atau tenggorokan, muncul ruam pada kulit, kesulitan untuk bernapas, kesulitan untuk tidur, gangguan pencernaan',
 };

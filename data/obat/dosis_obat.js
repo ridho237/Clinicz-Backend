@@ -143,7 +143,6 @@ const dosisObat = {
 	'Flagyl Forte':
 		'Dewasa: 500 - 750 mg dikonsumsi sebanyak 3x sehari. Obat ini dikonsumsi selama 5 - 10 hari\n\nAnak-anak: 35 - 50 mg/kg BB dikonsumsi sebanyak 3x sehari. Obat ini dikonsumsi selama 10 hari',
 	Metronidazole: 'Dosis: 3 kali sehari, selama 5–10 hari.',
-	'-': '-',
 	Duspatalin: 'Dosis: 1 tablet dikonsumsi sebanyak 3x sehari',
 };
 

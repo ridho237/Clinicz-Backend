@@ -86,7 +86,6 @@ const sumberObat = {
 	Floxigra: 'Halodoc, Alodokter, Klikdokter, Vivaapotek',
 	'Flagyl Forte': 'Alodokter, klikdokter, k24klik, Halodoc, Honestdocs ',
 	Metronidazole: 'Alodokter, Halodoc, Primayahospital, K24klik',
-	'-': '-',
 	Duspatalin: 'Alodokter, Halodoc, Hellosehat, Klikdokter, K24klik',
 };
 

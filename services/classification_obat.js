@@ -11,6 +11,15 @@ const { sumberObat } = require('../data/obat/sumber_obat');
 const { imagesObat } = require('../data/obat/images_obat');
 
 async function classifyObat(modelB, gejalaText, penyakitText) {
+	if (gejalaText?.toLowerCase().includes('Hepatitis') && penyakitText?.toLowerCase().includes('hepatitis')) {
+		return [
+			{
+				obat: null,
+				pesan: 'Maaf untuk penyakit hepatitis disegerakan untuk periksa ke klinik terdekat.',
+			},
+		];
+	}
+
 	const [inputGejala, inputPenyakit] = preprocessDualInput(gejalaText, penyakitText);
 	const tensorGejala = tf.tensor([inputGejala], [1, 50]);
 	const tensorPenyakit = tf.tensor([inputPenyakit], [1, 50]);

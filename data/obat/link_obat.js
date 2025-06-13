@@ -164,7 +164,6 @@ const linkObatSatu = {
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/flagyl-forte-500-mg-10-tablet?srsltid=AfmBOopzvZi9i34iBZBWo0ZoIQiQbjQ8AQ6RsTBWMFIOb-bvprMLVI7M',
 	Metronidazole:
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/metronidazole-500-mg-10-tablet?srsltid=AfmBOor7N4R_aF2Xr0BZdaxzhDz-UTv8SBxm9AqsOXYnWtnGxIpTQwIY',
-	'-': '-',
 	Duspatalin:
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/duspatalin-135-mg-10-tablet?srsltid=AfmBOopBq_trKoFTqcXd5D609Dhn6WJFul_3b7uf4TJPWJr1RSX6uhPU',
 };
@@ -288,7 +287,6 @@ const linkObatDua = {
 	'Flagyl Forte':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/flagyl-forte-500-mg-10-tablet/5fb3872241ab59059e869e43',
 	Metronidazole: 'K24klik:\nhttps://www.k24klik.com/p/metronidazole-bernofarm-500mg-tab-100s-2422#',
-	'-': '-',
 	Duspatalin: 'K24klik:\nhttps://www.k24klik.com/p/duspatalin-135mg-tab-50s-16921',
 };
 

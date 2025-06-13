@@ -173,7 +173,6 @@ const deskripsiObat = {
 		'Flagyl forte merupakan obat yang digunakan untuk mengobati beberapa jenis infeksi yang disebabkan oleh bakteri anaerob dan parasit protozoa, seperti uretritis dan vaginitis karena trichomonas vaginalis, amoebiasis di usus dan hati. Obat ini juga dapat digunakan untuk mencegah infeksi anaerob pasca operasi atau giardiasis karena giardia lambliasis. Obat ini mengandung metronidazole yang dapat mematikan pertumbuhan bakteri dan parasit pada tubuh',
 	Metronidazole:
 		'Obat ini bekerja dengan membunuh parasit penyebab diare. Dengan begitu, diare dan kram perut akibat disentri bisa mereda.  Obat ini hanya bisa dibeli dengan resep dokter.',
-	'-': '-',
 	Duspatalin:
 		'Duspatalin merupakan obat yang digunakan untuk mengatasi penyakit antispasmodik (kejang perut). Obat ini dapat membantu pada pasien dalam mengatasi berbagai penyakit yang berkaitan dengan area pencernaan, seperti gangguan pada saluran pencernaan, nyeri pada bagian tukak lambung, kejang perut, dan penyakit yang terjadi pada kantung kemih dan saluran empedu Obat ini mengandung mebeverine HCL yang memberikan efek langsung pada otot polos yang terdapat pada saluran pencernaan tanpa mempengaruhi kemampuan bergerak dari usus normal',
 };

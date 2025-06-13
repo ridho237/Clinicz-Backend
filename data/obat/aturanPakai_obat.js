@@ -115,7 +115,7 @@ const aturanPakaiObat = {
 	Floxigra: 'Sebaiknya dikonsumsi pada saat makan untuk mencegah timbulnya sakit maag',
 	'Flagyl Forte': 'Dapat dikonsumsi setelah makan',
 	Metronidazole: 'Dapat dikonsumsi sesudah makan',
-	'-': '-',
+
 	Duspatalin: 'Dikonsumsi 20 menit sebelum makan',
 };
 
