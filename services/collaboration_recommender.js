@@ -11,7 +11,7 @@ const rawDrugData = JSON.parse(
 
 const drugsData = transposeDrugData(rawDrugData);
 
-function recommendObat(obatUtama, penyakit) {
+function recommendObat(penyakit) {
 	if (penyakit === 'Hepatitis') {
 		return [
 			{
@@ -23,6 +23,9 @@ function recommendObat(obatUtama, penyakit) {
 
 	const kandidatObat = drugsData.filter((item) => item['Disease (Penyakit)'] === penyakit);
 	if (kandidatObat.length === 0) return [];
+
+	const obatUtama = kandidatObat[0]?.Obat;
+	if (!obatUtama || !cosineMatrix[obatUtama]) return kandidatObat;
 
 	const rekomendasi = kandidatObat
 		.map((item) => {

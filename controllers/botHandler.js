@@ -1,7 +1,6 @@
 const PredictionHistory = require('../model/mongodb_schema/predictionHistorySchema');
 const ChatHistory = require('../model/mongodb_schema/chatHistory');
 const { classifyPenyakit } = require('../services/classification_penyakit');
-const { classifyObat } = require('../services/classification_obat');
 const { recommendObat } = require('../services/collaboration_recommender');
 
 const predictPenyakit = async (req, res) => {
@@ -30,68 +29,19 @@ const predictPenyakit = async (req, res) => {
 	}
 };
 
-const predictObat = async (req, res) => {
+const rekomendasiObat = async (req, res) => {
 	try {
-		const { gejala, penyakit } = req.body;
-		const { modelB } = req.app;
-		const obatPredictions = await classifyObat(modelB, gejala, penyakit);
+		const { penyakit } = req.body;
+		if (!penyakit) {
+			return res.status(400).json({ status: 'fail', message: 'Input penyakit harus disediakan.' });
+		}
+
+		const result = recommendObat(penyakit);
 
 		await PredictionHistory.create({
 			userId: req.user.id,
 			type: 'obat',
-			input: { gejala, penyakit },
-			output: obatPredictions,
-		});
-
-		const simpleOutput = obatPredictions.map(({ obat, deskripsi }) => ({ obat, deskripsi }));
-
-		res.status(200).json({
-			status: 'success',
-			message: 'Prediksi obat berhasil',
-			data: simpleOutput,
-		});
-	} catch (error) {
-		res.status(400).json({
-			status: 'fail',
-			message: `Gagal memprediksi obat: ${error.message}`,
-		});
-	}
-};
-
-const getDetailPredictObat = (req, res) => {
-	const { namaObat } = req.params;
-
-	if (!namaObat) {
-		return res.status(404).json({ status: 'fail', message: 'Detail obat tidak ditemukan.' });
-	}
-
-	const detail = {
-		obat: namaObat,
-		deskripsi: deskripsiObat[namaObat],
-		kandungan: kandunganObat[namaObat] ?? 'Belum tersedia',
-		dosis: dosisObat[namaObat] ?? 'Belum tersedia',
-		aturanPakai: aturanPakaiObat[namaObat] ?? 'Belum tersedia',
-		efekSamping: efekSampingObat[namaObat] ?? 'Belum tersedia',
-		sumber: sumberObat[namaObat] ?? 'Belum tersedia',
-		gambar: imagesObat[namaObat] ?? 'Belum tersedia',
-	};
-
-	return res.status(200).json({ status: 'success', data: detail });
-};
-
-const rekomendasiObat = async (req, res) => {
-	try {
-		const { obat, penyakit } = req.body;
-		if (!obat || !penyakit) {
-			return res.status(400).json({ status: 'fail', message: 'Input obat dan penyakit harus disediakan.' });
-		}
-
-		const result = recommendObat(obat, penyakit);
-
-		await PredictionHistory.create({
-			userId: req.user.id,
-			type: 'rekomendasi',
-			input: { obat, penyakit },
+			input: { penyakit },
 			output: result,
 		});
 
@@ -234,8 +184,6 @@ const getRiwayatById = async (req, res) => {
 module.exports = {
 	chatbot,
 	predictPenyakit,
-	predictObat,
-	getDetailPredictObat,
 	rekomendasiObat,
 	getDetailObatRekomendasi,
 	getRiwayatPenyakit,

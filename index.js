@@ -11,7 +11,7 @@ const bot = require('./routes/bot');
 const maps = require('./routes/maps');
 const shop = require('./routes/shop');
 const article = require('./routes/article');
-const { loadModelA, loadModelB } = require('./services/loadmodel');
+const { loadModel } = require('./services/loadmodel');
 
 // === ENV CONFIG ===
 require('dotenv').config();
@@ -29,10 +29,8 @@ const startServer = async () => {
 
 	try {
 		// === LOAD MODEL ===
-		const modelA = await loadModelA();
-		app.modelA = modelA;
-		const modelB = await loadModelB();
-		app.modelB = modelB;
+		const model = await loadModel();
+		app.model = model;
 
 		// === MONGODB CONNECTION ===
 		await mongoose.connect(MONGODB_URI);

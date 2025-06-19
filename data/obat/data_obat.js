@@ -10,27 +10,27 @@ const obatLabels = {
 	8: 'Flagyl Forte',
 	9: 'Omeprazole',
 	10: 'Seretide',
-	11: 'Duspatilin',
+	11: 'Duspatalin',
 	12: 'Clopidogrel Bisulfate',
 	13: 'Amoxsan Tablet',
 	14: 'Tamiflu',
 	15: 'Ventolin Inhaler',
-	16: 'Azitromycin',
+	16: 'Azithromycin',
 	17: 'Vfend Voriconazole',
 	18: 'Paracetamol',
 	19: 'Entrostop',
 	20: 'Promag Suspensi',
 	21: 'Forotic Tetes Telinga',
 	22: 'Dexamethasone',
-	23: 'Panadol Extram Paracetamol',
+	23: 'Panadol Extra',
 	24: 'Nitrokaf Retard',
 	25: 'Betahistine Mesylate',
 	26: 'Cendo Xitrol',
 	27: 'Proris Sirup',
 	28: 'Amoxicillin',
 	29: 'Bodrex Migra',
-	30: 'Tegterol',
-	31: 'Iliadin Nasal Sprat',
+	30: 'Tegretol',
+	31: 'Iliadin Nasal Spray',
 	32: 'Triatec',
 	33: 'Polysilane Suspensi',
 	34: 'Alat Bantu Pendengaran',
@@ -101,11 +101,13 @@ const aturanPakaiObat = {
 	Farnormin:
 		'Dapat dikonsumsi sebelum atau setelah makan. Hindari meminum jus apel atau jeruk setelah 4 jam mengonsumsi obat, karena jus aple dan jeruk dapat mengganggu penyerapan obat oleh tubuh',
 	Triatec: 'Dapat dikonsumsi sebelum atau sesudah makan',
-	Concor: 'Dapat dikonsumsi sebelum atau sesudah makan. Namun, disarankan untuk meminum obat ini pada pagi hari',
+	Concor:
+		'Dapat dikonsumsi sebelum atau sesudah makan. Namun, disarankan untuk meminum obat ini pada pagi hari',
 	Spironolactone:
 		'Dapat dikonsumsi bersamaan dengan makan atau setelah makan. Disarankan untuk mengonsumsi obat ini pada pagi hari dan sangat tidak disarankan untuk mengonsumsinya pada malam hari, karena obat ini dapat meningkatkan produksi urine',
 	Rifampicin: 'Dapat dikonsumsi 1 jam sebelum makan atau 2 jam setelah makan',
-	'Nitrokaf Retard': 'Dapat dikonsumsi sebelum atau sesudah makan. Obat ini dianjutkan dikonsumsi pada pagi hari',
+	'Nitrokaf Retard':
+		'Dapat dikonsumsi sebelum atau sesudah makan. Obat ini dianjutkan dikonsumsi pada pagi hari',
 	'Amlodipine Besylate': 'Dapat dikonsumsi sebelum atau sesudah makan',
 	'Simarc 2': 'Dapat dikonsumsi sebelum atau sesudah makan',
 	Lasix:
@@ -155,7 +157,6 @@ const aturanPakaiObat = {
 	Floxigra: 'Sebaiknya dikonsumsi pada saat makan untuk mencegah timbulnya sakit maag',
 	'Flagyl Forte': 'Dapat dikonsumsi setelah makan',
 	Metronidazole: 'Dapat dikonsumsi sesudah makan',
-
 	Duspatalin: 'Dikonsumsi 20 menit sebelum makan',
 };
 
@@ -358,7 +359,8 @@ const dosisObat = {
 	'Mertigo SR':
 		'Mertigo tablet\nDewasa (usia > 18 tahun): 1 – 2 tablet, 3x sehari.\n\nMertigo SR tablet lepas lambat\nDewasa (usia > 18 tahun): 1 tablet, 2x sehari.',
 	'Clopidogrel Bisulfate': 'Dewasa: 75 mg dikonsumsi sebanyak 1x sehari',
-	Cholestor: 'Dosis pencegahan: 10 mg per hari. Dosis tersebut dapat ditingkatkan sesuai dengan kondisi pasien',
+	Cholestor:
+		'Dosis pencegahan: 10 mg per hari. Dosis tersebut dapat ditingkatkan sesuai dengan kondisi pasien',
 	Pradaxa:
 		'Dewasa: 1 kapsul (150 mg) dikonsumsi sebanyak 2x sehari\n\nDewasa > 80 tahun: 1 kapsul (110 mg) dikonsumsi sebanyak 2x sehari',
 	'Ciprofloxacin Tablet': 'Dosis: 2x sehari atau sesuai petunjuk dokter.',
@@ -412,10 +414,12 @@ const dosisObat = {
 		'Dosis: 75 - 150 mg per hari. Dosis tersebut bukanlah dosis umum yang dapat dikonsumsi oleh semua pasien. Kondisi dan respons pasien terhadap pengobatan merupakan aspek penting dalam penentuan dosis obat',
 	Farnormin:
 		'Dewasa: \nDosis awal: 50 mg dikonsumsi sebanyak 1x sehari. Dosis dapat disesuaikan dengan kondisi dan respon tubuh yang diberikan oleh pasien terhadap pengobatan dengan dosis tersebut\nDosis perawatan: 50 - 100 mg dikonsumsi sebanyak 1x sehari\n\n\nLansia: 25 mg/hari. Dosis tersebut dapat ditingkatkan menjadi 100 mg/hari dengan interval waktu 1 minggu dari dosis awal',
-	Triatec: 'Dewasa: 1.25 mg dikonsumsi sebanyak 1x dalam sehari. Dosis tersebut dapat ditingkatkan menjadi 10 mg per hari',
+	Triatec:
+		'Dewasa: 1.25 mg dikonsumsi sebanyak 1x dalam sehari. Dosis tersebut dapat ditingkatkan menjadi 10 mg per hari',
 	Concor:
 		'Dewasa: 1.25 mg dikonsumsi sebanyak 1x sehari. Obat ini diberikan selama 1 minggu. Dosis dari obat ini dapat ditambahkan jika tubu pasien menunjukkan respon yabg baik terhadap pengobatan. Peningkatan tersebut dilakukan secara bertahap setiap 1 - 4 minggu dengan dosis maksimal adalah 10 mg / hari',
-	Spironolactone: 'Dewasa: 25 mg dikonsumsi 1x sehari. Dosis tersebut dapat ditingkatkan menjadi 50 mg / hari',
+	Spironolactone:
+		'Dewasa: 25 mg dikonsumsi 1x sehari. Dosis tersebut dapat ditingkatkan menjadi 50 mg / hari',
 	Rifampicin:
 		'Dewasa dengan berat badan ≥ 50 kg: 600 mg / hari\n\nDewasa dengan berat badan < 50 kg: 450 mg / hari\n\nAnak-anak berusia > 3 bulan: 10 - 20 mg / kg BB dengan dosis maksimum adalah 600 mg',
 	'Nitrokaf Retard': 'Dewasa: 2.5 - 5 mg dikonsumsi sebanyak 3 - 4x sehari',
@@ -445,7 +449,8 @@ const dosisObat = {
 	Azithromycin:
 		'Anak usia > 2 tahun:\nBentuk: Suspensi lepas cepat\n12 mg/kg BB per hari. Obat ini dikonsumsi selama 5 hari.',
 	Seretide: 'Dewasa: 1 hirup diberikan sebanyak 2x sehari',
-	'Trelegy Ellipta': 'Dosis: 1 hirup diberikan sebanyak 1x sehari. Obat ini tidak boleh digunakan lebih dari 1 hirup',
+	'Trelegy Ellipta':
+		'Dosis: 1 hirup diberikan sebanyak 1x sehari. Obat ini tidak boleh digunakan lebih dari 1 hirup',
 	'Spriva Respimat': 'Dosis: 1 - 2 hirup diberikan sebanyak 1x sehari',
 	'Erythromycin ':
 		'Dewasa: \nInfeksi Ringan - Sedang: 500 mg dikonsumsi setiap 12 jam \nInfeksi Berat: 1000 mg dikonsumsi setiap 6 jam. Dosis maksimal yang dapat dikonsumsi adalah 4 gram per hari\n\nAnak-anak: 30 – 50 mg/kg BB per hari, dibagi ke dalam 4 dosis. Dosis maksimal 4 gram per hari.',
@@ -455,7 +460,8 @@ const dosisObat = {
 		'Dewasa dan anak usia > 12 tahun: 2 – 3 sendok takar (10 - 15 ml) diminum sebanyak 3x sehari.\n\nAnak usia 6 – 12 tahun: 1 sendok takar (5 ml) diminum sebanyak 3x sehari\n\nAnak usia 2 – 6 tahun: ½ sendok takar (2.5 ml) diminum sebanyak 3x sehari',
 	Entrostop:
 		'Dewasa dan anak-anak berusia > 12 tahun: 2 tablet dikonsumsi setiap kali buang air besar. Dosis maksimal dari obat ini adalah 12 tablet per hari\n\nAnak-anak berusia 6 - 12 tahun: 1 tablet dikonsumsi setiap kalo buang air besar. Dosis maksimal dari obat ini adalah 6 tablet per hari',
-	Diapet: 'Dewasa: 2 kapsul, 2 kali sehari. Untuk diare akut, dosisnya 2 kapsul, 2 kali sehari dengan selang waktu 1 jam.',
+	Diapet:
+		'Dewasa: 2 kapsul, 2 kali sehari. Untuk diare akut, dosisnya 2 kapsul, 2 kali sehari dengan selang waktu 1 jam.',
 	Imodium:
 		'Kondisi: Diare akut\nDewasa (usia ≥ 18 tahun): Dosis awal 2 tablet. Selanjutnya, 1 tablet setelah BAB cair. Dosis maksimal 16 mg atau 8 tablet per hari.\n\nKondisi: Diare kronis\nDewasa (usia ≥ 18 tahun): Dosis awal 2 tablet. Berikutnya, 1 tablet setelah BAB cair. Dosis harian umumnya adalah 1 – 6 tablet. Dosis maksimal adalah 16 mg atau 8 tablet per hari.',
 	'Polysilane Suspensi':
@@ -467,7 +473,8 @@ const dosisObat = {
 	'Promag suspensi':
 		'Dewasa: 1 - 2 sendok takar (5 - 10 ml), diminum sebanyak 3 - 4x sehari.\n\nAnak usia 6 - 12 tahun: 1 sendok takar (5 ml), diminum sebanyak 3 - 4x sehari.',
 	Ranitidine: 'Dewasa: 150 mg 2 kali sehari, selama 6 minggu.',
-	Dulcolax: 'Dewasa dan anak usia > 10 tahun: 1–2 tablet per hari.\n\nAnak usia 6 – 10 tahun: 1 tablet per hari.',
+	Dulcolax:
+		'Dewasa dan anak usia > 10 tahun: 1–2 tablet per hari.\n\nAnak usia 6 – 10 tahun: 1 tablet per hari.',
 	Laxatab:
 		'Dewasa dan anak usia > 12 tahun: 2 tablet, 1 kali sehari.\n\nAnak-anak usia 6 - 12 tahun: 1 tablet, 1 kali sehari.',
 	Lactulax:
@@ -670,7 +677,8 @@ const imagesObat = {
 	Amoxicillin: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/05/13090017/amoxilin.jpg',
 	'Iliadin Nasal Spray': 'https://d2qjkwm11akmwu.cloudfront.net/products/648286_13-2-2023_11-24-10.webp',
 	'Breathy Nasal Drops': 'https://d2qjkwm11akmwu.cloudfront.net/products/1848-1665761088.webp',
-	'Betahistine Mesylate': 'https://d2qjkwm11akmwu.cloudfront.net/products/764246_8-9-2022_10-4-42-1665791755.webp',
+	'Betahistine Mesylate':
+		'https://d2qjkwm11akmwu.cloudfront.net/products/764246_8-9-2022_10-4-42-1665791755.webp',
 	Betaserc: 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1699842684/attached_image/betaserc.jpg',
 	'Mertigo SR':
 		'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/110/MTA-181883549/no-brand_no-brand_full01.jpg',
@@ -685,13 +693,16 @@ const imagesObat = {
 	Tegretol: 'https://d2qjkwm11akmwu.cloudfront.net/products/882563_29-6-2020_14-46-12-1665791840.jpeg',
 	Bamgetol: 'https://img.lazcdn.com/g/p/84fd4b982989e89d3e41b54a0f94283a.png',
 	Lioresal: 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1700907157/attached_image/lioresal.jpg',
-	Rogaine: 'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/11/13/76dde77f-afcb-4315-af2f-8e45db3a6e62.jpg',
+	Rogaine:
+		'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/11/13/76dde77f-afcb-4315-af2f-8e45db3a6e62.jpg',
 	'Regrou Forte': 'https://d2qjkwm11akmwu.cloudfront.net/products/3473-1665769299.jpeg',
-	Finasteride: 'https://www.bambangpharma.com/cdn/shop/files/438246266_356090210353218_8730131290687640927_n.jpg',
+	Finasteride:
+		'https://www.bambangpharma.com/cdn/shop/files/438246266_356090210353218_8730131290687640927_n.jpg',
 	'Amoxsan Tablet': 'https://d2qjkwm11akmwu.cloudfront.net/products/706249_16-10-2023_13-22-46.webp',
 	'Cefixime Trihydrate': 'https://primayahospital.b-cdn.net/wp-content/uploads/2024/03/C-26.jpg',
 	'Akilen Tetes Telinga': 'https://d2qjkwm11akmwu.cloudfront.net/products/14089-1665786410.webp',
-	'Forotic Tetes Telinga': 'https://d2qjkwm11akmwu.cloudfront.net/products/123308_28-4-2022_14-45-0-1665855625.png',
+	'Forotic Tetes Telinga':
+		'https://d2qjkwm11akmwu.cloudfront.net/products/123308_28-4-2022_14-45-0-1665855625.png',
 	'Erlamycetin Tetes Telinga':
 		'https://res.cloudinary.com/dk0z4ums3/image/upload/v1704855007/attached_image/erlamycetin-tetes-telinga.jpg',
 	'Alat Bantu Pendengaran':
@@ -709,9 +720,12 @@ const imagesObat = {
 	'Vfend Voriconazole':
 		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_201906130210194677_3.-VFEND-200.jpg',
 	'Cendo Natacen': 'https://d2qjkwm11akmwu.cloudfront.net/products/7916-1665777301.webp',
-	'Cendo Xitrol': 'https://digipaysatu.kemenkeu.go.id/hotlink//digipay-assets/produk/2022/725831-cendo-xitrol-md.png',
-	'Erlamycetin Salep Mata': 'https://d2qjkwm11akmwu.cloudfront.net/products/427468_16-12-2021_14-21-28-1665775186.png',
-	'Cardio Aspirin': 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1727310381/attached_image/cardio-aspirin.jpg',
+	'Cendo Xitrol':
+		'https://digipaysatu.kemenkeu.go.id/hotlink//digipay-assets/produk/2022/725831-cendo-xitrol-md.png',
+	'Erlamycetin Salep Mata':
+		'https://d2qjkwm11akmwu.cloudfront.net/products/427468_16-12-2021_14-21-28-1665775186.png',
+	'Cardio Aspirin':
+		'https://res.cloudinary.com/dk0z4ums3/image/upload/v1727310381/attached_image/cardio-aspirin.jpg',
 	Farnormin:
 		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_20230201085432359225_FARNORMIN-ATENOL-50-1.png',
 	'Clopidogrel Bisulfate': 'https://d3bbrrd0qs69m4.cloudfront.net/images/product/0102n0037.jpg',
@@ -725,10 +739,12 @@ const imagesObat = {
 	'Simarc 2': 'https://d2qjkwm11akmwu.cloudfront.net/products/8307-1665777808.webp',
 	Lasix: 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1734320754/attached_image/lasix.jpg',
 	Rifastar: 'https://d2qjkwm11akmwu.cloudfront.net/products/8197-1665777735.webp',
-	Isoniazid: 'https://medicastore.com/images/produk/ISONIAZIDE-TABLET-300-MG-KIMIA-FARMA_0tesi_Medicastore.webp',
+	Isoniazid:
+		'https://medicastore.com/images/produk/ISONIAZIDE-TABLET-300-MG-KIMIA-FARMA_0tesi_Medicastore.webp',
 	'Ventolin Inhaler': 'https://d2qjkwm11akmwu.cloudfront.net/products/1896-1665761131.jpeg',
 	'Seretide Inhaler': 'https://d2qjkwm11akmwu.cloudfront.net/products/2061-1665761275.webp',
-	'Symbicort Turbuhaler': 'https://d2qjkwm11akmwu.cloudfront.net/products/507083_20-6-2019_9-42-37-1665761269.jpeg',
+	'Symbicort Turbuhaler':
+		'https://d2qjkwm11akmwu.cloudfront.net/products/507083_20-6-2019_9-42-37-1665761269.jpeg',
 	Tamiflu:
 		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_2022092308583323085_Wc45DBhErwBvg8nkupZ3wYopkPnLTzEDnYNHlDGP.jpg',
 	'Panadol Cold & Flu': 'https://d2qjkwm11akmwu.cloudfront.net/products/766812_19-11-2024_13-59-39.webp',
@@ -762,8 +778,10 @@ const imagesObat = {
 	Ambeven: 'https://d2qjkwm11akmwu.cloudfront.net/products/575304_25-8-2021_16-46-54-1665776677.jpeg',
 	'Ardium 500':
 		'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-2175954/ardium_ardium-500-mg-obat-kesehatan--15-tablet-strip-_full02.jpg',
-	'Nutrafor Wazzir': 'https://d2qjkwm11akmwu.cloudfront.net/products/365393_15-12-2020_13-50-35-1665826288.webp',
-	'Lanpracid Kapsul': 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1704251445/attached_image/lanpracid.jpg',
+	'Nutrafor Wazzir':
+		'https://d2qjkwm11akmwu.cloudfront.net/products/365393_15-12-2020_13-50-35-1665826288.webp',
+	'Lanpracid Kapsul':
+		'https://res.cloudinary.com/dk0z4ums3/image/upload/v1704251445/attached_image/lanpracid.jpg',
 	'Grafazol Kaplet': 'https://d2qjkwm11akmwu.cloudfront.net/products/616260_6-5-2019_9-11-44-1665790544.jpeg',
 	Floxigra: 'https://d2qjkwm11akmwu.cloudfront.net/products/127196_9-10-2022_23-18-9-1665781546.webp',
 	'Flagyl Forte': 'https://d3bbrrd0qs69m4.cloudfront.net/images/product/0108s0010.jpg',
@@ -848,16 +866,19 @@ const kandunganObat = {
 		'Tiap kapsul Diapet mengandung 240 mg daun jambu biji, 204 mg rimpang kunyit, 84 mg buah mojokeling, dan 72 mg kulit buah delima',
 	Imodium: 'Loperamide',
 	'Polysilane Suspensi': 'Aluminium Hidroksida 200 mg, Magnesium Hidroksida 200 mg, dan Simethicone 80 mg',
-	'Promag Suspensi': 'Hydrotalcite 200 mg, Magnesium Hidroksida 150 mg, dan Simethicone 50 mg dalam setiap 5 ml',
+	'Promag Suspensi':
+		'Hydrotalcite 200 mg, Magnesium Hidroksida 150 mg, dan Simethicone 50 mg dalam setiap 5 ml',
 	Omeprazole: 'Omeprazole 20 mg',
-	'Promag suspensi': 'Hydrotalcite 200 mg, Magnesium Hidroksida 150 mg, dan Simethicone 50 mg dalam setiap 5 ml',
+	'Promag suspensi':
+		'Hydrotalcite 200 mg, Magnesium Hidroksida 150 mg, dan Simethicone 50 mg dalam setiap 5 ml',
 	Ranitidine: 'Ranitidine 150 mg',
 	Dulcolax: 'Bisacodyl',
 	Laxatab: 'Docusate Sodium 50 mg',
 	Lactulax: 'Laktulosa 3,335 gr/5 mL',
 	Ambeven:
 		'Graptophyllum Pictum Folium 90 mg, Sophorae Japonica Flos 85 mg, Rubia Cordifoliae Radix 10 mg, Curcumae Domesticae Rhizoma 10 mg, Sanguisorba Officinale Radix 20 mg, Kaempferiae Angustifolia Rhizoma 10 mg, dan Curcuma Heyneanae Rhizoma 25 mg',
-	'Ardium 500': 'Micronized Purified Flavonoid Fraction (MPFF) yang setara dengan 90% diosmin dan 10% hesperidin',
+	'Ardium 500':
+		'Micronized Purified Flavonoid Fraction (MPFF) yang setara dengan 90% diosmin dan 10% hesperidin',
 	'Nutrafor Wazzir':
 		'Graptophyllum Pictum Folium 135 mg, Centella Asiatica Herba 50 mg, Coleus Blumei Folium 30 mg, dan Ekstrak Citrus Sinensis 250 mg',
 	'Lanpracid Kapsul': 'Lansoprazole 30 mg',
@@ -995,14 +1016,16 @@ const linkObatSatu = {
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/zovirax-200-mg-5-tablet?srsltid=AfmBOorI-RyFyPTrRvoTRhkZtTBn374CBZb6tUJZ6mjEqXWElgRfhWE1',
 	Tegretol:
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/tegretol-200-mg-10-tablet?srsltid=AfmBOorV3ReEiev-e4-bW5sx4qRfYbaIzrXyYm99mc6mOmPz4L3pPeYR',
-	Bamgetol: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/bamgetol-200-mg-10-tablet/652c9fde8473bf5ad6a8ed72',
+	Bamgetol:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/bamgetol-200-mg-10-tablet/652c9fde8473bf5ad6a8ed72',
 	Lioresal:
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/lioresal-10-mg-10-tablet?srsltid=AfmBOorD9J0kWdTY3mvgEc4o9UuUyLZVJMjR3OCCteESl5gte68-uP2_',
 	Rogaine:
 		'Tokopedia:\nhttps://www.tokopedia.com/naturelo-x-good-store/rogaine-men-solution-liquid-5-minoxidil-perawatan-rambut-rontok-pria-1729840633501419362?extParam=ivf%3Dfalse%26keyword%3Drogaine+minoxidil%26search_id%3D2025061003521734ED066DF378EF138N8L%26src%3Dsearch',
 	'Regrou Forte':
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/regrou-hair-regrowth-30-ml?srsltid=AfmBOorhBiYKJqMV97nI2LnTjIIfEMFrLAbPh5dHaMZR3iS134i8lnlq',
-	Finasteride: 'Shopee:\nhttps://shopee.co.id/Finasteride-Combiphar-5-Mg-Box-100-Tablet-i.829615599.23067321392',
+	Finasteride:
+		'Shopee:\nhttps://shopee.co.id/Finasteride-Combiphar-5-Mg-Box-100-Tablet-i.829615599.23067321392',
 	'Amoxsan Tablet':
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/amoxsan-250-mg-10-kapsul?srsltid=AfmBOoqjAl22t5pNOdGJsuUN6lIJGd1iGHjwhIt6lBhm6Y_Qn1fC04fu',
 	'Cefixime Trihydrate': 'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/cefixime-100-mg-10-kapsul',
@@ -1012,7 +1035,8 @@ const linkObatSatu = {
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/forotic-tetes-telinga-5-ml?srsltid=AfmBOor7RhwvMP0Xx4vKMMZLYA9e74Km8NcQjraNojOKxlXgHjhnRxY8',
 	'Erlamycetin Tetes Telinga':
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/erlamycetin-1-ear-drops-10-ml?srsltid=AfmBOopUXDLLM8uAsxJvE4R9Di_25V77Yycon6yurjkZxuHRDukEa2kU',
-	'Alat Bantu Pendengaran': 'Tokopedia:\nhttps://www.tokopedia.com/metro-kebab-pku/alat-bantu-dengar-tanpa-kabel?src=topads',
+	'Alat Bantu Pendengaran':
+		'Tokopedia:\nhttps://www.tokopedia.com/metro-kebab-pku/alat-bantu-dengar-tanpa-kabel?src=topads',
 	Stapedektomi: '-',
 	'Cochlear Implant': '-',
 	'Cendo Floxa':
@@ -1132,7 +1156,8 @@ const linkObatSatu = {
 const linkObatDua = {
 	'Bodrex Migra':
 		'\n\nAlodokter:\nhttps://www.alodokter.com/aloshop/products/bodrex-migra-4-kaplet/5fb374c341ab59059e867264',
-	'Panadol Extra': 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/panadol-extra-10-kaplet/5fb3755241ab59059e8673d9',
+	'Panadol Extra':
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/panadol-extra-10-kaplet/5fb3755241ab59059e8673d9',
 	'Farsifen Plus': 'K24Klik:\nhttps://www.k24klik.com/p/farsifen-plus-capl-100s-13892\n',
 	Paracetamol: 'K24klik:\nhttps://www.k24klik.com/p/paracetamol-if-500mg-tab-100s-417',
 	Ibuprofen:
@@ -1143,20 +1168,24 @@ const linkObatDua = {
 	'Breathy Nasal Drops': 'K24klik:\nhttps://www.k24klik.com/p/breathy-tetes-hidung-30ml-1369',
 	'Betahistine Mesylate':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/betahistine-6-mg-10-tablet-nulab/62a18f62f15ee840f565f189',
-	Betaserc: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/betaserc-24-mg-20-tablet/5fb3894541ab59059e86a41a',
+	Betaserc:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/betaserc-24-mg-20-tablet/5fb3894541ab59059e86a41a',
 	'Mertigo SR': 'K24klik:\nhttps://www.k24klik.com/p/mertigo-sr-12mg-tab-100s-18979#',
 	'Clopidogrel Bisulfate':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/clopidogrel-75-mg-6-tablet-dexa/5fb385cd41ab59059e869b20#:',
-	Cholestor: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/cholestor-20-mg-10-tablet/62a18ff2f15ee840f565f654',
+	Cholestor:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/cholestor-20-mg-10-tablet/62a18ff2f15ee840f565f654',
 	Pradaxa: 'K24klik:\nhttps://www.k24klik.com/p/pradaxa-110mg-cap-30s-2187',
 	'Ciprofloxacin Tablet':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/ciprofloxacin-500-mg-10-kaplet-promed/5fb37adf41ab59059e868156',
 	Dexamethasone: 'K24klik:\nhttps://www.k24klik.com/p/dexamethasone-if-0.5mg-tab-100s-24358#',
 	'Zovirax Tablet':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/zovirax-200-mg-5-tablet/659fbc0ce8c94800244a07c8',
-	Tegretol: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/tegretol-200-mg-10-tablet/5fb3738641ab59059e866f4c',
+	Tegretol:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/tegretol-200-mg-10-tablet/5fb3738641ab59059e866f4c',
 	Bamgetol: 'Medicastore:\nhttps://medicastore.com/produk/Obat/8527/bamgetol-tablet-200-mg',
-	Lioresal: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/lioresal-10-mg-10-tablet/62a18f0af15ee840f565ee7d',
+	Lioresal:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/lioresal-10-mg-10-tablet/62a18f0af15ee840f565ee7d',
 	Rogaine:
 		'Blibli:\nhttps://www.blibli.com/p/rogaine-5-minoxidil-penyubur-rambut-60-ml/ps--MEO-26940-00541?ds=MEO-26940-00541-00001&source=BRAND_PAGE&sid=04096d4fc5327dab&cnc=false&pickupPointCode=PP-3003102&pid1=MEO-26940-00541',
 	'Regrou Forte':
@@ -1204,7 +1233,8 @@ const linkObatDua = {
 	'Simarc 2': 'K24klik:\nhttps://www.k24klik.com/p/lasix-40mg-tab-100s-159#',
 	Lasix: 'K24klik:\nhttps://www.k24klik.com/p/lasix-40mg-tab-100s-159#',
 	Rifastar: 'K24klik:\nhttps://www.k24klik.com/p/rifastar-4-fdc-3647#',
-	Isoniazid: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/isoniazid-300-mg-10-tablet-kf/659fbc19e8c94800244a09c6',
+	Isoniazid:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/isoniazid-300-mg-10-tablet-kf/659fbc19e8c94800244a09c6',
 	'Ventolin Inhaler':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/ventolin-inhaler-100-mcg-200-dosis/5fb387ff41ab59059e86a0cd',
 	'Seretide Inhaler':
@@ -1215,7 +1245,8 @@ const linkObatDua = {
 	'Panadol Cold & Flu':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/panadol-cold-%26-flu-10-kaplet/5fb38a7e41ab59059e86a726',
 	'Mixagrip Flu & Batuk': 'K24klik:\nhttps://www.k24klik.com/p/mixagrip-flu&batuk-capl-4s-strip-25s-8817',
-	Zithromax: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/zithromax-500-mg-3-tablet/5fb3882b41ab59059e86a147',
+	Zithromax:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/zithromax-500-mg-3-tablet/5fb3882b41ab59059e86a147',
 	'Avelox Moxifloxacin': 'K24klik:\nhttps://www.k24klik.com/p/avelox-400mg-tab-5s-2879#',
 	Azithromycin: 'K24klik:\nhttps://www.k24klik.com/p/azithromycin-infion-200mg-5ml-d-syr-15ml-24838#',
 	Seretide:
@@ -1228,23 +1259,29 @@ const linkObatDua = {
 	'Promedex Sirup': 'K24klik:\nhttps://www.k24klik.com/p/promedex-syr-60ml-18727',
 	Entrostop: 'K24klik:\nhttps://www.k24klik.com/p/entrostop-tab-12s-strip-2s-37',
 	Diapet: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/diapet-10-kapsul/5fb37ed941ab59059e868adf',
-	Imodium: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/imodium-2-mg-10-tablet/5fb3873041ab59059e869e6c',
+	Imodium:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/imodium-2-mg-10-tablet/5fb3873041ab59059e869e6c',
 	'Polysilane Suspensi':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/polysilane-suspensi-100-ml/5fb379de41ab59059e867f10',
-	'Promag Suspensi': 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/promag-suspensi-60-ml/61e782ebe139ec76d1985620',
+	'Promag Suspensi':
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/promag-suspensi-60-ml/61e782ebe139ec76d1985620',
 	Omeprazole: 'K24klik:\nhttps://www.k24klik.com/p/omeprazole-novell-20mg-cap-30s-12#',
-	'Promag suspensi': 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/promag-suspensi-60-ml/61e782ebe139ec76d1985620',
+	'Promag suspensi':
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/promag-suspensi-60-ml/61e782ebe139ec76d1985620',
 	Ranitidine:
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/ranitidine-150-mg-10-tablet-promed/5fb37f2f41ab59059e868bb5',
 	Dulcolax: 'K24klik:\nhttps://www.k24klik.com/p/dulcolax-tab-10s-42',
 	Laxatab: 'K24klik:\nhttps://www.k24klik.com/p/laxatab-tab-6s-strip-20s-1628',
-	Lactulax: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/lactulax-sirup-60-ml/5fb379cc41ab59059e867ee7',
+	Lactulax:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/lactulax-sirup-60-ml/5fb379cc41ab59059e867ee7',
 	Ambeven: 'K24klik:\nhttps://www.k24klik.com/p/ambeven-cap-10s-strip-10s-55',
-	'Ardium 500': 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/ardium-500-mg-15-tablet/5fcd84a441ab590e7c94f7b9',
+	'Ardium 500':
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/ardium-500-mg-15-tablet/5fcd84a441ab590e7c94f7b9',
 	'Nutrafor Wazzir': 'K24klik:\nhttps://www.k24klik.com/p/nutrafor-wazzir-cap-10s-strip-12s-35880',
 	'Lanpracid Kapsul': 'K24klik:\nhttps://www.k24klik.com/p/lanpracid-30mg-cap-20s-10622#',
 	'Grafazol Kaplet': 'K24klik:\nhttps://www.k24klik.com/p/grafazol-500mg-capl-100s-13792#',
-	Floxigra: 'Alodokter:\nhttps://www.alodokter.com/aloshop/products/floxigra-500-mg-10-kaplet/62a190baf15ee840f565fd9e',
+	Floxigra:
+		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/floxigra-500-mg-10-kaplet/62a190baf15ee840f565fd9e',
 	'Flagyl Forte':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/flagyl-forte-500-mg-10-tablet/5fb3872241ab59059e869e43',
 	Metronidazole: 'K24klik:\nhttps://www.k24klik.com/p/metronidazole-bernofarm-500mg-tab-100s-2422#',
