@@ -40,7 +40,7 @@ const signUp = async (req, res) => {
 
 			let profileImageUrl = '';
 
-			if (files.profileImage && files.profileImage[0]) {
+			if (files.profileImage ?? files.profileImage[0]) {
 				const file = files.profileImage[0];
 				if (!file.filepath) {
 					return res.status(400).json({ message: 'Filepath is undefined' });
@@ -144,7 +144,7 @@ const updateProfile = async (req, res) => {
 			if (fields.dateOfBirth?.[0]) user.dateOfBirth = fields.dateOfBirth[0];
 			if (fields.gender?.[0]) user.gender = fields.gender[0];
 
-			if (files.profileImage && files.profileImage[0]) {
+			if (files.profileImage ?? files.profileImage[0]) {
 				const file = files.profileImage[0];
 				if (!file.filepath) {
 					return res.status(400).json({ message: 'Invalid file' });

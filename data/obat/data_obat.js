@@ -77,9 +77,6 @@ const aturanPakaiObat = {
 		'Teteskan forotic pada telinga yang mengalami masalah sesuai dengan dosis yang ditentukan. Setelah obat diteteskan pada bagian telinga yang sakit, diamkan selama 5 - 10 menit',
 	'Erlamycetin Tetes Telinga':
 		'Teteskan erlamycetin pada telinga yang mengalami masalah sesuai dengan dosis yang ditentukan. Setelah obat diteteskan pada bagian telinga yang sakit, diamkan selama 5 - 10 menit',
-	'Alat Bantu Pendengaran': '-',
-	Stapedektomi: '-',
-	'Cochlear Implant': '-',
 	'Cendo Floxa':
 		'- Cuci tangan yang ingin digunakan untuk memberikan obat\n- Posisikan kepala anda menghadap ke atas\n- Tarik kelopak mata bawah hingga membentuk kantung\n- Teteskan 1 tetes obat mata ke bagian mata yang sakit\n- Tutup mata secara perlahan dan diamkan selama beberapa menit',
 	'Erlamycetin Tetes Mata':
@@ -388,9 +385,7 @@ const dosisObat = {
 		'Dosis: 6 - 10 tetes pada telinga yang mengalami masalah diberikan sebanyak 2x sehari. Obat tetes ini diberikan selama 14 hari',
 	'Erlamycetin Tetes Telinga':
 		'Dewasa dan anak-anak: 2 - 3 tetes diberikan sebanyak 3x sehari. Obat ini diberikan pada telinga yang bermasalah selama 1 minggu',
-	'Alat Bantu Pendengaran': '-',
-	Stapedektomi: '-',
-	'Cochlear Implant': '-',
+
 	'Cendo Floxa':
 		'Dewasa dan anak-anak berusia ≥ 1 tahun: Teteskan 1 - 2 tetes pada mata yang sakit dan dilakukan setiap 2 - 4 jam selama 2 hari. Pada hari ke-3 dan seterusnya, dosis bertambah menjadi 1 - 2 tetes yang diberikan sebanyak 4x sehari.',
 	'Erlamycetin Tetes Mata':
@@ -550,9 +545,6 @@ const efekSampingObat = {
 		'Konsumsi obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti nyeri atau gatal pada telinga, pusing, sakit kepala, muncul ruam pada kulit, hingga dapat membuat pendengaran sedikit terganggu',
 	'Erlamycetin Tetes Telinga':
 		'Konsumsi obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti telinga terasa perih, gatal, panas seperti terbakar, memar, hingga mengalami pendarahan yang tidak biasa',
-	'Alat Bantu Pendengaran': '-',
-	Stapedektomi: '-',
-	'Cochlear Implant': '-',
 	'Cendo Floxa':
 		'Cendo floxa memiliki beberapa efek sampingnya, antara lain mata terasa panas atau perih untuk sementara, pengelihatan menjadi buram untuk sementara, mata gatal, kering, berair, mata menjadi lebih sensitif terhadap cahaya, bengkak pada kelopak atau area sekitar mata',
 	'Erlamycetin Tetes Mata':
@@ -671,27 +663,33 @@ const efekSampingObat = {
 const imagesObat = {
 	'Bodrex Migra': 'https://d2qjkwm11akmwu.cloudfront.net/products/696143_30-5-2022_13-20-28-1665779240.png',
 	'Panadol Extra': 'https://d2qjkwm11akmwu.cloudfront.net/products/807265_19-11-2024_13-49-18.png',
-	'Farsifen Plus': 'https://d2qjkwm11akmwu.cloudfront.net/products/853907_31-8-2022_11-45-57-1665793763.png',
+	'Farsifen Plus':
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alodokter.com%2Ffarsifen-plus&psig=AOvVaw0PjJzG0qpwTTWZpL-Wcb1o&ust=1750062022946000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKiphpz_8o0DFQAAAAAdAAAAABAE',
 	Paracetamol: 'https://rsum.bandaacehkota.go.id/wp-content/uploads/2025/02/paracetamol.webp',
-	Ibuprofen: 'https://d2qjkwm11akmwu.cloudfront.net/products/573158_20-3-2025_11-5-19.png',
+	Ibuprofen:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alodokter.com%2Faloshop%2Fproducts%2Fibuprofen-400-mg-10-tablet-first-medifarma%2F6492673794ec340025e54992&psig=AOvVaw33oPkco3hmck3CRCAgYM5P&ust=1750062077014000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMiPv7n_8o0DFQAAAAAdAAAAABB-',
 	Amoxicillin: 'https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/05/13090017/amoxilin.jpg',
 	'Iliadin Nasal Spray': 'https://d2qjkwm11akmwu.cloudfront.net/products/648286_13-2-2023_11-24-10.webp',
 	'Breathy Nasal Drops': 'https://d2qjkwm11akmwu.cloudfront.net/products/1848-1665761088.webp',
 	'Betahistine Mesylate':
 		'https://d2qjkwm11akmwu.cloudfront.net/products/764246_8-9-2022_10-4-42-1665791755.webp',
-	Betaserc: 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1699842684/attached_image/betaserc.jpg',
+	Betaserc:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.blibli.com%2Fp%2Fbetaserc-24-mg-box-20s%2Fps--PAF-70064-02563&psig=AOvVaw1W-HZF5Vazx7qAceXsFgoV&ust=1750063772463000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOibyt2F840DFQAAAAAdAAAAABAE',
 	'Mertigo SR':
-		'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/110/MTA-181883549/no-brand_no-brand_full01.jpg',
-	'Cloplidogrel Bisulfate':
-		'https://static.wixstatic.com/media/3385f8_47010df0c8b54f7ebe56eaafe6a3b451~mv2.jpg/v1/fill/w_1356,h_1408,al_c,q_85/Clopidogrel%20Bisulfate_Tablet%20Salut%20Selaput%2075%20mg.jpg',
-	Cholestor: 'https://assets.goapotik.com/cholestor_10_mg_box_30_tablet_1.jpg',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dexagroup.com%2Fid%2Fproduk%2Fmertigo-sr-tablet-lepas-lambat-id%2F&psig=AOvVaw1rTzFwpsmsOP39mPI7T-jh&ust=1750063821620000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCz6PSF840DFQAAAAAdAAAAABAE',
+	'Clopidogrel Bisulfate':
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fprimayahospital.com%2Fjantung%2Fclopidogrel%2F&psig=AOvVaw0VTUPuyYrRAWfSJ5tU7HIO&ust=1750063868023000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPi8yYyG840DFQAAAAAdAAAAABAE',
+	Cholestor:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.k24klik.com%2Fp%2Fcholestor-10mg-tab-30s-17598&psig=AOvVaw24l3AGQEZNhQgFybUh1bgF&ust=1750063951385000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLismLOG840DFQAAAAAdAAAAABAE',
 	Pradaxa: 'https://d2qjkwm11akmwu.cloudfront.net/products/17895-1665790839.webp',
 	'Ciprofloxacin Tablet':
-		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_20230815013035359225_CIPROFLOXACIN.png',
-	Dexamethasone: 'https://d2qjkwm11akmwu.cloudfront.net/products/844406_21-3-2025_14-33-20.png',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fkalbemed.com%2Fproduct%2Fid%2Fciprofloxacin-ogb-hj-1&psig=AOvVaw1PGYDMqeBPxB2d9uuCpSkO&ust=1750064070232000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMD03-uG840DFQAAAAAdAAAAABAL',
+	Dexamethasone:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alodokter.com%2Faloshop%2Fproducts%2Fdexamethasone-0%252C5-mg-10-tablet-kimia-farma%2F5fb37f4441ab59059e868bf6&psig=AOvVaw0N5hYJpQLKsu_vuprSasMj&ust=1750064132542000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCZsIqH840DFQAAAAAdAAAAABBL',
 	'Zovirax Tablet': 'https://d2qjkwm11akmwu.cloudfront.net/products/3623_15-1-2019_11-38-46-1665769402.webp',
 	Tegretol: 'https://d2qjkwm11akmwu.cloudfront.net/products/882563_29-6-2020_14-46-12-1665791840.jpeg',
-	Bamgetol: 'https://img.lazcdn.com/g/p/84fd4b982989e89d3e41b54a0f94283a.png',
+	Bamgetol:
+		'https://www.google.com/imgres?q=Bamgetol&imgurl=https%3A%2F%2Fres-5.cloudinary.com%2Fdk0z4ums3%2Fimage%2Fupload%2Fc_scale%2Ch_500%2Cw_500%2Fv1%2Fproduction%2Fpharmacy%2Fproducts%2F1698651839_bamgetol&imgrefurl=https%3A%2F%2Fwww.alodokter.com%2Faloshop%2Fproducts%2Fbamgetol-200-mg-10-tablet%2F652c9fde8473bf5ad6a8ed72&docid=t9iD1-Ik4xc0PM&tbnid=YplHyen9i4lGJM&vet=12ahUKEwjXvajGh_ONAxX1yTgGHdlcBgwQM3oECB4QAA..i&w=500&h=500&hcb=2&ved=2ahUKEwjXvajGh_ONAxX1yTgGHdlcBgwQM3oECB4QAA',
 	Lioresal: 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1700907157/attached_image/lioresal.jpg',
 	Rogaine:
 		'https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/11/13/76dde77f-afcb-4315-af2f-8e45db3a6e62.jpg',
@@ -706,9 +704,10 @@ const imagesObat = {
 	'Erlamycetin Tetes Telinga':
 		'https://res.cloudinary.com/dk0z4ums3/image/upload/v1704855007/attached_image/erlamycetin-tetes-telinga.jpg',
 	'Alat Bantu Pendengaran':
-		'https://images.tokopedia.net/img/cache/200-square/product-1/2017/3/4/2390903/2390903_9d1b0c4a-b56c-4d14-9cb5-432c6be86692_340_340.jpg',
+		'https://www.google.com/imgres?q=Alat%20Bantu%20Pendengaran&imgurl=https%3A%2F%2Fwww.static-src.com%2Fwcsstore%2FIndraprastha%2Fimages%2Fcatalog%2Ffull%2F%2F107%2FMTA-90392929%2Foem_oem_full01.jpg&imgrefurl=https%3A%2F%2Fwww.blibli.com%2Fp%2Falat-bantu-dengar-murah-alat-bantu-pendengaran-anak-dewasa%2Fps--ESS-70042-03491&docid=iT739rhz8GE32M&tbnid=sg3cCpTH7WMWoM&vet=12ahUKEwihvZ-ZiPONAxVXSGcHHQ5gFd0QM3oECFoQAA..i&w=800&h=800&hcb=2&ved=2ahUKEwihvZ-ZiPONAxVXSGcHHQ5gFd0QM3oECFoQAA',
 	Stapedektomi: 'https://otosurgeryatlas.stanford.edu/wp-content/uploads/2020/06/4c-2.jpg',
-	'Cochlear Implant': 'https://health.ucdavis.edu/otolaryngology/specialty/audiology/cochlearwebsite.jpg',
+	'Cochlear Implant':
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fkasoemhearingcenter.com%2Fmanfaat-cochlear-implant%2F&psig=AOvVaw2oeHPiwzNju-eg9soJT4Aa&ust=1750064535796000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPj5kteI840DFQAAAAAdAAAAABAs',
 	'Cendo Floxa': 'https://d2qjkwm11akmwu.cloudfront.net/products/161443_9-4-2019_14-57-5-1665777280.webp',
 	'Erlamycetin Tetes Mata':
 		'https://res.cloudinary.com/dk0z4ums3/image/upload/v1705285325/attached_image/erlamycetin-tetes-mata.jpg',
@@ -718,25 +717,29 @@ const imagesObat = {
 		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_20220104090030359225_ACYCLOVIR-YARINDO-200MG-TAB-100S-removebg-preview.png',
 	'Valacyclovir HCL': 'https://bernofarm.com/wp-content/uploads/2021/10/VALACICLOVIR-500MG-depan.png',
 	'Vfend Voriconazole':
-		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_201906130210194677_3.-VFEND-200.jpg',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fe-katalog.lkpp.go.id%2Fkatalog%2Fproduk%2Fdetail%2F48446597&psig=AOvVaw1p-_D-gjtw667F1Q5JYAwz&ust=1750064969234000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNiwxZuK840DFQAAAAAdAAAAABAW',
 	'Cendo Natacen': 'https://d2qjkwm11akmwu.cloudfront.net/products/7916-1665777301.webp',
 	'Cendo Xitrol':
-		'https://digipaysatu.kemenkeu.go.id/hotlink//digipay-assets/produk/2022/725831-cendo-xitrol-md.png',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.halodoc.com%2Fobat-dan-vitamin%2Fcendo-polydex-eye-drop-5-ml&psig=AOvVaw1zM1jH3bOuSbsFGDGLoA2Y&ust=1750065080563000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjo_NuK840DFQAAAAAdAAAAABAg',
 	'Erlamycetin Salep Mata':
 		'https://d2qjkwm11akmwu.cloudfront.net/products/427468_16-12-2021_14-21-28-1665775186.png',
 	'Cardio Aspirin':
 		'https://res.cloudinary.com/dk0z4ums3/image/upload/v1727310381/attached_image/cardio-aspirin.jpg',
 	Farnormin:
-		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_20230201085432359225_FARNORMIN-ATENOL-50-1.png',
-	'Clopidogrel Bisulfate': 'https://d3bbrrd0qs69m4.cloudfront.net/images/product/0102n0037.jpg',
-	Triatec: 'https://d3bbrrd0qs69m4.cloudfront.net/images/product/0102c0044.jpg',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.blibli.com%2Fp%2Ffarnormin-50mg-box-isi-100-tablet-obat-resep-dokter%2Fps--OBE-70000-00505&psig=AOvVaw0tzIsEcEuIvqq3dsAdSb20&ust=1750065252677000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCyj6KL840DFQAAAAAdAAAAABAW',
+	Triatec:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpharmaciedumarche-saintpriest.pharmavie.fr%2Fmedicament-produit-parapharmacie%2F85105-triatec-1-25-mg-comprime&psig=AOvVaw3gvCrnGYnYFUOm3ljytfWs&ust=1750065533809000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDG5qaM840DFQAAAAAdAAAAABAE',
 	Concor: 'https://d2qjkwm11akmwu.cloudfront.net/products/314346_30-11-2022_13-16-47.png',
-	Rifampicin: 'https://d2qjkwm11akmwu.cloudfront.net/products/18395-1665791437.jpeg',
+	Spironolactone:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alodokter.com%2Faloshop%2Fproducts%2Fspironolactone-25-mg-10-tablet-otto%2F65386c998473bf20fe5e45a3&psig=AOvVaw2DcxBnt4ILEow4g0h7wIkV&ust=1750065623539000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIC9udeM840DFQAAAAAdAAAAABAW',
+	Rifampicin:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fshopee.co.id%2FRIFAMPICIN-450MG-1-STRIP-10-TABLET-i.1044330594.27063848991&psig=AOvVaw3UIl3WmOQ5Rk9Ee8gP_B5Z&ust=1750065675609000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLje0OqM840DFQAAAAAdAAAAABAL',
 	'Nitrokaf Retard':
 		'https://img-cdn.medkomtek.com/gTQ7-jVZ7076D1AP6v-ZrisfnN0=/0x0/smart/filters:quality(100):format(webp)/drugs/iGvHOpxfdhWdab4SQ7sZr/original/OBT0009274.jpg',
 	'Amlodipine Besylate':
-		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_20230728082932359225_AMLODIPINE-MAHAKAM.png',
-	'Simarc 2': 'https://d2qjkwm11akmwu.cloudfront.net/products/8307-1665777808.webp',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fkalbemed.com%2Fproduct%2Fid%2Famlodipine-ogb-hj-1&psig=AOvVaw3REU866pMobo2DV6-NRD0h&ust=1750065738586000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCY84iN840DFQAAAAAdAAAAABAL',
+	'Simarc 2':
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.k24klik.com%2Fp%2Fsimarc-2-2mg-tab-100s-219&psig=AOvVaw2G9OPs8EiSB7tlP9J6gaQ7&ust=1750065822559000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjUlq-N840DFQAAAAAdAAAAABAW',
 	Lasix: 'https://res.cloudinary.com/dk0z4ums3/image/upload/v1734320754/attached_image/lasix.jpg',
 	Rifastar: 'https://d2qjkwm11akmwu.cloudfront.net/products/8197-1665777735.webp',
 	Isoniazid:
@@ -756,39 +759,43 @@ const imagesObat = {
 	Seretide: 'https://d2qjkwm11akmwu.cloudfront.net/products/2062-1665761276.webp',
 	'Trelegy Ellipta': 'https://asthma.org.au/wp-content/uploads/2022/03/Trelegy-Ellipta-pack-shot.jpg',
 	'Spriva Respimat': 'https://d2qjkwm11akmwu.cloudfront.net/products/6984-1665775965.webp',
-	'Erythromycin ': 'https://storage.aido.id/articles/August2021/9s6hpicutw6dtqr9w1wd.jpg',
+	'Erythromycin ':
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Faido.id%2Fhealth-articles%2Feritromisin%2Fdetail&psig=AOvVaw2laAP8rqj1u6EBE3gKGNIY&ust=1750066193348000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMD_4d-O840DFQAAAAAdAAAAABAE',
 	'Proris Sirup':
 		'https://res-5.cloudinary.com/dk0z4ums3/image/upload/c_scale,h_500,w_500/v1/production/pharmacy/products/1661018864_5fb38aa941ab59059e86a780',
 	'Promedex Sirup': 'https://d2qjkwm11akmwu.cloudfront.net/products/8743_18-2-2019_10-56-29-1665761218.webp',
 	Entrostop: 'https://d2qjkwm11akmwu.cloudfront.net/products/25186_11-1-2022_17-9-28-1665843978.png',
 	Diapet: 'https://d2qjkwm11akmwu.cloudfront.net/products/638089_30-6-2019_22-35-32-1665801908.webp',
-	Imodium: 'https://d2qjkwm11akmwu.cloudfront.net/products/15229-1665787863.webp',
+	Imodium:
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tokopedia.com%2Fcatalog%2Fimodium-78430%2Fimodium-2-mg&psig=AOvVaw1vCCUJ5w9ykX1vcrQR3JOL&ust=1750066296233000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMC7lJyP840DFQAAAAAdAAAAABAL',
 	'Polysilane Suspensi': 'https://d2qjkwm11akmwu.cloudfront.net/products/125365_23-5-2022_13-26-54-1.jpeg',
 	'Promag Suspensi':
 		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_20201127030453359225_PROMAG-SUS.jpg',
 	Omeprazole:
-		'https://img-cdn.medkomtek.com/gijEPJ2c6VxJUmTw6zk7DeIbe_k=/510x395/smart/filters:quality(100):format(webp)/drugs/6kxPJOpj9Qk3lTBnzzjxR/original/OBT0009495.jpg',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fprimayahospital.com%2Fumum%2Fomeprazole%2F&psig=AOvVaw2Zk-Si_Jn2nuMTF0vL6A9M&ust=1750066370740000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLCh9ruP840DFQAAAAAdAAAAABAL',
 	'Promag suspensi':
 		'https://d3bbrrd0qs69m4.cloudfront.net/images/product/apotek_online_k24klik_20201127030453359225_PROMAG-SUS.jpg',
 	Ranitidine:
-		'https://img-cdn.medkomtek.com/lB2NM-8zLEfCNr__hDMrwl3HbgM=/fit-in/0x0/smart/filters:quality(100):strip_icc():format(webp)/drugs/xq0ctEE63D2JFq6hJquaR/original/OBT0010135.jpg',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fprimayahospital.com%2Fpenyakit-dalam%2Franitidin%2F&psig=AOvVaw1E3ISirGkgwEhXbqbxKxM9&ust=1750066477024000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJi-6-aP840DFQAAAAAdAAAAABAE',
 	Dulcolax: 'https://d2qjkwm11akmwu.cloudfront.net/products/125380_1-8-2023_14-33-42.png',
 	Laxatab: 'https://d2qjkwm11akmwu.cloudfront.net/products/17521-1665790586.webp',
 	Lactulax: 'https://d2qjkwm11akmwu.cloudfront.net/products/158297_17-5-2022_17-19-8-1665791278.webp',
 	Ambeven: 'https://d2qjkwm11akmwu.cloudfront.net/products/575304_25-8-2021_16-46-54-1665776677.jpeg',
 	'Ardium 500':
-		'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-2175954/ardium_ardium-500-mg-obat-kesehatan--15-tablet-strip-_full02.jpg',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klikdokter.com%2Finfo-sehat%2Freview%2Fobat-ambeien-berdarah-di-apotek&psig=AOvVaw1qCT-R2v8Vij1ixNxRcpQj&ust=1750066548957000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNj01YqQ840DFQAAAAAdAAAAABAK',
 	'Nutrafor Wazzir':
 		'https://d2qjkwm11akmwu.cloudfront.net/products/365393_15-12-2020_13-50-35-1665826288.webp',
 	'Lanpracid Kapsul':
 		'https://res.cloudinary.com/dk0z4ums3/image/upload/v1704251445/attached_image/lanpracid.jpg',
 	'Grafazol Kaplet': 'https://d2qjkwm11akmwu.cloudfront.net/products/616260_6-5-2019_9-11-44-1665790544.jpeg',
-	Floxigra: 'https://d2qjkwm11akmwu.cloudfront.net/products/127196_9-10-2022_23-18-9-1665781546.webp',
-	'Flagyl Forte': 'https://d3bbrrd0qs69m4.cloudfront.net/images/product/0108s0010.jpg',
+	Floxigra:
+		'https://www.google.com/imgres?q=Floxigra&imgurl=https%3A%2F%2Fres.cloudinary.com%2Fdk0z4ums3%2Fimage%2Fupload%2Fv1709961223%2Fattached_image%2Ffloxigra.jpg&imgrefurl=https%3A%2F%2Fwww.alodokter.com%2Ffloxigra&docid=Bd-TCLFS-Gze6M&tbnid=xCEeAV-iL4-rDM&vet=12ahUKEwjtudiqkPONAxXUzTgGHY-cC2QQM3oECEYQAA..i&w=650&h=488&hcb=2&ved=2ahUKEwjtudiqkPONAxXUzTgGHY-cC2QQM3oECEYQAA',
+	'Flagyl Forte':
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alodokter.com%2Faloshop%2Fproducts%2Fflagyl-forte-500-mg-10-tablet%2F5fb3872241ab59059e869e43&psig=AOvVaw0RfUkrxHRSnB48SPg3oXKU&ust=1750066647329000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCODK47iQ840DFQAAAAAdAAAAABAE',
 	Metronidazole:
 		'https://s3-publishing-cmn-svc-prd.s3.ap-southeast-1.amazonaws.com/drugs/1rJSHlTtsgMDhhQ7R2ObE/original/OBT0008789.jpg',
 	Duspatalin:
-		'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/99/MTA-181812770/duspatalin_duspatalin_full01.jpg',
+		'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.mims.com%2Fmalaysia%2Fdrug%2Finfo%2Fduspatalin%3Ftype%3Dfull&psig=AOvVaw0n5Gf8FuODnMuiNP0MoegR&ust=1750066674586000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMDMq8eQ840DFQAAAAAdAAAAABAh',
 };
 
 const kandunganObat = {
@@ -820,9 +827,6 @@ const kandunganObat = {
 	'Akilen Tetes Telinga': 'Ofloxacin 3 mg dalam setiap 1 ml',
 	'Forotic Tetes Telinga': 'Ofloxacin 3 mg dalam setiap 1 ml',
 	'Erlamycetin Tetes Telinga': 'Chloramphenicol',
-	'Alat Bantu Pendengaran': '-',
-	Stapedektomi: '-',
-	'Cochlear Implant': '-',
 	'Cendo Floxa': 'Ofloxacin',
 	'Erlamycetin Tetes Mata': 'Chloramphenicol ',
 	'Polidemisine Eye Drop': 'Polymyxin B sulfate 6000 IU, Neomycin sulfate 3,5 mg, dan Dexamethasone 1 mg',
@@ -1037,8 +1041,6 @@ const linkObatSatu = {
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/erlamycetin-1-ear-drops-10-ml?srsltid=AfmBOopUXDLLM8uAsxJvE4R9Di_25V77Yycon6yurjkZxuHRDukEa2kU',
 	'Alat Bantu Pendengaran':
 		'Tokopedia:\nhttps://www.tokopedia.com/metro-kebab-pku/alat-bantu-dengar-tanpa-kabel?src=topads',
-	Stapedektomi: '-',
-	'Cochlear Implant': '-',
 	'Cendo Floxa':
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/cendo-floxa-minidose-0-6-ml?srsltid=AfmBOoolOA8wqAevZThDEiEXZk1GxG5HvjGENqEqBHK0_DTkTqu-A4ks',
 	'Erlamycetin Tetes Mata':
@@ -1202,8 +1204,7 @@ const linkObatDua = {
 	'Erlamycetin Tetes Telinga': 'K24klik:\nhttps://www.k24klik.com/p/erlamycetin-ear-drop-10ml-3922#',
 	'Alat Bantu Pendengaran':
 		'Blibli:\nhttps://www.blibli.com/p/beurer-ha-50-hearing-aid/ps--BEI-60062-00049?ds=BEI-60062-00049-00001&source=SEARCH&sid=254023c45c9d68bb&cnc=false&pickupPointCode=PP-3263416&pid=BEI-60062-00049&sskey=f849e9ae80134fabbf8f93f5779837f9&irclickid=RA71HB29ExyPTGXxKAwdS2iGUksQaHxqWydCUQ0&irgwc=1&utm_source=affiliates&utm_medium=1329899_Optimise%20SEA',
-	Stapedektomi: '-',
-	'Cochlear Implant': '-',
+
 	'Cendo Floxa':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/cendo-floxa-tetes-mata-minidose-0%2C6-ml-5-ampul/5fb3892a41ab59059e86a3d3',
 	'Erlamycetin Tetes Mata':

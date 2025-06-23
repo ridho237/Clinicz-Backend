@@ -15,11 +15,13 @@ function transposeDrugData(columnData) {
 function parseTokoLink(text) {
 	if (!text || typeof text !== 'string') return [];
 
-	const [label, link] = text.split('\n');
+	const [label, link] = text.split(/\r?\n/);
 	if (!label || !link) return [];
 
-	const key = label.trim().replace(/:$/, '');
-	return [{ [key]: link.trim() }];
+	const toko = label.trim().replace(/:$/, '');
+	const url = link.trim();
+
+	return [{ Toko: toko, Link: url }];
 }
 
 module.exports = { transposeDrugData, parseTokoLink };

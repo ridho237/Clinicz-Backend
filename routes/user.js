@@ -15,7 +15,7 @@ User.post('/signup', signUp);
 User.post('/login', login);
 User.get('/profile', authMiddleware, getProfile);
 User.put('/profile-update', authMiddleware, updateProfile);
-User.post('/logout', logout);
+User.post('/logout', authMiddleware, logout);
 User.delete('/delete-account', authMiddleware, deleteAccount);
 User.put('/update-password', authMiddleware, updatePassword);
 
