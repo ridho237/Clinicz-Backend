@@ -9,6 +9,7 @@ const {
 	linkObatDua,
 	sumberObat,
 	imagesObat,
+	kategoriObat,
 } = require('../data/obat/data_obat');
 const { parseTokoLink } = require('../utils/dataFormatter');
 
@@ -67,4 +68,28 @@ const getObatByName = async (req, res) => {
 	}
 };
 
-module.exports = { getObat, getObatByName };
+const getObatByKategori = async (req, res) => {
+	const { kategori } = req.params;
+
+	try {
+		const labelsArray = Array.isArray(obatLabels) ? obatLabels : Object.values(obatLabels);
+
+		const hasilFilter = labelsArray.filter((namaObat) => {
+			const kategoriObatList = kategoriObat[namaObat];
+			return kategoriObatList?.some((k) => k.trim().toLowerCase() === kategori.trim().toLowerCase());
+		});
+
+		const data = hasilFilter.map((namaObat) => ({
+			nama: namaObat,
+			gambar: imagesObat[namaObat] ?? null,
+			deskripsi: deskripsiObat[namaObat] ?? null,
+		}));
+
+		res.json(data);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Gagal mengambil data berdasarkan kategori' });
+	}
+};
+
+module.exports = { getObat, getObatByName, getObatByKategori };

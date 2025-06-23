@@ -2,6 +2,6 @@ const express = require('express');
 const maps = express.Router();
 const { getNearbyClinics } = require('../controllers/locationHandler');
 
-maps.post('/input', getNearbyClinics);
+maps.post('/location', getNearbyClinics);
 
 module.exports = maps;

@@ -1,8 +1,9 @@
 const express = require('express');
-const router = express.Router();
-const { getObat, getObatByName } = require('../controllers/shopHandler');
+const shop = express.Router();
+const { getObat, getObatByName, getObatByKategori } = require('../controllers/shopHandler');
 
-router.get('/obat', getObat);
-router.get('/obat/:nama', getObatByName);
+shop.get('/obat', getObat);
+shop.get('/obat/:nama', getObatByName);
+shop.get('/obat/kategori/:kategori', getObatByKategori);
 
-module.exports = router;
+module.exports = shop;
