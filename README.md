@@ -52,7 +52,7 @@ No Auth
 `GET /user/profile`
 
 **Authentication:**\
-Bearer Token (Wajib Login)
+Bearer Token
 
 ---
 
@@ -110,8 +110,6 @@ Bearer Token
 **Endpoint:**\
 `POST /user/logout`
 
-**Authentication:**\
-No Auth
 
 ---
 
@@ -221,16 +219,12 @@ Bearer Token (Opsional)
 **Endpoint:**\
 `GET /article`
 
-**Authentication:**\
-Bearer Token
 
 ### 2️⃣ Get Article By ID
 
 **Endpoint:**\
 `GET /article/:id`
 
-**Authentication:**\
-Bearer Token
 
 ---
 
@@ -250,9 +244,6 @@ Bearer Token
 }
 ```
 
-**Authentication:**\
-Bearer Token
-
 ---
 
 ## 🏪 Shop (Obat) API
@@ -262,16 +253,18 @@ Bearer Token
 **Endpoint:**\
 `GET /obat`
 
-**Authentication:**\
-Bearer Token
 
 ### 2️⃣ Get Obat By Name
 
 **Endpoint:**\
 `GET /obat/:namaObat`
 
-**Authentication:**\
-Bearer Token
+
+### 3️⃣ Get Obat By Kategori
+
+**Endpoint:**\
+`GET /obat/kategori/:kategoriObat`
+
 
 ---
 
