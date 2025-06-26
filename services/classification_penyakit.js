@@ -8,10 +8,10 @@ const {
 	sumberPenyakit,
 } = require('../data/penyakit/data_penyakit');
 
-async function classifyPenyakit(modelA, text) {
+async function classifyPenyakit(model, text) {
 	const inputGejala = preprocessSingleInput(text);
 	const tensorGejala = tf.tensor([inputGejala], [1, 50]);
-	const predictions = modelA.predict([tensorGejala]);
+	const predictions = model.predict([tensorGejala]);
 	const predictionArray = predictions.dataSync();
 
 	let maxIndex = 0;
@@ -22,10 +22,10 @@ async function classifyPenyakit(modelA, text) {
 	}
 
 	const namaPenyakit = penyakitLabels[maxIndex];
-	const deskripsi = deskripsiPenyakit[namaPenyakit] ?? 'Maaf Deskripsi belum tersedia.';
-	const penyebab = penyebabPenyakit[namaPenyakit] ?? 'Maaf Penyebab belum tersedia.';
-	const pencegahan = pencegahanPenyakit[namaPenyakit] ?? 'Maaf Pencegahan belum tersedia.';
-	const sumber = sumberPenyakit[namaPenyakit] ?? 'Maaf Sumber belum tersedia.';
+	const deskripsi = deskripsiPenyakit[namaPenyakit] ?? null;
+	const penyebab = penyebabPenyakit[namaPenyakit] ?? null;
+	const pencegahan = pencegahanPenyakit[namaPenyakit] ?? null;
+	const sumber = sumberPenyakit[namaPenyakit] ?? null;
 
 	return [
 		{

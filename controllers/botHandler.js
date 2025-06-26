@@ -6,8 +6,8 @@ const { recommendObat } = require('../services/collaboration_recommender');
 const predictPenyakit = async (req, res) => {
 	try {
 		const { text } = req.body;
-		const { modelA } = req.app;
-		const penyakitPredictions = await classifyPenyakit(modelA, text);
+		const { model } = req.app;
+		const penyakitPredictions = await classifyPenyakit(model, text);
 
 		await PredictionHistory.create({
 			userId: req.user.id,
