@@ -177,7 +177,7 @@ const aturanPakaiObat = {
 		'- Lepaskan tutup inhaler dosis terukur, lalu pegang perangkat ini dalam posisi tegak.\n- Masukkan inhaler melalui mulut (diantara gigi atas dan bawah), kemudian tutup mulut dengan merapatkan bibir (jangan digigit).\n- Tekan inhaler secara cepat untuk melepaskan obat, sembari menarik napas.\n- Tarik napas perlahan selama 3 hingga 5 detik.\n- Tahan napas selama 10 detik untuk memungkinkan obat masuk jauh ke dalam paru-paru kamu.\n- Buang napas perlahan. Jika membutuhkan semprotan berikutnya, tunggu sampai 30 detik, dan kocok kembali inhaler.\n- Gunakan sesuai dosis yang telah diberikan\n- Bersihkan mouthpiece inhaler menggunakan tisu atau kain kering.\n- Tutup kembali mulut inhaler dan simpan di tempat yang kering.',
 	'Trelegy Ellipta': 'Dapat dihirup pada saat pagi hari',
 	'Spriva Respimat': 'Dapat dihirup pada saat gejala muncul',
-	'Erythromycin ': 'Dapat dikonsumsi 30 menit sebelum makan atau 1 jam setelah makan',
+	Erythromycin: 'Dapat dikonsumsi 30 menit sebelum makan atau 1 jam setelah makan',
 	'Proris Sirup':
 		'Proris suspensi\nKocok terlebih dahulu botol sebelum mengonsumsi obat ini dan gunakanlah gelas takar yang telah disediakan dalam kemasan. Obat ini harus dikonsumsi setelah makan',
 	'Promedex Sirup':
@@ -338,7 +338,7 @@ const deskripsiObat = {
 		'Trelegy Ellipta merupakan obat hirup yang mengandung umeclidinium yang dapat digunakan untuk meredakan dan mengurangi gejala pada penyakit paru obstruktif kronik, seperti bronkitis kronis dan emfisema. Obat ini dapat meredakan beberapa penyakit, seperti gejala mengi, batuk, atau dada sesak. Obat ini mengandung umeclidinium yang dapat melonggarkan otot-otot di sekitar saluran pernapasan dan membuka saluran udara yang menuju ke paru-paru, sehingga dapat membuat pasien bernapas lebh lega',
 	'Spriva Respimat':
 		'Spiriva merupakan obat hisap yang dapat digunakan untuk mencegah dan mengontrol terjadinya gejala sesak napas atau mengi (bengek) yang disebabkan oleh bronchitis, emfisema paru, dan penyakit patu obstruktif kronis (PPOK) lainnya. Obat ini mengandung tiotro bromida yang menimbulkan efek antikolinergik dengan mencegah terjadinya interaksi antara asetikolin dengan resiptor muskarinik, sehingga menyebabkan pelebaran pada saluran bronkus. Obat ini digunakan di bawah pengawasan langsung dari dokter',
-	'Erythromycin ':
+	Erythromycin:
 		'Erythromycin merupakan antibiotik jenis makrolid yang dapat digunakan untuk mengatasi berbagai infeksi pada tubuh yang disebabkan oleh bakteri, seperti infeksi kulit, infeksi saluran pernapasan, difteri, penyakit legionnaire, dan penyakit menular seksual. Obat ini tersedia dalam berbagi bentuk, seperti tablet, kapsul, sirup, kering, cairan obat luar, cream, dan gel. Obat ini tidak diperjual belikan secar bebas tanpa adanya resep dari dokter',
 	'Proris Sirup':
 		'Proris suspensi / sirup merupakan slah satu jenis obat proris yang dapat meredakan demam dan nyeri pada anak yang sedang mengalami pertumbuhan gigi, nyeri yang disebabkan setelah melakukan vaksinasi. Selain itu, obat ini juga dapat digunakan untuk meredakan infeksi, seperti radang tenggorokan maupun batuk pilek. Obat ini mengandung ibuprofen yang bekerja dengan cara menghambat pembentukan prostaglandin (zat hormon) yang dapat memicu gejala radang, termasuk nyeri dan demam. Obat ini dapat digunakan oleh anak-anak hingga orang dewasa dan dapat dibeli di apotek terdekat',
@@ -497,7 +497,7 @@ const dosisObat = {
 	'Trelegy Ellipta':
 		'Dosis: 1 hirup diberikan sebanyak 1x sehari. Obat ini tidak boleh digunakan lebih dari 1 hirup',
 	'Spriva Respimat': 'Dosis: 1 - 2 hirup diberikan sebanyak 1x sehari',
-	'Erythromycin ':
+	Erythromycin:
 		'Dewasa: \nInfeksi Ringan - Sedang: 500 mg dikonsumsi setiap 12 jam \nInfeksi Berat: 1000 mg dikonsumsi setiap 6 jam. Dosis maksimal yang dapat dikonsumsi adalah 4 gram per hari\n\nAnak-anak: 30 – 50 mg/kg BB per hari, dibagi ke dalam 4 dosis. Dosis maksimal 4 gram per hari.',
 	'Proris Sirup':
 		'Bentuk: Proris Suspensi\nDewasa dan anak usia ≥ 8 tahun: 2 sendok takar (10 ml) diminum sebanyak 3 – 4x sehari.\n\nAnak usia 3 – 7 tahun: 1 sendok takar (5 ml) diminum sebanyak 3 – 4x sehari.\n\nAnak usia 1 – 2 tahun: ½ sendok takar (2,5 ml) diminum sebanyak 3 – 4x sehari.',
@@ -663,7 +663,7 @@ const efekSampingObat = {
 		'Obat ini memiliki beberapa efek samping yang tidak diharapkan oleh pasien, antara lain sakit kepala, infeksi pada saluran pernapasan hidung dan tenggorokan',
 	'Spriva Respimat':
 		'Penggunaan obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti pusing, penglihatan kabur, takikardi supraventrikuler, disfonia, mulut kering, penyakit refluks gastroesofagitis, pruritus, retensi urin',
-	'Erythromycin ':
+	Erythromycin:
 		'Konsumsi obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti mual, muntah, kehilangan nafsu makan, gangguan terhadap lambung, seperti nyeri, kram atau kembung, gangguan pendengaran, gangguan pada irama jantung',
 	'Proris Sirup':
 		'Konsumsi obat yang berlebihan dapat menimbulkan beberapa efek samping, seperti pusing, sakit kepala, mual, muntah, demam, perut terasa kembung, diare, peradangan pada lambung, hingga dapat memicu penyakit maag',
@@ -802,7 +802,7 @@ const imagesObat = {
 	Seretide: 'https://d2qjkwm11akmwu.cloudfront.net/products/2062-1665761276.webp',
 	'Trelegy Ellipta': 'https://asthma.org.au/wp-content/uploads/2022/03/Trelegy-Ellipta-pack-shot.jpg',
 	'Spriva Respimat': 'https://d2qjkwm11akmwu.cloudfront.net/products/6984-1665775965.webp',
-	'Erythromycin ':
+	Erythromycin:
 		'https://images.tokopedia.net/img/cache/700/OJWluG/2022/8/11/954f386c-ed95-4ce9-aed4-c1cf1aaf8995.jpg',
 	'Proris Sirup': 'https://www.pharos.co.id/wp-content/uploads/2022/11/proris-supspensi.jpg',
 	'Promedex Sirup': 'https://d2qjkwm11akmwu.cloudfront.net/products/8743_18-2-2019_10-56-29-1665761218.webp',
@@ -897,7 +897,7 @@ const kandunganObat = {
 	Seretide: 'Salmeterol 50 Mcg dan Fluticasone Propionate 250 Mcg',
 	'Trelegy Ellipta': 'Fluticasone 100 Mcg, Umeclidinium 62.5 Mcg, dan Vilanterol 25 Mcg',
 	'Spriva Respimat': 'Tiotropium Bromida',
-	'Erythromycin ': 'Erythromycin 500 mg',
+	Erythromycin: 'Erythromycin 500 mg',
 	'Proris Sirup': 'Ibuprofen',
 	'Promedex Sirup':
 		'Promethazine HCl 5 mg, Dextromethorphan HBr 5 mg, Guaifenesin 50 mg, dan Na Citrate 197 mg dalam setiap 5 ml',
@@ -995,7 +995,7 @@ const sumberObat = {
 	Seretide: 'Alodokter, klikdokter, Halodoc',
 	'Trelegy Ellipta': 'Alodokter, Halodoc, K24klik',
 	'Spriva Respimat': 'Alodokter, Halodoc, K24klik, Klikdokter',
-	'Erythromycin ': 'Alodokter, Halodoc',
+	Erythromycin: 'Alodokter, Halodoc',
 	'Proris Sirup': 'Alodokter, Halodoc, K24Klik',
 	'Promedex Sirup': 'Alodokter, Halodoc, K24klik, Klikdokter',
 	Entrostop: 'Alodokter, Halodoc, Hellosehat, Klikdokter, K24klik',
@@ -1086,7 +1086,7 @@ const kategoriObat = {
 	Seretide: ['Sakit Pernafasan'],
 	'Trelegy Ellipta': ['Sakit Pernafasan'],
 	'Spriva Respimat': ['Sakit Pernafasan'],
-	'Erythromycin ': ['Sakit Pernafasan'],
+	Erythromycin: ['Sakit Pernafasan'],
 	'Proris Sirup': ['Sakit Pernafasan'],
 	'Promedex Sirup': ['Sakit Pernafasan'],
 	Entrostop: ['Sakit Perut'],
@@ -1234,7 +1234,7 @@ const linkObatSatu = {
 	'Trelegy Ellipta': 'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/trelegy-ellipta-30-dosis',
 	'Spriva Respimat':
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/spiriva-respimat-inhaler-2-5-mcg?srsltid=AfmBOopq3DYnzMiNnKvjsPQTSk6-W_arKi1KcaYpkvJg-Dm9Qr-1wLVA',
-	'Erythromycin ':
+	Erythromycin:
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/erythromycin-500-mg-10-kaplet?srsltid=AfmBOoopeuxZ6RYAnRPjl1F_quz2y9g9bADO6SC5f-qz51EDJPmcEdjz',
 	'Proris Sirup':
 		'Halodoc:\nhttps://www.halodoc.com/obat-dan-vitamin/proris-suspensi-60-ml?srsltid=AfmBOooWSGqk9-UFQ-3doqnRxRCWc5dqp8_C5QK8lNPmms4yCW-Q6AfW',
@@ -1381,7 +1381,7 @@ const linkObatDua = {
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/seretide-diskus-50-250-mcg-60-dosis/5fb3741141ab59059e8670a5',
 	'Trelegy Ellipta': 'K24klik:\nhttps://www.k24klik.com/p/trelegy-ellipta-inh-30-dosis-32279#',
 	'Spriva Respimat': 'K24klik:\nhttps://www.k24klik.com/p/spiriva-respimat-2.5mcg-single-pack-17759#',
-	'Erythromycin ': 'K24klik:\nhttps://www.k24klik.com/p/erythromycin-if-500mg-cap-100s-24834#',
+	Erythromycin: 'K24klik:\nhttps://www.k24klik.com/p/erythromycin-if-500mg-cap-100s-24834#',
 	'Proris Sirup':
 		'Alodokter:\nhttps://www.alodokter.com/aloshop/products/proris-100-mg-sirup-60-ml/5fb38aac41ab59059e86a785',
 	'Promedex Sirup': 'K24klik:\nhttps://www.k24klik.com/p/promedex-syr-60ml-18727',
