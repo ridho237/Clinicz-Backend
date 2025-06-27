@@ -11,7 +11,7 @@ const {
 	getRiwayatById,
 } = require('../controllers/botHandler');
 
-model.post('/chat', chatbot);
+model.post('/chat', authMiddleware, chatbot);
 model.post('/predict-penyakit', authMiddleware, predictPenyakit);
 model.post('/rekomendasi-obat', authMiddleware, rekomendasiObat);
 model.get('/rekomendasi-obat/:namaObat', getDetailObatRekomendasi);
