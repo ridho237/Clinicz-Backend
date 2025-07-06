@@ -322,6 +322,98 @@ const penyebabPenyakit = {
 		'1. Dismotilitas : Anda mungkin mengalami masalah dengan cara otot GI berkontraksi dan menggerakkan makanan melalui saluran GI\n2. Hipersensitivitas visceral : Anda mungkin memiliki saraf ekstra-sensitif di saluran cerna Anda\n3. Bakteri usus : Penelitian telah menunjukkan bahwa penderita IBS mungkin memiliki bakteri yang berubah di saluran pencernaan mereka, yang berkontribusi terhadap gejala-gejala\n4. Intoleransi makanan : Kepekaan atau alergi terhadap makanan tertentu dapat menyebabkan IBS',
 };
 
+const pengobatanPenyakit = {
+	Migrain:
+		'1. Beristirahat atau tidur di kamar yang sepi, gelap, dan sejuk\n2. Mengompres dingin dahi atau belakang leher\n3. Memijat kepala, pelipis, atau leher\n4. Memastikan untuk makan tepat waktu\n5. Tidur yang cukup, setidaknya selama 7–8 jam tiap malam\n6. Memberikan kompres dingin di bagian atas dagu atau belakang leher',
+	'Tension Headache':
+		'1. Beristirahat yang cukup\n2. Berolahraga secara teratur\n3. Minum air putih yang cukup\n4. Memperbaiki postur tubuh\n5. Mengonsumsi makanan sehat dengan gizi seimbang\n6. Membatasi konsumsi minuman beralkohol dan berkafein\n7. Tidak merokok',
+	Sinusitis:
+		'1.Menggunakan pelembab udara (humidifier)\r\n2.Menghirup uap dari semangkuk air hangat atau mandi dengan air hangat\r\n3. Menggunakan kompres hangat pada area wajah\r\n4. Membersihkan hidung menggunakan larutan garam yang bisa dibeli di apotek atau dengan buatan sendiri',
+	Vertigo:
+		'1. Rehabilitasi Vestibular\n2. Canalith repositioning procedure(CRP)\n3. Pembedahan\n4. Manuver Epley dan Manuver Foster (Half Somersault)\n5. Perubahan pola makan dan pengobatan rumahan untuk penyakit Ménière\n6. Berfokus melihat pada satu objek dengan latar belakang kosong atau polos\n7. Gerakkan kepala secara perlahan ke kanan dan ke kiri, lalu ke atas dan ke bawah, lalu ulangi selama beberapa menit',
+	Stroke:
+		'1. Menjaga tekanan darah agar tetap normal\r\n2 Tidak merokok dan tidak mengonsumsi minuman beralkohol\r\n3. Menjaga berat badan ideal\r\n4. Berolahraga secara rutin\r\n5. Mengonsumsi makanan sehat\r\n6. Menjalani pemeriksaan rutin untuk kondisi medis yang diderita, misalnya diabetes dan hipertensi',
+	Meningitis:
+		'1. Pemberian antibiotik intravena segera, seperti penisilin, ampisilin, atau ceftriaxone (untuk meningitis bakteri).\n2. Penggunaan kortikosteroid (misalnya deksametason) untuk mengurangi peradangan pada otak.\n3. Pemberian obat antikejang jika pasien mengalami kejang.\n4. Terapi cairan intravena untuk mencegah dehidrasi dan menjaga keseimbangan elektrolit.\n5. Antijamur (seperti amfoterisin B) digunakan jika meningitis disebabkan oleh infeksi jamur (contoh: meningitis kriptokokus).\n6. Perawatan suportif di rumah sakit, termasuk monitoring tekanan intrakranial dan fungsi vital.',
+	Ensefalitis:
+		'1. Pemberian antibiotik intravena seperti penisilin, ampisilin, atau ceftriaxone.\r\n2. Penggunaan kortikosteroid untuk mengurangi peradangan pada otak.\r\n3. Obat antikejang jika pasien mengalami kejang.\r\n4. Terapi cairan intravena untuk mencegah dehidrasi.\r\n5. Antijamur seperti amfoterisin B jika disebabkan oleh infeksi jamur.\r\n6.Monitoring tekanan intrakranial dan fungsi vital selama perawatan.',
+	'Neuralgia Trigeminal':
+		'1. Rawat inap di rumah sakit untuk pemantauan intensif.\r\n2. Terapi antivirus seperti acyclovir, terutama bila disebabkan oleh virus herpes.\r\n3. Antibiotik atau antijamur bila penyebabnya bakteri atau jamur.\r\n4. Kortikosteroid untuk mengurangi peradangan otak.\r\n5. Antikonvulsan untuk mengatasi atau mencegah kejang.\r\n6. Obat pereda nyeri dan penurun demam seperti parasetamol.\r\n7. Infus cairan dan nutrisi untuk menjaga hidrasi dan keseimbangan elektrolit.\r\n8. Terapi suportif seperti fisioterapi, terapi bicara, dan terapi okupasi.\r\n9. Imunoterapi seperti IVIG, rituximab, atau plasmapheresis untuk ensefalitis autoimun.\r\n10. Pembedahan pada kasus tertentu seperti ensefalitis Rasmussen.',
+	Alopecia:
+		'1. Minoxidil topikal untuk merangsang pertumbuhan rambut.\r\n2. Finasteride oral khusus untuk pria dengan alopecia androgenetik.\r\n3. Injeksi kortikosteroid untuk alopecia areata.\r\n4. Terapi sinar (phototherapy) untuk merangsang pertumbuhan rambut.\r\n5. Transplantasi rambut pada kasus kerontokan berat.\r\n6. Asupan nutrisi seimbang dan suplemen seperti zat besi atau biotin jika kekurangan.',
+	'Otitis Media akut':
+		'1. Pemberian obat pereda nyeri seperti parasetamol atau ibuprofen.\r\n2. Antibiotik seperti amoksisilin sebagai pengobatan utama.\r\n3. Tetes telinga bila disertai dengan pecahnya gendang telinga.\r\n4. Drainase cairan dari telinga tengah (miringotomi) bila infeksi berat.\r\n5. Menjaga kelembapan udara dan menghindari paparan asap rokok.',
+	'Otitis Media':
+		'1. Obat pereda nyeri oral seperti parasetamol atau ibuprofen.\r\n2. Antibiotik oral jika infeksi bakteri atau jika gejala tidak membaik dalam 2–3 hari \r\n3. Obat tetes telinga topikal (antipyrine/benzocaine) untuk meredakan nyeri \r\n4. Myringotomi dan pemasangan tabung tympanostomy (ear tubes) untuk infeksi berulang atau cairan persisten \r\n5.Hindari decongestant atau antihistamin karena tidak efektif ',
+	'Gendang telinga pecah':
+		'1. Banyak kasus sembuh sendiri dalam seminggu.\r\n2. Menjaga telinga tetap kering dan bersih.\r\n3. Obat antibiotik oral atau tetes telinga jika ada indikasi infeksi.\r\n4. Tindakan medis seperti tympanoplasti(Operasi penutupan) jika perforasi tidak sembuh.',
+	Kolesteatoma:
+		'1. Pasang antibiotik oral dan tetes telinga untuk infeksi aktif.\r\n2. Operasi mastoidectomy untuk mengangkat kolesteatoma.\r\n3. Tympanoplasti untuk memperbaiki gendang dan struktur pendengaran.\r\n4. Follow-up berkala karena risiko kambuh tinggi.',
+	Otosklerosis:
+		'1. Observasi bila gejala ringan dan gangguan pendengaran minimal.\r\n2. Alat bantu dengar jika gangguan mendengarkan signfikan.\r\n3. Operasi stapedotomi atau stapedektomi untuk mengganti stapes.\r\n4. Terapi fluoride atau sodium fluoride kadang digunakan untuk memperlambat perkembangan.',
+	Mastoiditis:
+		'1. Antibiotik intravena (Misalnya ceftriaxone) segera setelah diagnosis.\r\n2. Drainase cairan telinga tengah dengan miringotomi/tympanocentesis.\r\n3. Mastoidectomy bila tidak membaik dengan antibiotik dan drainase.\r\n4. Antibiotik oral lanjutan sesuai kultur bakteri.\r\n5. Tindakan pembersihan dan pemeriksaan lanjutan untuk mencegah komplikasi.',
+	Barotrauma:
+		'1. Teknik menyamakan tekanan seperti menguap, menelan, mengunyah permen karet, atau melakukan valsava selama perubahan tekanan (penerbangan, menyelam)\n2. Dekongestan nasal atay semprot steroid untuk barotrauma telinga dan sinus.\n3. Obat analgesik(seperti parasetamol/NSAID) untuk mengurangi nyeri.\n4. Antibiotik jika terjadi infeksi sekunder.\n5. Terapi oksigen hiperbarik dan cairan IV untuk barotrauma pulmonal berat',
+	Konjungtivitis:
+		'1. Banyak kasus (viral/alergi) sembuh sendiri dalam 2–3 minggu, tanpa antibiotik.\r\n2. Kompres hangat atau dingin dan air mata buatan untuk meredakan ketidaknyamanan.\r\n3. Antibiotik tetes mata diresepkan hanya jika teridentifikasi infeksi bakteri atau gejala tak membaik setelah 24 jam.\r\n4. Jika penyebab virus berat (misalnya herpes, adenovirus), dokter dapat meresepkan antivirus topikal.\r\n5. Kebersihan ketat: cuci tangan, hindari menyentuh mata, ganti handuk dan lap wajah sering.',
+	'Keratitis Herpes Simpleks':
+		'1. Antiviral topikal seperti ganciclovir gel 0,15% (5×/hari), trifluridine tetes mata (5–9×/hari), atau vidarabine salep \r\n2. Antivirus oral (acyclovir 400 mg 3–5×/hari selama 7–14 hari, atau valacyclovir/famciclovir) \r\n3. Kortikosteroid topikal dipakai hati-hati pada kasus stromal, selalu di bawah pengawasan dokter\r\n4. Abrasi kornea/debridement jika perlu untuk menyingkirkan sel terinfeksi\r\n5.Terapi penekanan (suppressive) jangka panjang pada kasus kambuh berulang dengan antivirus oral',
+	'Keratitis Jamur':
+		'1. Terapi utama adalah antifungal topikal: natamycin 5% (filamentosa), fluconazole (Candida), atau amphotericin B salep \r\n2. Tambahan antifungal oral/topikal jika infeksi berat atau tahan terhadap obat awal (voriconazole 1%, amphotericin B oral) \r\nreviewofoptometry.com\r\n3. Intervensi bedah bila terjadi perforasi atau tidak merespon terapi: keratoplasty lamelar atau penetrating\r\n4. Monitoring selama berminggu-minggu/berbulan, terapi berlanjut hingga gejala hilang dan kornea sembuh',
+	Hordeolum:
+		'1. Kompres hangat selama 5–10 menit sebanyak 3–6×/hari sampai stye terbuka dan mengering \r\n2. Kebersihan kelopak mata rutin, hindari makeup dan lensa kontak selama infeksi\r\n3. Jika persisten atau menyebar, gunakan salep/tetes antibiotik (erythromycin, chloramphenicol) atau antibiotik oral\r\n4. Jika tidak membaik dalam 48 jam, drainase bedah kecil oleh dokter (incision and drainage)\r\n5. Intralesional kortikosteroid terkadang digunakan untuk chalazion, jarang pada hordeolum ',
+	Chalazion:
+		'1. Kompres hangat 4–5 kali sehari selama 10–15 menit\r\n2. Pijatan lembut kelopak mata setelah kompres untuk membantu drainase\r\n3. Salep antibiotik bila terdapat infeksi sekunder\r\n4. Suntikan kortikosteroid jika chalazion tidak mengecil setelah terapi konservatif\r\n5. Prosedur bedah kecil (insisi dan kuretase) jika benjolan menetap dan mengganggu',
+	'Serangan Jantung':
+		'1. Obat antiplatelet seperti aspirin atau clopidogrel\n2. Nitrat untuk meredakan nyeri dada\n3. Obat pengencer darah (antikoagulan) seperti heparin\n4. Prosedur revaskularisasi seperti angioplasti atau pemasangan stent\n5. Pemasangan bypass jantung jika penyumbatan berat\n6. Rehabilitasi jantung dan perubahan gaya hidup',
+	'Gagal Jantung':
+		'1. Diuretik untuk mengurangi kelebihan cairan\r\n2. ACE inhibitor atau ARB untuk memperbaiki fungsi jantung\r\n3. Beta-blocker untuk menurunkan beban kerja jantung\r\n4. Obat digitalis (misalnya digoksin) untuk membantu kontraksi jantung\r\n5. Terapi resinkronisasi jantung atau pemasangan alat pacu jantung jika diperlukan\r\n6. Transplantasi jantung pada kasus berat yang tidak merespon terapi',
+	Endokarditis:
+		'1. Antibiotik intravena dalam jangka panjang sesuai kultur bakteri\r\n2. Pemberian antibiotik profilaksis sebelum prosedur gigi/medis tertentu (untuk pasien risiko tinggi)\r\n3. Pembedahan katup jantung jika terjadi kerusakan atau gagal respon terhadap antibiotik\r\n4. Pemantauan ketat komplikasi seperti emboli dan gagal jantung',
+	'Angina pektoris ':
+		'1. Nitrogliserin sublingual untuk meredakan nyeri dada saat serangan\r\n2. Obat antiangina seperti beta-blocker atau calcium channel blocker\r\n3. Antiplatelet seperti aspirin untuk mencegah penggumpalan darah\r\n4. Statin untuk menurunkan kolesterol\r\n5. Prosedur angioplasti dan pemasangan stent bila gejala berat\r\n6. Perubahan gaya hidup seperti berhenti merokok, olahraga, dan diet jantung sehat',
+	'Penyakit Jantung Rematik ':
+		'1. Antibiotik seperti penisilin untuk mencegah infeksi ulang\r\n2. Antiinflamasi non-steroid (NSAID) untuk mengurangi peradangan sendi dan jantung\r\n3. Kortikosteroid jika inflamasi berat atau tidak respon terhadap NSAID\r\n4. Obat untuk gagal jantung jika fungsi jantung terganggu\r\n5. Pembedahan katup jantung bila terdapat kerusakan permanen',
+	'Penyakit Katup Jantung':
+		'1. Obat diuretik untuk mengurangi cairan berlebih\r\n2. ACE inhibitor atau beta-blocker untuk mengurangi beban jantung\r\n3. Antikoagulan jika ada risiko bekuan darah\r\n4. Operasi perbaikan katup (valvuloplasti)\r\n5. Operasi penggantian katup bila kerusakan berat',
+	Tuberkulosis:
+		'1. Pengobatan kombinasi antibiotik selama minimal 6 bulan (INH, rifampisin, pirazinamid, etambutol)\r\n2. Pemantauan rutin untuk memastikan kepatuhan dan menghindari resistensi\r\n3. Isolasi sementara bagi pasien dengan TBC aktif menular\r\n4. Nutrisi seimbang untuk mendukung kekebalan tubuh\r\n5. Pemberian vitamin B6 untuk mencegah efek samping INH',
+	Asma: '1. Inhaler bronkodilator kerja cepat (misalnya salbutamol) saat serangan\r\n2. Inhaler kortikosteroid sebagai pengendali jangka panjang\r\n3. Leukotriene receptor antagonist sebagai tambahan terapi\r\n4. Imunoterapi atau obat biologis untuk asma berat\r\n5. Edukasi penghindaran pemicu asma dan penggunaan inhaler yang benar',
+	Influenza:
+		'1. Istirahat total untuk pemulihan\r\n2. Minum banyak cairan untuk mencegah dehidrasi\r\n3. Obat antipiretik seperti parasetamol untuk demam\r\n4. Antiviral seperti oseltamivir dalam 48 jam pertama bila gejala berat\r\n5. Vaksinasi influenza tahunan sebagai pencegahan',
+	Pneumonia:
+		'1. Antibiotik oral atau intravena sesuai penyebab dan tingkat keparahan\r\n2. Obat antipiretik dan analgesik untuk mengurangi demam dan nyeri\r\n3. Obat batuk jika batuk mengganggu, tapi tidak diberikan rutin agar dahak tetap keluar\r\n4. Terapi oksigen jika saturasi oksigen menurun\r\n5. Istirahat total dan asupan cairan yang cukup',
+	'Bronkitis Akut':
+		'1. Obat pereda demam dan nyeri seperti parasetamol atau ibuprofen\r\n2. Banyak minum air putih untuk mengencerkan dahak\r\n3. Ekspektoran untuk membantu pengeluaran dahak\r\n4. Antibiotik hanya bila ada infeksi bakteri sekunder\r\n5. Hindari paparan asap rokok dan polusi',
+	Emfisema:
+		'1. Berhenti merokok sebagai langkah utama\r\n2. Inhaler bronkodilator untuk membuka saluran napas\r\n3. Inhaler kortikosteroid untuk mengurangi peradangan paru\r\n4. Terapi oksigen bila kadar oksigen darah rendah\r\n5. Rehabilitasi paru dan latihan pernapasan',
+	Faringitis:
+		'1. Obat pereda nyeri dan demam seperti parasetamol\r\n2. Antibiotik jika faringitis disebabkan oleh bakteri\r\n3. Berkumur dengan air garam hangat\r\n4. Perbanyak minum air putih dan istirahat cukup\r\n5. Menghindari asap rokok dan iritasi tenggorokan',
+	Laringitis:
+		'1. Istirahatkan suara dan hindari berbicara berlebihan\r\n2. Perbanyak minum air putih untuk menjaga kelembapan tenggorokan\r\n3. Humidifier untuk menjaga kelembapan udara\r\n4. Obat pereda nyeri jika disertai nyeri tenggorokan\r\n5. Antibiotik hanya jika disebabkan oleh infeksi bakteri',
+	Tonsillitis:
+		'1. Obat pereda nyeri dan demam seperti parasetamol atau ibuprofen\r\n2. Antibiotik jika disebabkan oleh infeksi bakteri streptokokus\r\n3. Berkumur air garam hangat secara rutin\r\n4. Perbanyak istirahat dan minum air putih\r\n5. Tonsilektomi (operasi pengangkatan amandel) jika sering kambuh atau kronis',
+	Diare:
+		'1. Oralit untuk mencegah dan mengatasi dehidrasi\r\n2. Perbanyak minum air putih atau cairan lain yang bersih\r\n3. Obat antidiare seperti loperamide hanya pada kasus tertentu\r\n4. Probiotik untuk membantu keseimbangan flora usus\r\n5. Makan makanan rendah serat sementara hingga kondisi membaik',
+	GERD: '1. Antasida untuk menetralkan asam lambung\r\n2. Penghambat pompa proton (PPI) seperti omeprazol untuk menurunkan produksi asam\r\n3. H2 blocker seperti ranitidin (jika tersedia) atau famotidin\r\n4. Perubahan gaya hidup: hindari makan malam larut, tidur dengan kepala ditinggikan, dan hindari makanan pemicu\r\n5. Penurunan berat badan jika obesitas',
+	Maag: '1. Antasida untuk mengurangi gejala nyeri lambung\r\n2. PPI seperti lansoprazole atau esomeprazole untuk menurunkan produksi asam lambung\r\n3. Antibiotik jika disebabkan oleh infeksi H. pylori\r\n4. Hindari makanan pedas, asam, dan minuman berkafein\r\n5. Makan dalam porsi kecil namun sering',
+	Konstipasi:
+		'1. Perbanyak konsumsi serat dari sayur dan buah\r\n2. Minum air putih minimal 8 gelas per hari\r\n3. Laksatif ringan seperti laktulosa bila diperlukan\r\n4. Aktivitas fisik rutin untuk membantu gerakan usus\r\n5. Membiasakan buang air besar secara teratur',
+	Ambeien:
+		'1. Perbanyak konsumsi serat dari makanan dan minum air putih\r\n2. Obat topikal seperti krim atau salep hidrokortison\r\n3. Obat pereda nyeri seperti parasetamol atau ibuprofen\r\n4. Duduk dalam air hangat (sitz bath) beberapa kali sehari\r\n5. Prosedur medis seperti ligasi karet gelang atau hemoroidektomi bila parah',
+	'Tukak lambung':
+		'1. Penghambat pompa proton (PPI) seperti omeprazole atau pantoprazole\r\n2. Antibiotik untuk membunuh H. pylori jika terinfeksi\r\n3. Antasida untuk meredakan gejala nyeri lambung\r\n4. Hindari NSAID dan makanan pemicu iritasi lambung\r\n5. Pola makan teratur dan menghindari stres',
+	Tipes:
+		'1. Antibiotik seperti ciprofloxacin atau cefixime sesuai resep dokter\r\n2. Obat pereda demam dan nyeri seperti parasetamol\r\n3. Istirahat total hingga demam turun\r\n4. Diet lunak dan tinggi cairan\r\n5. Rawat inap bila gejala berat atau terjadi komplikasi',
+	Disentri:
+		'1. Oralit untuk mencegah dehidrasi\r\n2. Antibiotik seperti metronidazole untuk disentri amoeba\r\n3. Antibiotik seperti ciprofloxacin untuk disentri bakteri\r\n4. Makanan lunak dan mudah dicerna\r\n5. Menjaga kebersihan makanan dan minuman',
+	Hepatitis:
+		'1. Istirahat cukup dan makan bergizi seimbang\r\n2. Antiviral untuk hepatitis B atau C bila direkomendasikan dokter\r\n3. Hindari konsumsi alkohol dan obat yang merusak hati\r\n4. Vaksinasi untuk pencegahan hepatitis A dan B\r\n5. Pemantauan fungsi hati secara berkala',
+	'Irritable Bowel Syndrome (IBS)':
+		'1. Perubahan pola makan seperti menghindari makanan tinggi gas, pedas, dan tinggi FODMAP\r\n2. Konsumsi serat larut untuk membantu pergerakan usus\r\n3. Obat antispasmodik seperti hyoscine untuk mengurangi kram perut\r\n4. Laksatif ringan jika disertai konstipasi\r\n5. Obat antidiare jika disertai diare\r\n6. Obat antidepresan dosis rendah bila disertai gangguan kecemasan\r\n7. Manajemen stres melalui relaksasi atau terapi kognitif perilaku',
+};
+
 const sumberPenyakit = {
 	Migrain: 'Halodoc, Alodokter',
 	'Tension Headache': 'Mayo Clinic, Alodoc',
@@ -371,4 +463,11 @@ const sumberPenyakit = {
 	'Irritable Bowel Syndrome (IBS)': 'Alodokter, Cleveland Clinic',
 };
 
-module.exports = { penyakitLabels, deskripsiPenyakit, pencegahanPenyakit, penyebabPenyakit, sumberPenyakit };
+module.exports = {
+	penyakitLabels,
+	deskripsiPenyakit,
+	pencegahanPenyakit,
+	penyebabPenyakit,
+	pengobatanPenyakit,
+	sumberPenyakit,
+};

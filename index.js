@@ -10,6 +10,7 @@ const user = require('./routes/user');
 const bot = require('./routes/bot');
 const maps = require('./routes/maps');
 const shop = require('./routes/shop');
+const disease = require('./routes/disease');
 const article = require('./routes/article');
 const { loadModel } = require('./services/loadmodel');
 
@@ -26,6 +27,7 @@ const startServer = async () => {
 	app.use(express.urlencoded({ extended: true }));
 	app.use(cookieParser());
 	app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+	app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 	try {
 		// === LOAD MODEL ===
@@ -44,6 +46,7 @@ const startServer = async () => {
 		app.use('/bot', bot);
 		app.use('/shop', shop);
 		app.use('/user', user);
+		app.use('/', disease);
 		app.use('/', maps);
 		app.use('/', article);
 

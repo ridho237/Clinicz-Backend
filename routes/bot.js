@@ -9,9 +9,11 @@ const {
 	getRiwayatPenyakit,
 	getRiwayatObat,
 	getRiwayatById,
+	getMessage,
 } = require('../controllers/botHandler');
 
 model.post('/chat', authMiddleware, chatbot);
+model.get('/chat-histories', authMiddleware, getMessage);
 model.post('/predict-penyakit', authMiddleware, predictPenyakit);
 model.post('/rekomendasi-obat', authMiddleware, rekomendasiObat);
 model.get('/rekomendasi-obat/:namaObat', getDetailObatRekomendasi);

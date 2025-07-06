@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const PredictionHistory = require('../model/mongodb_schema/predictionHistorySchema');
 const ChatHistory = require('../model/mongodb_schema/chatHistory');
 const { classifyPenyakit } = require('../services/classification_penyakit');
@@ -122,6 +123,19 @@ const chatbot = async (req, res) => {
 	}
 };
 
+const getMessage = async (req, res) => {
+	const user = req.user;
+
+	try {
+		const chatHistory = await ChatHistory.find({ userId: user.id }).sort({ createdAt: -1 });
+
+		res.json({ history: chatHistory });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Gagal mengambil riwayat chat' });
+	}
+};
+
 const getRiwayatPenyakit = async (req, res) => {
 	try {
 		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'penyakit' }).sort({
@@ -183,6 +197,7 @@ const getRiwayatById = async (req, res) => {
 
 module.exports = {
 	chatbot,
+	getMessage,
 	predictPenyakit,
 	rekomendasiObat,
 	getDetailObatRekomendasi,

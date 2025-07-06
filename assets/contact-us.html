@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1"
+		/>
+		<title>Hubungi Kami - Diagnocare</title>
+		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+		<script>
+			(function () {
+				emailjs.init('X-uyweXunKG694WQA');
+			})();
+		</script>
+		<style>
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				line-height: 1.8;
+				background-color: #f7f9fc;
+				color: #333;
+				padding: 40px 20px;
+				max-width: 960px;
+				margin: auto;
+			}
+
+			h1 {
+				text-align: center;
+				font-size: 2.5em;
+				color: #1a237e;
+				margin-bottom: 30px;
+				border-bottom: 2px solid #ddd;
+				padding-bottom: 10px;
+			}
+
+			section {
+				background-color: #ffffff;
+				padding: 30px;
+				border-radius: 10px;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+				margin-bottom: 30px;
+			}
+
+			label {
+				margin-top: 15px;
+				font-weight: bold;
+			}
+
+			input,
+			textarea {
+				margin-top: 5px;
+				width: 100%;
+				padding: 10px;
+				font-size: 1em;
+				border: 1px solid #ccc;
+				border-radius: 6px;
+				box-sizing: border-box;
+			}
+
+			button {
+				margin-top: 20px;
+				padding: 12px;
+				font-size: 1em;
+				background-color: #1a237e;
+				color: #fff;
+				border: none;
+				border-radius: 6px;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #0d144f;
+			}
+
+			.success-message {
+				margin-top: 15px;
+				color: green;
+			}
+
+			.error-message {
+				margin-top: 15px;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Hubungi Kami</h1>
+
+		<section>
+			<p>
+				Kami sangat terbuka terhadap kritik, saran, pertanyaan, maupun kolaborasi. Jangan ragu untuk
+				menghubungi tim Diagnocare melalui formulir di bawah ini.
+			</p>
+
+			<form id="contact-form">
+				<label for="name">Nama Lengkap</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					required
+				/>
+
+				<label for="email">Email</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					required
+				/>
+
+				<label for="message">Pesan</label>
+				<textarea
+					id="message"
+					name="message"
+					rows="6"
+					required
+				></textarea>
+
+				<button type="submit">Kirim</button>
+
+				<div id="response-message"></div>
+			</form>
+		</section>
+
+		<script>
+			const form = document.getElementById('contact-form');
+			const responseMessage = document.getElementById('response-message');
+
+			form.addEventListener('submit', function (e) {
+				e.preventDefault();
+
+				emailjs.sendForm('service_kbrmt0l', 'template_jsttc2o', this).then(
+					function () {
+						responseMessage.innerHTML =
+							"<p class='success-message'>Pesan berhasil dikirim. Terima kasih!</p>";
+						form.reset();
+					},
+					function (error) {
+						responseMessage.innerHTML = "<p class='error-message'>Terjadi kesalahan. Coba lagi nanti.</p>";
+						console.error('FAILED...', error);
+					}
+				);
+			});
+		</script>
+	</body>
+</html>

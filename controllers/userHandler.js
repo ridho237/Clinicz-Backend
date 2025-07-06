@@ -48,7 +48,7 @@ const signUp = async (req, res) => {
 				const fileName = `${Date.now()}-${file.originalFilename}`;
 				const newPath = path.join(uploadDir, fileName);
 				fs.copyFileSync(file.filepath, newPath);
-				profileImageUrl = `/uploads/${fileName}`;
+				profileImageUrl = `${process.env.URL}/uploads/${fileName}`;
 			}
 
 			const existingUser = await User.findOne({ $or: [{ username }, { email }] });

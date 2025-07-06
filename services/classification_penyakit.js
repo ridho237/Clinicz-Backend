@@ -3,8 +3,7 @@ const { allWordsPenyakit } = require('../data/penyakit/all_word');
 const {
 	penyakitLabels,
 	deskripsiPenyakit,
-	penyebabPenyakit,
-	pencegahanPenyakit,
+	pengobatanPenyakit,
 	sumberPenyakit,
 } = require('../data/penyakit/data_penyakit');
 
@@ -23,16 +22,14 @@ async function classifyPenyakit(model, text) {
 
 	const namaPenyakit = penyakitLabels[maxIndex];
 	const deskripsi = deskripsiPenyakit[namaPenyakit] ?? null;
-	const penyebab = penyebabPenyakit[namaPenyakit] ?? null;
-	const pencegahan = pencegahanPenyakit[namaPenyakit] ?? null;
+	const pengobatan = pengobatanPenyakit[pengobatanPenyakit] ?? null;
 	const sumber = sumberPenyakit[namaPenyakit] ?? null;
 
 	return [
 		{
 			penyakit: namaPenyakit,
 			deskripsi: deskripsi,
-			penyebab: penyebab,
-			pencegahan: pencegahan,
+			pengobatan: pengobatan,
 			sumber: sumber,
 		},
 	];
