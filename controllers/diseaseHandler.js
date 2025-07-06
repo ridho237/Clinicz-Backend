@@ -55,8 +55,8 @@ const getDiseaseByKategori = async (req, res) => {
 	try {
 		const labelsArray = Array.isArray(penyakitLabels) ? penyakitLabels : Object.values(penyakitLabels);
 		const hasilFilter = labelsArray.filter((namaPenyakit) => {
-			const kategoriPenyakitList = kategoriPenyakit[namaPenyakit];
-			return kategoriPenyakitList?.some((k) => k.trim().toLowerCase() === kategori.trim().toLowerCase());
+			const kategoriPenyakitItem = kategoriPenyakit[namaPenyakit];
+			return kategoriPenyakitItem?.trim().toLowerCase() === kategori.trim().toLowerCase();
 		});
 
 		const data = hasilFilter.map((namaPenyakit) => ({

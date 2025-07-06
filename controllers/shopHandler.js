@@ -73,7 +73,6 @@ const getObatByKategori = async (req, res) => {
 
 	try {
 		const labelsArray = Array.isArray(obatLabels) ? obatLabels : Object.values(obatLabels);
-
 		const hasilFilter = labelsArray.filter((namaObat) => {
 			const kategoriObatList = kategoriObat[namaObat];
 			return kategoriObatList?.some((k) => k.trim().toLowerCase() === kategori.trim().toLowerCase());
