@@ -3,6 +3,7 @@ const {
 	deskripsiPenyakit,
 	penyebabPenyakit,
 	pencegahanPenyakit,
+	kategoriPenyakit,
 	sumberPenyakit,
 } = require('../data/penyakit/data_penyakit');
 
@@ -48,4 +49,27 @@ const getDiseaseByName = async (req, res) => {
 	}
 };
 
-module.exports = { getDisease, getDiseaseByName };
+const getDiseaseByKategori = async (req, res) => {
+	const { kategori } = req.params;
+
+	try {
+		const labelsArray = Array.isArray(penyakitLabels) ? penyakitLabels : Object.values(penyakitLabels);
+		const hasilFilter = labelsArray.filter((namaPenyakit) => {
+			const kategoriPenyakitList = kategoriPenyakit[namaPenyakit];
+			return kategoriPenyakitList?.some((k) => k.trim().toLowerCase() === kategori.trim().toLowerCase());
+		});
+
+		const data = hasilFilter.map((namaPenyakit) => ({
+			nama: namaPenyakit ?? null,
+			deskripsi: deskripsiPenyakit[namaPenyakit] ?? null,
+			kategori: kategoriPenyakit[namaPenyakit] ?? null,
+		}));
+
+		res.json(data);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: 'Gagal mengambil data berdasarkan kategori' });
+	}
+};
+
+module.exports = { getDisease, getDiseaseByName, getDiseaseByKategori };

@@ -110,7 +110,6 @@ Bearer Token
 **Endpoint:**\
 `POST /user/logout`
 
-
 ---
 
 ## 🤖 Artificial Intelligence API
@@ -197,7 +196,7 @@ Bearer Token
 ### 6️⃣ Chatbot
 
 **Endpoint:**\
-`POST /chat`
+`POST /bot/chat`
 
 **Body (JSON):**
 
@@ -208,7 +207,23 @@ Bearer Token
 ```
 
 **Authentication:**\
-Bearer Token (Opsional)
+Bearer Token
+
+---
+
+**Endpoint:**\
+`GET /bot/chat-histories`
+
+**Body (JSON):**
+
+```json
+{
+	"message": "hai gemini"
+}
+```
+
+**Authentication:**\
+Bearer Token
 
 ---
 
@@ -219,12 +234,10 @@ Bearer Token (Opsional)
 **Endpoint:**\
 `GET /article`
 
-
 ### 2️⃣ Get Article By ID
 
 **Endpoint:**\
 `GET /article/:id`
-
 
 ---
 
@@ -253,18 +266,15 @@ Bearer Token (Opsional)
 **Endpoint:**\
 `GET /obat`
 
-
 ### 2️⃣ Get Obat By Name
 
 **Endpoint:**\
 `GET /obat/:namaObat`
 
-
 ### 3️⃣ Get Obat By Kategori
 
 **Endpoint:**\
 `GET /obat/kategori/:kategoriObat`
-
 
 ---
 
