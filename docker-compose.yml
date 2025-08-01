@@ -14,19 +14,5 @@ services:
     security_opt:
       - no-new-privileges:true
 
-  ngrok:
-    container_name: app-hosting
-    image: ngrok/ngrok:latest
-    restart: unless-stopped
-    command: http app:8000
-    depends_on:
-      - app
-    environment:
-      - NGROK_AUTHTOKEN=2XeWRr69DnvzMsTFZoahm_79tcmhqA3uY8hrCW9QJVn
-    networks:
-      - internal
-    ports:
-      - '4040:4040'
-
 networks:
   internal:

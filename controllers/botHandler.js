@@ -1,31 +1,95 @@
 const mongoose = require('mongoose');
 const PredictionHistory = require('../model/mongodb_schema/predictionHistorySchema');
 const ChatHistory = require('../model/mongodb_schema/chatHistory');
-const { classifyPenyakit } = require('../services/classification_penyakit');
-const { recommendObat } = require('../services/collaboration_recommender');
+const { classifyPenyakit, getDetailPenyakit } = require('../services/classification_penyakit');
+const { recommendObat, getDetailObat } = require('../services/collaboration_recommender');
 
 const predictPenyakit = async (req, res) => {
 	try {
 		const { text } = req.body;
 		const { model } = req.app;
-		const penyakitPredictions = await classifyPenyakit(model, text);
+
+		if (!text || typeof text !== 'string') {
+			return res.status(400).json({
+				status: 'fail',
+				message: 'Input gejala harus berupa teks',
+			});
+		}
+
+		// Validasi 1: minimal 5 gejala (dipisahkan koma)
+		const gejalaList = text
+			.split(',')
+			.map((item) => item.trim())
+			.filter(Boolean);
+		if (gejalaList.length < 5) {
+			return res.status(400).json({
+				status: 'fail',
+				message: 'Maaf input minimal sebanyak 5 gejala',
+			});
+		}
+
+		// Validasi 2: gejala terlalu umum/tidak jelas
+		const kataTidakJelas = ['sakit', 'nyeri', 'merah', 'berdarah', 'demam'];
+		const kataInput = text.toLowerCase().split(/[ ,.]+/); // split by koma, spasi, titik
+		const jumlahTidakJelas = kataInput.filter((kata) => kataTidakJelas.includes(kata)).length;
+
+		if (jumlahTidakJelas >= kataInput.length * 0.5) {
+			return res.status(400).json({
+				status: 'fail',
+				message: 'Maaf gejala yang anda masukkan kurang jelas atau kurang lengkap',
+			});
+		}
+
+		const result = await classifyPenyakit(model, text);
 
 		await PredictionHistory.create({
 			userId: req.user.id,
 			type: 'penyakit',
 			input: { text },
-			output: penyakitPredictions,
+			output: result,
 		});
+
+		const outputPenyakit = result
+			.filter((item) => item?.nama)
+			.map((item) => ({
+				penyakit: item.nama,
+				deskripsi: item.deskripsi ?? 'Tidak tersedia',
+			}));
 
 		res.status(200).json({
 			status: 'success',
-			message: 'Model berhasil diprediksi',
-			data: penyakitPredictions,
+			message: 'Model berhasil memprediksi penyakit',
+			data: outputPenyakit,
 		});
 	} catch (error) {
 		res.status(400).json({
 			status: 'fail',
 			message: `Terjadi kesalahan dalam melakukan prediksi: ${error.message}`,
+		});
+	}
+};
+
+const predictPenyakitDetail = async (req, res) => {
+	try {
+		const { penyakit } = req.params;
+		if (!penyakit) {
+			return res.status(400).json({
+				status: 'fail',
+				message: 'Field "penyakit" harus ada di body',
+			});
+		}
+
+		const detail = getDetailPenyakit(penyakit);
+
+		res.status(200).json({
+			status: 'success',
+			message: 'Detail penyakit berhasil diambil',
+			data: detail,
+		});
+	} catch (error) {
+		res.status(400).json({
+			status: 'fail',
+			message: `Gagal mengambil detail penyakit: ${error.message}`,
 		});
 	}
 };
@@ -38,7 +102,6 @@ const rekomendasiObat = async (req, res) => {
 		}
 
 		const result = recommendObat(penyakit);
-
 		await PredictionHistory.create({
 			userId: req.user.id,
 			type: 'obat',
@@ -46,37 +109,43 @@ const rekomendasiObat = async (req, res) => {
 			output: result,
 		});
 
+		const outputObat = result
+			.filter((item) => item?.obat)
+			.map((item) => ({
+				obat: item.obat,
+				deskripsi: item.deskripsi ?? 'Tidak tersedia',
+			}));
 		res.status(200).json({
 			status: 'success',
 			message: 'Rekomendasi obat berhasil',
-			data: result,
+			data: outputObat,
 		});
 	} catch (error) {
 		res.status(500).json({ status: 'fail', message: `Error saat merekomendasikan obat: ${error.message}` });
 	}
 };
 
-const getDetailObatRekomendasi = (req, res) => {
-	const { namaObat } = req.params;
+const getDetailObatRekomendasi = async (req, res) => {
+	try {
+		const { namaObat } = req.params;
+		if (!namaObat) {
+			return res.status(400).json({
+				status: 'fail',
+				message: 'Parameter namaObat harus disediakan.',
+			});
+		}
 
-	if (!namaObat) {
-		return res.status(404).json({ status: 'fail', message: 'Detail obat rekomendasi tidak ditemukan.' });
+		const detail = getDetailObat(namaObat);
+		return res.status(200).json({
+			status: 'success',
+			data: detail,
+		});
+	} catch (error) {
+		return res.status(500).json({
+			status: 'fail',
+			message: `Gagal mengambil detail obat: ${error.message}`,
+		});
 	}
-
-	const detail = {
-		obat: namaObat,
-		deskripsi: deskripsiObat[namaObat] ?? 'Belum tersedia',
-		kandungan: kandunganObat[namaObat] ?? 'Belum tersedia',
-		dosis: dosisObat[namaObat] ?? 'Belum tersedia',
-		aturanPakai: aturanPakaiObat[namaObat] ?? 'Belum tersedia',
-		efekSamping: efekSampingObat[namaObat] ?? 'Belum tersedia',
-		'link Store 1': linkObatSatu[namaObat] ?? 'Belum tersedia',
-		'link Store 2': linkObatDua[namaObat] ?? 'Belum tersedia',
-		sumber: sumberObat[namaObat] ?? 'Belum tersedia',
-		gambar: imagesObat[namaObat] ?? 'Belum tersedia',
-	};
-
-	return res.status(200).json({ status: 'success', data: detail });
 };
 
 const chatbot = async (req, res) => {
@@ -138,60 +207,113 @@ const getMessage = async (req, res) => {
 
 const getRiwayatPenyakit = async (req, res) => {
 	try {
-		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'penyakit' }).sort({
-			createdAt: -1,
-		});
+		const histories = await PredictionHistory.find({
+			userId: req.user.id,
+			type: 'penyakit',
+		}).sort({ createdAt: -1 });
 
-		const result = histories.map((history) => ({
-			id: history._id,
-			type: history.type,
-			nama: history.input.text,
-			createdAt: history.createdAt,
-		}));
+		const result = histories.map((history) => {
+			let detail = [];
+
+			if (Array.isArray(history.output)) {
+				detail = history.output.map((item) => ({
+					penyakit: item?.nama ?? null,
+				}));
+			}
+
+			return {
+				id: history._id,
+				type: 'penyakit',
+				gejala: history.input?.text ?? '-',
+				detail,
+				createdAt: history.createdAt,
+			};
+		});
 
 		res.status(200).json({ status: 'success', data: result });
 	} catch (error) {
-		res.status(500).json({ status: 'fail', message: `Gagal mengambil riwayat penyakit: ${error.message}` });
+		res.status(500).json({
+			status: 'fail',
+			message: `Gagal mengambil riwayat penyakit: ${error.message}`,
+		});
 	}
 };
 
 const getRiwayatObat = async (req, res) => {
 	try {
-		const histories = await PredictionHistory.find({ userId: req.user.id, type: 'obat' }).sort({
-			createdAt: -1,
-		});
+		const histories = await PredictionHistory.find({
+			userId: req.user.id,
+			type: 'obat',
+		}).sort({ createdAt: -1 });
 
 		const result = histories.map((history) => ({
 			id: history._id,
-			type: history.type,
-			nama: history.input.penyakit,
+			type: 'obat',
+			penyakit: history.input?.penyakit ?? '-',
+			detail: Array.isArray(history.output)
+				? history.output.map((item) => ({
+						obat: item?.obat ?? null,
+				  }))
+				: [],
 			createdAt: history.createdAt,
 		}));
 
 		res.status(200).json({ status: 'success', data: result });
 	} catch (error) {
-		res.status(500).json({ status: 'fail', message: `Gagal mengambil riwayat obat: ${error.message}` });
+		res.status(500).json({
+			status: 'fail',
+			message: `Gagal mengambil riwayat obat: ${error.message}`,
+		});
 	}
 };
 
-const getRiwayatById = async (req, res) => {
+const getRiwayatByNama = async (req, res) => {
 	try {
-		const { id } = req.params;
-
-		// validasi id
-		if (!mongoose.Types.ObjectId.isValid(id)) {
-			return res.status(400).json({ status: 'fail', message: 'ID tidak valid' });
+		const { nama } = req.params;
+		if (!nama) {
+			return res.status(400).json({
+				status: 'fail',
+				message: 'Parameter "nama" harus disediakan di URL',
+			});
 		}
 
-		const history = await PredictionHistory.findOne({ _id: id, userId: req.user.id });
+		const keyword = decodeURIComponent(nama).trim().toLowerCase();
 
-		if (!history) {
-			return res.status(404).json({ status: 'fail', message: 'Riwayat tidak ditemukan' });
+		const histories = await PredictionHistory.find({ userId: req.user.id }).sort({ createdAt: -1 });
+
+		for (const history of histories) {
+			// 🔍 Untuk jenis penyakit
+			if (history.type === 'penyakit' && Array.isArray(history.output)) {
+				const match = history.output.find((p) => p?.nama?.trim().toLowerCase() === keyword);
+				if (match) {
+					return res.status(200).json({
+						status: 'success',
+						data: [match],
+					});
+				}
+			}
+
+			// 💊 Untuk jenis obat
+			if (history.type === 'obat' && Array.isArray(history.output)) {
+				const match = history.output.find((o) => o?.obat?.trim().toLowerCase() === keyword);
+				if (match) {
+					return res.status(200).json({
+						status: 'success',
+						data: [match],
+					});
+				}
+			}
 		}
 
-		res.status(200).json({ status: 'success', data: history });
+		return res.status(404).json({
+			status: 'fail',
+			message: `Data dengan nama "${nama}" tidak ditemukan dalam riwayat Anda`,
+		});
 	} catch (error) {
-		res.status(500).json({ status: 'fail', message: `Gagal mengambil detail riwayat: ${error.message}` });
+		res.status(500).json({
+			status: 'fail',
+			message: `Gagal mengambil detail riwayat: ${error.message}`,
+		});
 	}
 };
 
@@ -199,9 +321,10 @@ module.exports = {
 	chatbot,
 	getMessage,
 	predictPenyakit,
+	predictPenyakitDetail,
 	rekomendasiObat,
 	getDetailObatRekomendasi,
 	getRiwayatPenyakit,
 	getRiwayatObat,
-	getRiwayatById,
+	getRiwayatByNama,
 };

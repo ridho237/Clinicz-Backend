@@ -7,6 +7,15 @@ const {
 	sumberPenyakit,
 } = require('../data/penyakit/data_penyakit');
 
+function getDetailPenyakit(namaPenyakit) {
+	return {
+		nama: namaPenyakit,
+		deskripsi: deskripsiPenyakit[namaPenyakit] ?? null,
+		pengobatan: pengobatanPenyakit[namaPenyakit] ?? null,
+		sumber: sumberPenyakit[namaPenyakit] ?? null,
+	};
+}
+
 async function classifyPenyakit(model, text) {
 	const inputGejala = preprocessSingleInput(text);
 	const tensorGejala = tf.tensor([inputGejala], [1, 50]);
@@ -22,12 +31,12 @@ async function classifyPenyakit(model, text) {
 
 	const namaPenyakit = penyakitLabels[maxIndex];
 	const deskripsi = deskripsiPenyakit[namaPenyakit] ?? null;
-	const pengobatan = pengobatanPenyakit[pengobatanPenyakit] ?? null;
+	const pengobatan = pengobatanPenyakit[namaPenyakit] ?? null;
 	const sumber = sumberPenyakit[namaPenyakit] ?? null;
 
 	return [
 		{
-			penyakit: namaPenyakit,
+			nama: namaPenyakit,
 			deskripsi: deskripsi,
 			pengobatan: pengobatan,
 			sumber: sumber,
@@ -65,4 +74,4 @@ function preprocessSingleInput(text) {
 	return strConverted;
 }
 
-module.exports = { classifyPenyakit, preprocessSingleInput };
+module.exports = { classifyPenyakit, preprocessSingleInput, getDetailPenyakit };
