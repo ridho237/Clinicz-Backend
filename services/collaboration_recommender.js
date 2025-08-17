@@ -1,41 +1,70 @@
 const fs = require('fs');
 const path = require('path');
-const { parseTokoLink } = require('../utils/dataFormatter');
 
 // Load cosine similarity matrix
 const cosineMatrix = JSON.parse(
 	fs.readFileSync(path.join(__dirname, '../model/obat_recomender/cosine_similarity_matrix.json'))
 );
 
-// Load full drug model (Obat, Kategori, Atribut Obat)
+// Load full drug model (lengkap: Penyakit, Obat, Kategori, dll.)
 const rawDrugData = JSON.parse(
 	fs.readFileSync(path.join(__dirname, '../model/obat_recomender/all_drugs_data_model.json'))
 );
 
-// Load detail data dari data_obat.js
-const {
-	deskripsiObat,
-	kandunganObat,
-	dosisObat,
-	aturanPakaiObat,
-	efekSampingObat,
-	linkObatSatu,
-	linkObatDua,
-	sumberObat,
-	imagesObat,
-} = require('../data/obat/data_obat');
-
-// Transpose ke array of objek
+// Mapping data obat dari JSON utama
 const drugsData = Object.keys(rawDrugData.Obat).map((key) => ({
+	Penyakit: rawDrugData.Penyakit[key],
 	Obat: rawDrugData.Obat[key],
 	Kategori: rawDrugData.Kategori[key],
-	Atribut: rawDrugData['Atribut Obat'][key],
+	Deskripsi: rawDrugData.Deskripsi?.[key],
+	Kandungan: rawDrugData.Kandungan?.[key],
+	Dosis: rawDrugData.Dosis?.[key],
+	AturanPakai: rawDrugData.AturanPakai?.[key],
+	EfekSamping: rawDrugData.EfekSamping?.[key],
+	TokoOnline1: rawDrugData.LinkObatSatu?.[key],
+	TokoOnline2: rawDrugData.LinkObatDua?.[key],
+	Sumber: rawDrugData.Sumber?.[key],
+	Gambar: rawDrugData.Images?.[key],
 }));
 
-function recommendObat(penyakit) {
-	const trimmedPenyakit = penyakit.trim();
+// Sinonim penyakit (mirip Python get_sinonim_penyakit)
+function getSinonimPenyakit(nama) {
+	const mapping = {
+		flu: 'Influenza',
+		pilek: 'Influenza',
+		'demam berdarah dengue': 'Demam Berdarah',
+		dbd: 'Demam Berdarah',
+		'heart attack': 'Serangan Jantung',
+	};
+	return mapping[nama.toLowerCase()] ?? nama;
+}
 
-	if (trimmedPenyakit === 'Demam Berdarah') {
+// Daftar penyakit khusus
+const penyakitKhusus = [
+	'Stroke',
+	'Gendang telinga pecah',
+	'Kolesteatoma',
+	'Otosklerosis',
+	'Mastoiditis',
+	'Barotrauma',
+	'Keratitis Herpes Simpleks',
+	'Keratitis Jamur',
+	'Demam Berdarah',
+	'Serangan Jantung',
+	'Gagal Jantung',
+	'Endokarditis',
+	'Angina pektoris',
+	'Penyakit Jantung Rematik',
+	'Penyakit Katup Jantung',
+	'Emfisema',
+	'Irritable Bowel Syndrome (IBS)',
+];
+
+function recommendObat(penyakit) {
+	const penyakitNormal = getSinonimPenyakit(penyakit.trim());
+
+	// Cek penyakit khusus
+	if (penyakitKhusus.includes(penyakitNormal)) {
 		return [
 			{
 				obat: null,
@@ -44,46 +73,49 @@ function recommendObat(penyakit) {
 		];
 	}
 
-	const kategori = cariKategoriDariPenyakit(trimmedPenyakit);
-	if (!kategori) {
-		console.warn(`Kategori tidak ditemukan untuk penyakit: ${trimmedPenyakit}`);
-		return [];
-	}
-
-	const kandidatObat = drugsData.find((item) => item.Kategori.toLowerCase() === kategori.toLowerCase());
-
-	if (!kandidatObat) {
-		console.warn(`Tidak ada obat dalam kategori: ${kategori}`);
-		return [];
-	}
-
-	const obatUtama = kandidatObat.Obat;
-
-	const obatDalamKategori = drugsData.filter(
-		(item) => item.Kategori.toLowerCase() === kategori.toLowerCase()
+	// Cari penyakit di dataset
+	const dataPenyakit = drugsData.find(
+		(item) => item.Penyakit?.toLowerCase() === penyakitNormal.toLowerCase()
 	);
 
-	const hasil = obatDalamKategori.map((item) => {
-		const nama = item.Obat;
-		const similarity = cosineMatrix[obatUtama]?.[nama];
+	if (!dataPenyakit) {
+		console.warn(`Data pengobatan untuk penyakit '${penyakitNormal}' belum tersedia.`);
+		return [];
+	}
 
+	const kategori = dataPenyakit.Kategori;
+	const obatUtama = dataPenyakit.Obat;
+
+	// Ambil semua obat dalam kategori yang sama (tanpa duplikat)
+	const obatDalamKategori = Array.from(
+		new Map(
+			drugsData
+				.filter((item) => item.Kategori?.toLowerCase() === kategori.toLowerCase())
+				.map((item) => [item.Obat, item])
+		).values()
+	);
+
+	// Hitung similarity untuk setiap obat
+	const hasil = obatDalamKategori.map((item) => {
+		const similarity = cosineMatrix[obatUtama]?.[item.Obat];
 		return {
-			obat: nama,
-			deskripsi: deskripsiObat[nama] ?? '-',
-			kandungan: kandunganObat[nama] ?? '-',
-			dosis: dosisObat[nama] ?? '-',
-			aturanPakai: aturanPakaiObat[nama] ?? '-',
-			efekSamping: efekSampingObat[nama] ?? '-',
-			tokoOnline1: parseTokoLink(linkObatSatu[nama]) ?? null,
-			tokoOnline2: parseTokoLink(linkObatDua[nama]) ?? null,
-			sumber: sumberObat[nama] ?? null,
-			gambar: imagesObat[nama] ?? null,
+			obat: item.Obat,
+			deskripsi: item.Deskripsi ?? '-',
+			kandungan: item.Kandungan ?? '-',
+			dosis: item.Dosis ?? '-',
+			aturanPakai: item.AturanPakai ?? '-',
+			efekSamping: item.EfekSamping ?? '-',
+			tokoOnline1: item.TokoOnline1 ?? null,
+			tokoOnline2: item.TokoOnline2 ?? null,
+			sumber: item.Sumber ?? null,
+			gambar: item.Gambar ?? null,
 			similarity: similarity !== undefined ? parseFloat(similarity.toFixed(3)) : null,
-			penyakitAsal: kategori,
+			penyakitAsal: penyakitNormal,
 		};
 	});
 
-	const hasilTerurut = hasil.toSorted((a, b) => {
+	// Urutkan berdasarkan similarity
+	const hasilTerurut = [...hasil].sort((a, b) => {
 		if (a.similarity === null) return 1;
 		if (b.similarity === null) return -1;
 		return b.similarity - a.similarity;
@@ -92,39 +124,10 @@ function recommendObat(penyakit) {
 	return hasilTerurut.slice(0, 5);
 }
 
-function cariKategoriDariPenyakit(penyakit) {
-	// Ambil semua kategori unik dari drugsData
-	const semuaKategori = [...new Set(Object.values(rawDrugData.Kategori))];
-
-	// Cari kecocokan berdasarkan kata kunci
-	const cocok = semuaKategori.find(
-		(k) =>
-			k.toLowerCase().includes(penyakit.toLowerCase()) || penyakit.toLowerCase().includes(k.toLowerCase())
-	);
-
-	// Fallback: hardcode beberapa mapping jika perlu
-	const fallback = {
-		Barotrauma: 'Sakit Telinga',
-		Glaukoma: 'Sakit Mata',
-		Gastritis: 'Sakit Perut',
-	};
-
-	return cocok ?? fallback[penyakit] ?? null;
-}
-
+// ✅ Tambahan fungsi getDetailObat
 function getDetailObat(namaObat) {
-	return {
-		obat: namaObat,
-		deskripsi: deskripsiObat[namaObat] ?? '-',
-		kandungan: kandunganObat[namaObat] ?? '-',
-		dosis: dosisObat[namaObat] ?? '-',
-		aturanPakai: aturanPakaiObat[namaObat] ?? '-',
-		efekSamping: efekSampingObat[namaObat] ?? '-',
-		tokoOnline1: parseTokoLink(linkObatSatu[namaObat]) ?? null,
-		tokoOnline2: parseTokoLink(linkObatDua[namaObat]) ?? null,
-		sumber: sumberObat[namaObat] ?? null,
-		gambar: imagesObat[namaObat] ?? null,
-	};
+	const detail = drugsData.find((item) => item.Obat?.toLowerCase() === namaObat.toLowerCase());
+	return detail ?? null;
 }
 
 module.exports = { recommendObat, getDetailObat };

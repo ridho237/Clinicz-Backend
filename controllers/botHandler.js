@@ -3,49 +3,81 @@ const PredictionHistory = require('../model/mongodb_schema/predictionHistorySche
 const ChatHistory = require('../model/mongodb_schema/chatHistory');
 const { classifyPenyakit, getDetailPenyakit } = require('../services/classification_penyakit');
 const { recommendObat, getDetailObat } = require('../services/collaboration_recommender');
+const { gabungkanGejala, isGejalaTerlaluUmum } = require('../utils/normalization');
 
 const predictPenyakit = async (req, res) => {
 	try {
-		const { text } = req.body;
+		let { bagianTubuh, gejala } = req.body;
 		const { model } = req.app;
 
-		if (!text || typeof text !== 'string') {
+		if (!gejala) {
 			return res.status(400).json({
 				status: 'fail',
-				message: 'Input gejala harus berupa teks',
+				message: 'Gejala harus diisi',
 			});
 		}
 
-		// Validasi 1: minimal 5 gejala (dipisahkan koma)
-		const gejalaList = text
+		let textGabungan;
+
+		// Jika bagian tubuh tidak diisi, pakai gejala langsung
+		if (!bagianTubuh || bagianTubuh.length === 0) {
+			textGabungan = gejala.toLowerCase();
+		} else {
+			// Ubah ke array jika masih string
+			const bagianTubuhList = Array.isArray(bagianTubuh)
+				? bagianTubuh.flatMap((b) => b.split(',').map((item) => item.trim()))
+				: bagianTubuh
+						.split(',')
+						.map((b) => b.trim())
+						.filter(Boolean);
+
+			textGabungan = gabungkanGejala(bagianTubuhList, gejala);
+
+			// Validasi jika hasil gabungan kosong
+			if (!textGabungan || textGabungan.split(',').length < 2) {
+				return res.status(400).json({
+					status: 'fail',
+					message: 'Gejala yang dimasukkan tidak cocok dengan bagian tubuh yang dipilih',
+				});
+			}
+		}
+
+		// Validasi jumlah gejala
+		const gejalaList = textGabungan
 			.split(',')
 			.map((item) => item.trim())
 			.filter(Boolean);
 		if (gejalaList.length < 5) {
 			return res.status(400).json({
 				status: 'fail',
-				message: 'Maaf input minimal sebanyak 5 gejala',
+				message: `Gejala yang Anda masukkan setelah diproses hanya sebanyak ${gejalaList.length}. Minimal 5 gejala diperlukan agar hasil prediksi akurat.`,
 			});
 		}
 
-		// Validasi 2: gejala terlalu umum/tidak jelas
-		const kataTidakJelas = ['sakit', 'nyeri', 'merah', 'berdarah', 'demam'];
-		const kataInput = text.toLowerCase().split(/[ ,.]+/); // split by koma, spasi, titik
-		const jumlahTidakJelas = kataInput.filter((kata) => kataTidakJelas.includes(kata)).length;
-
-		if (jumlahTidakJelas >= kataInput.length * 0.5) {
+		// Validasi gejala terlalu umum
+		if (isGejalaTerlaluUmum(textGabungan)) {
 			return res.status(400).json({
 				status: 'fail',
-				message: 'Maaf gejala yang anda masukkan kurang jelas atau kurang lengkap',
+				message:
+					!bagianTubuh || bagianTubuh.length === 0
+						? 'Gejala terlalu umum. Silakan tambahkan bagian tubuh yang sakit untuk memperjelas konteks gejala.'
+						: 'Gejala yang Anda masukkan kurang spesifik atau tidak dapat dikenali dengan baik. Silakan lengkapi dengan gejala yang lebih jelas.',
 			});
 		}
 
-		const result = await classifyPenyakit(model, text);
+		console.log('================== DEBUG INPUT ==================');
+		console.log('Bagian tubuh:', bagianTubuh);
+		console.log('Gejala:', gejala);
+		console.log('Gabungan akhir (textGabungan):', textGabungan);
+		console.log('List Gejala (setelah split):', gejalaList);
+		console.log('==================================================');
+
+		const result = await classifyPenyakit(model, textGabungan);
 
 		await PredictionHistory.create({
 			userId: req.user.id,
 			type: 'penyakit',
-			input: { text },
+			input: { bagianTubuh, gejala, gabungan: textGabungan },
 			output: result,
 		});
 
@@ -136,6 +168,13 @@ const getDetailObatRekomendasi = async (req, res) => {
 		}
 
 		const detail = getDetailObat(namaObat);
+		if (!detail) {
+			return res.status(404).json({
+				status: 'fail',
+				message: `Detail obat '${namaObat}' tidak ditemukan.`,
+			});
+		}
+
 		return res.status(200).json({
 			status: 'success',
 			data: detail,
