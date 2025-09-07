@@ -1,7 +1,7 @@
 const penyakitLabels = {
 	0: 'Alopecia',
 	1: 'Ambeien',
-	2: 'Angina pektoris ',
+	2: 'Angina pektoris',
 	3: 'Asma',
 	4: 'Barotrauma',
 	5: 'Bronkitis',
@@ -33,7 +33,7 @@ const penyakitLabels = {
 	31: 'Otitis Media',
 	32: 'Otitis Media akut',
 	33: 'Otosklerosis',
-	34: 'Penyakit Jantung Rematik ',
+	34: 'Penyakit Jantung Rematik',
 	35: 'Penyakit Katup Jantung',
 	36: 'Pneumonia',
 	37: 'Serangan Jantung',
@@ -96,9 +96,9 @@ const deskripsiPenyakit = {
 		'Gagal jantung adalah kondisi di mana jantung tidak mampu memompa darah secara efektif ke seluruh tubuh. Hal ini dapat disebabkan oleh berbagai faktor, termasuk penyakit jantung koroner, tekanan darah tinggi, dan kerusakan otot jantung. Ketika jantung melemah, darah dapat kembali ke paru-paru, menyebabkan penumpukan cairan dan sesak napas. Gejala lainnya meliputi kelelahan, pembengkakan pada kaki dan pergelangan kaki, serta detak jantung yang tidak teratur.',
 	Endokarditis:
 		'Endokarditis adalah peradangan pada lapisan dalam jantung (endokardium), termasuk katup jantung, yang disebabkan oleh infeksi bakteri atau jamur. Kondisi ini dapat menyebabkan kerusakan pada katup jantung dan komplikasi serius lainnya jika tidak ditangani dengan tepat. Gejala meliputi demam, kelelahan, nyeri otot, dan munculnya bintik-bintik merah pada kulit.',
-	'Angina pektoris ':
+	'Angina pektoris':
 		'Angina pektoris adalah nyeri dada yang disebabkan oleh berkurangnya aliran darah ke otot jantung, sering kali akibat penyempitan arteri koroner. Nyeri ini biasanya dipicu oleh aktivitas fisik atau stres dan mereda dengan istirahat. Gejala meliputi rasa tertekan atau nyeri di dada, yang dapat menjalar ke lengan, leher, atau rahang.',
-	'Penyakit Jantung Rematik ':
+	'Penyakit Jantung Rematik':
 		'Penyakit jantung rematik adalah kerusakan pada katup jantung yang disebabkan oleh demam rematik, suatu komplikasi dari infeksi tenggorokan oleh bakteri Streptococcus. Kondisi ini dapat menyebabkan peradangan dan jaringan parut pada katup jantung, yang mengganggu aliran darah normal. Gejala termasuk nyeri dada, sesak napas, dan kelelahan.',
 	'Penyakit Katup Jantung':
 		'Penyakit katup jantung terjadi ketika satu atau lebih katup jantung tidak berfungsi dengan baik, yang dapat mengganggu aliran darah melalui jantung. Penyebabnya termasuk kelainan bawaan, infeksi, dan degenerasi terkait usia. Gejala meliputi sesak napas, kelelahan, nyeri dada, dan pembengkakan pada pergelangan kaki atau kaki.',
@@ -140,6 +140,8 @@ const deskripsiPenyakit = {
 };
 
 const pencegahanPenyakit = {
+	'Demam Berdarah':
+		'"1. Menguras atau membersihkan penampungan air\n2. Menutup rapat penampungan air\n3. Menguras atau membersihkan penampungan air\n4. Plus pencegahan tambahan, seperti fogging atau memperbaiki parit yang tidak lancar"',
 	Migrain:
 		'1. Mencari tahu dan menghindari hal-hal yang dapat memicu migrain, misalnya makanan, kegiatan, atau obat-obatan tertentu\n2. Minum air putih yang cukup agar tetap terhidrasi\n3. Menerapkan pola makan dan pola tidur yang cukup serta teratur\n4. Berolahraga secara rutin dengan intensitas ringan hingga sedang, yang didahului dengan pemanasan\n5. Menjaga berat badan agar tetap ideal\n6. Menurunkan berat badan bila menderita obesitas\n7. Mengelola stres dengan baik, misalnya dengan meditasi, yoga, atau latihan pernapasan',
 	'Tension Headache':
@@ -232,6 +234,7 @@ const pencegahanPenyakit = {
 };
 
 const penyebabPenyakit = {
+	'Demam Berdarah': '1. Virus dengue dan ditularkan melalui gigitan nyamuk Aedes aegypt dan Aedes albopictus',
 	Migrain:
 		'1. Beberapa wanita mengaku terserang migrain ketika kadar hormon estrogen mengalami penurunan, seperti sebelum atau saat haid, hamil, atau menopause\n2. Konsumsi makanan olahan atau makanan dengan rasa asin, makanan yang mengandung pemanis tambahan atau perasa gurih, dan minuman kafein atau beralkohol juga bisa meningkatkan risikonya\n3. Adanya pemicu dari lingkungan, seperti paparan asap rokok, aroma parfum yang menyengat, dan penghapus cat\n4. Mengalami stres, gelisah berlebihan, terlalu gembira, dan depresi\n5. Kebiasaan buruk, seperti tubuh kelelahan, kualitas tidur dan postur tubuh yang buruk, mengalami gangguan tidur, hipoglikemia, dan sehabis berolahraga berat\n6. Efek samping dari konsumsi obat tertentu, misalnya pil KB atau sedang menjalani terapi hormon',
 	'Tension Headache':
@@ -323,6 +326,8 @@ const penyebabPenyakit = {
 };
 
 const pengobatanPenyakit = {
+	'Demam Berdarah':
+		'1. Mencukupi kebutuhan cairan dengan minuman selain air putih, seperti susu, jus buah, cairan isotonik, oralit, atau air beras\n2. Mengonsumsi makanan dengan gizi lengkap dan seimbang\n3. Beristirahat yang cukup\n4. Menjaga suhu tubuh di bawah 39°C dengan menggunakan kompres hangat, mandi atau berendam air hangat (tidak panas), mengatur suhu ruangan yang sejuk, dan tidak memakai baju yang tidak terlalu tebal\n5. Minum paracetamol jika demam naik melebihi 390C atau jika sakit kepala dan nyeri otot terasa mengganggu"',
 	Migrain:
 		'1. Beristirahat atau tidur di kamar yang sepi, gelap, dan sejuk\n2. Mengompres dingin dahi atau belakang leher\n3. Memijat kepala, pelipis, atau leher\n4. Memastikan untuk makan tepat waktu\n5. Tidur yang cukup, setidaknya selama 7–8 jam tiap malam\n6. Memberikan kompres dingin di bagian atas dagu atau belakang leher',
 	'Tension Headache':
@@ -415,6 +420,7 @@ const pengobatanPenyakit = {
 };
 
 const kategoriPenyakit = {
+	'Demam Berdarah': 'Penyakit Jantung',
 	Migrain: 'Penyakit Kepala',
 	'Tension Headache': 'Penyakit Kepala',
 	Sinusitis: 'Penyakit Kepala',
@@ -464,6 +470,7 @@ const kategoriPenyakit = {
 };
 
 const sumberPenyakit = {
+	'Demam Berdarah': 'Halodoc, Alodokter',
 	Migrain: 'Halodoc, Alodokter',
 	'Tension Headache': 'Mayo Clinic, Alodoc',
 	Sinusitis: 'Halodoc, Alodokter',

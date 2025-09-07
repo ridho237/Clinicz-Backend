@@ -254,16 +254,29 @@ const getRiwayatPenyakit = async (req, res) => {
 		const result = histories.map((history) => {
 			let detail = [];
 
+			// Handle output array atau object
 			if (Array.isArray(history.output)) {
 				detail = history.output.map((item) => ({
-					penyakit: item?.nama ?? null,
+					penyakit: item?.nama ?? item?.penyakit ?? null,
+					deskripsi: item?.deskripsi ?? null,
+					pengobatan: item?.pengobatan ?? null,
+					sumber: item?.sumber ?? null,
 				}));
+			} else if (history.output && typeof history.output === 'object') {
+				detail = [
+					{
+						penyakit: history.output?.nama ?? history.output?.penyakit ?? null,
+						deskripsi: history.output?.deskripsi ?? null,
+						pengobatan: history.output?.pengobatan ?? null,
+						sumber: history.output?.sumber ?? null,
+					},
+				];
 			}
 
 			return {
 				id: history._id,
 				type: 'penyakit',
-				gejala: history.input?.text ?? '-',
+				gejala: history.input?.text || '-', // fallback jika tidak ada text
 				detail,
 				createdAt: history.createdAt,
 			};
