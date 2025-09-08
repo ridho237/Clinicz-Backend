@@ -15,8 +15,8 @@ function gabungkanGejala(bagianTubuhList, gejalaString) {
 		.map((g) => g.trim().toLowerCase())
 		.filter(Boolean);
 
-	const normalizedGejala = [];
-	const usedGejala = new Set();
+	const normalizedGejala = new Set(); // pakai Set biar unik
+	const matchedGejala = new Set(); // catat gejala yang sudah dipasangkan ke bagian tubuh
 
 	bagianTubuhList.forEach((bagian) => {
 		const bagianLower = bagian.toLowerCase();
@@ -24,20 +24,22 @@ function gabungkanGejala(bagianTubuhList, gejalaString) {
 
 		mappedGejala.forEach((gMap) => {
 			gejalaList.forEach((gUser) => {
-				if (gUser.includes(gMap) && !normalizedGejala.includes(`${bagianLower} ${gMap}`)) {
-					normalizedGejala.push(`${bagianLower} ${gMap}`);
+				if (gUser.includes(gMap)) {
+					normalizedGejala.add(`${bagianLower} ${gMap}`);
+					matchedGejala.add(gUser); // tandai bahwa gUser sudah dipakai
 				}
 			});
 		});
 	});
 
+	// Masukkan gejala yang belum dipetakan
 	gejalaList.forEach((g) => {
-		if (!usedGejala.has(g)) {
-			normalizedGejala.push(g);
+		if (!matchedGejala.has(g)) {
+			normalizedGejala.add(g);
 		}
 	});
 
-	return normalizedGejala.join(', ');
+	return Array.from(normalizedGejala).join(', ');
 }
 
 function isGejalaTerlaluUmum(textGabungan, threshold = 0.5) {
