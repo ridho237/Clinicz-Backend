@@ -6,6 +6,7 @@ const {
 	pengobatanPenyakit,
 	sumberPenyakit,
 } = require('../data/penyakit/data_penyakit');
+const { normalizeGejala } = require('../utils/normalization'); // ⬅️ import baru
 
 function getDetailPenyakit(namaPenyakit) {
 	return {
@@ -30,18 +31,7 @@ async function classifyPenyakit(model, text) {
 	}
 
 	const namaPenyakit = penyakitLabels[maxIndex];
-	const deskripsi = deskripsiPenyakit[namaPenyakit] ?? null;
-	const pengobatan = pengobatanPenyakit[namaPenyakit] ?? null;
-	const sumber = sumberPenyakit[namaPenyakit] ?? null;
-
-	return [
-		{
-			nama: namaPenyakit,
-			deskripsi: deskripsi,
-			pengobatan: pengobatan,
-			sumber: sumber,
-		},
-	];
+	return [getDetailPenyakit(namaPenyakit)];
 }
 
 function preprocessSingleInput(text) {
@@ -55,18 +45,16 @@ function preprocessSingleInput(text) {
 	let strConverted = [];
 
 	for (let w of strArr) {
-		if (allWordsPenyakit[w] === undefined) {
+		const normalized = normalizeGejala(w); // ✅ normalisasi dulu
+		if (allWordsPenyakit[normalized] === undefined) {
 			strConverted.push(1);
 		} else {
-			strConverted.push(allWordsPenyakit[w]);
+			strConverted.push(allWordsPenyakit[normalized]);
 		}
 	}
 
 	if (strConverted.length < 50) {
-		let numOfZero = 50 - strConverted.length;
-		for (let i = 0; i < numOfZero; i++) {
-			strConverted.push(0);
-		}
+		strConverted.push(...Array(50 - strConverted.length).fill(0));
 	} else {
 		strConverted = strConverted.slice(0, 50);
 	}
