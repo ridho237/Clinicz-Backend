@@ -6,7 +6,7 @@ const {
 	pengobatanPenyakit,
 	sumberPenyakit,
 } = require('../data/penyakit/data_penyakit');
-const { normalizeGejala } = require('../utils/normalization'); // ⬅️ import baru
+const { normalizeGejala } = require('../utils/normalization');
 
 function getDetailPenyakit(namaPenyakit) {
 	return {
@@ -45,7 +45,7 @@ function preprocessSingleInput(text) {
 	let strConverted = [];
 
 	for (let w of strArr) {
-		const normalized = normalizeGejala(w); // ✅ normalisasi dulu
+		const normalized = normalizeGejala(w);
 		if (allWordsPenyakit[normalized] === undefined) {
 			strConverted.push(1);
 		} else {

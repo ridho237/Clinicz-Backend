@@ -1,16 +1,6 @@
 // utils/normalization.js
 const { mappingGejalaSinonim } = require('../data/penyakit/sinonim_penyakit');
-
-const mappingGejalaPerBagian = {
-	tenggorokan: ['sakit', 'kering', 'serak', 'gatal', 'nyeri', 'radang'],
-	hidung: ['pilek', 'tersumbat', 'berair', 'gatal', 'mimisan'],
-	dada: ['sesak', 'nyeri', 'berdebar', 'panas'],
-	kepala: ['pusing', 'nyeri', 'berat', 'sakit', 'pegal', 'berdenyut', 'berat'],
-	perut: ['mual', 'kembung', 'nyeri', 'diare', 'sakit'],
-	leher: ['kaku', 'berat'],
-	wajah: ['nyeri', 'tersentak', 'tertusuk', 'tidak nyaman', 'tajam'],
-	punggung: ['tidak nyaman', 'kaku bagian atas'],
-};
+const { mappingGejalaPerBagian } = require('../data/penyakit/bagian_tubuh');
 
 // utility: escape regex special chars
 function escapeRegExp(string) {

@@ -84,7 +84,7 @@ const predictPenyakit = async (req, res) => {
 		const outputPenyakit = result
 			.filter((item) => item?.nama)
 			.map((item) => ({
-				penyakit: item.nama,
+				'prediksi penyakit': item.nama,
 				deskripsi: item.deskripsi ?? 'Tidak tersedia',
 			}));
 
