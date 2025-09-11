@@ -11,21 +11,25 @@ const rawDrugData = JSON.parse(
 	fs.readFileSync(path.join(__dirname, '../model/obat_recomender/all_drugs_data_model.json'))
 );
 
-// Mapping data obat dari JSON utama
-const drugsData = Object.keys(rawDrugData.Obat).map((key) => ({
-	Penyakit: rawDrugData.Penyakit[key],
-	Obat: rawDrugData.Obat[key],
-	Kategori: rawDrugData.Kategori[key],
-	Deskripsi: rawDrugData.Deskripsi?.[key],
-	Kandungan: rawDrugData.Kandungan?.[key],
-	Dosis: rawDrugData.Dosis?.[key],
-	AturanPakai: rawDrugData.AturanPakai?.[key],
-	EfekSamping: rawDrugData.EfekSamping?.[key],
-	TokoOnline1: rawDrugData.LinkObatSatu?.[key],
-	TokoOnline2: rawDrugData.LinkObatDua?.[key],
-	Sumber: rawDrugData.Sumber?.[key],
-	Gambar: rawDrugData.Images?.[key],
-}));
+// Mapping data obat dari JSON utama (gunakan key dari Obat supaya sinkron)
+const drugsData = Object.entries(rawDrugData.Obat).map(([key, obat]) => {
+	const penyakit = rawDrugData.Penyakit?.[key] ?? null;
+	return {
+		Penyakit: penyakit,
+		Obat: obat,
+		Kategori: rawDrugData.Kategori?.[key] ?? null,
+		Deskripsi: rawDrugData.Deskripsi?.[key] ?? null,
+		Kandungan: rawDrugData.Kandungan?.[key] ?? null,
+		Dosis: rawDrugData.Dosis?.[key] ?? null,
+		AturanPakai: rawDrugData.AturanPakai?.[key] ?? null,
+		EfekSamping: rawDrugData.EfekSamping?.[key] ?? null,
+		TokoOnline1: rawDrugData.LinkObatSatu?.[key] ?? null,
+		TokoOnline2: rawDrugData.LinkObatDua?.[key] ?? null,
+		Sumber: rawDrugData.Sumber?.[key] ?? null,
+		Gambar: rawDrugData.Images?.[key] ?? null,
+		ObatPenyakit: `${obat} - ${penyakit}`,
+	};
+});
 
 // Sinonim penyakit (mirip Python get_sinonim_penyakit)
 function getSinonimPenyakit(nama) {
@@ -63,65 +67,59 @@ const penyakitKhusus = [
 function recommendObat(penyakit) {
 	const penyakitNormal = getSinonimPenyakit(penyakit.trim());
 
-	// Cek penyakit khusus
-	if (penyakitKhusus.includes(penyakitNormal)) {
-		return [
-			{
-				obat: null,
-				pesan: 'Harap konsultasikan ke dokter terlebih dahulu terkait penyakit tersebut.',
-			},
-		];
-	}
-
 	// Cari penyakit di dataset
 	const dataPenyakit = drugsData.find(
 		(item) => item.Penyakit?.toLowerCase() === penyakitNormal.toLowerCase()
 	);
 
 	if (!dataPenyakit) {
-		console.warn(`Data pengobatan untuk penyakit '${penyakitNormal}' belum tersedia.`);
+		console.log(`Data pengobatan untuk penyakit '${penyakitNormal}' belum tersedia.`);
 		return [];
 	}
 
 	const kategori = dataPenyakit.Kategori;
-	const obatUtama = dataPenyakit.Obat;
+	const obatUtamaKey = dataPenyakit.ObatPenyakit;
 
-	// Ambil semua obat dalam kategori yang sama (tanpa duplikat)
-	const obatDalamKategori = Array.from(
-		new Map(
-			drugsData
-				.filter((item) => item.Kategori?.toLowerCase() === kategori.toLowerCase())
-				.map((item) => [item.Obat, item])
-		).values()
+	console.log(`Penyakit yang diderita\t: ${dataPenyakit.Penyakit}`);
+	console.log(`Kategori penyakit\t: ${kategori}`);
+	console.log('-'.repeat(100));
+
+	if (penyakitKhusus.includes(dataPenyakit.Penyakit)) {
+		console.log('Harap konsultasikan ke dokter terlebih dahulu');
+		return [];
+	}
+
+	// ✅ Ambil obat hanya dari penyakit yang sama
+	const kandidatObat = drugsData.filter(
+		(item) => item.Penyakit?.toLowerCase() === penyakitNormal.toLowerCase()
 	);
 
-	// Hitung similarity untuk setiap obat
-	const hasil = obatDalamKategori.map((item) => {
-		const similarity = cosineMatrix[obatUtama]?.[item.Obat];
+	// Hitung similarity
+	const hasil = kandidatObat.map((item) => {
+		const similarity = cosineMatrix[obatUtamaKey]?.[item.ObatPenyakit];
 		return {
 			obat: item.Obat,
-			deskripsi: item.Deskripsi ?? '-',
+			penyakit: item.Penyakit,
+			similarity: similarity !== undefined ? parseFloat(similarity.toFixed(4)) : null,
+			deskripsi: item.Deskripsi && item.Deskripsi.trim() !== '' ? item.Deskripsi : 'Tidak tersedia',
 			kandungan: item.Kandungan ?? '-',
 			dosis: item.Dosis ?? '-',
 			aturanPakai: item.AturanPakai ?? '-',
 			efekSamping: item.EfekSamping ?? '-',
-			tokoOnline1: item.TokoOnline1 ?? null,
-			tokoOnline2: item.TokoOnline2 ?? null,
-			sumber: item.Sumber ?? null,
-			gambar: item.Gambar ?? null,
-			similarity: similarity !== undefined ? parseFloat(similarity.toFixed(3)) : null,
-			penyakitAsal: penyakitNormal,
+			tokoOnline1: item.TokoOnline1 ?? '-',
+			tokoOnline2: item.TokoOnline2 ?? '-',
 		};
 	});
 
-	// Urutkan berdasarkan similarity
-	const hasilTerurut = [...hasil].sort((a, b) => {
-		if (a.similarity === null) return 1;
-		if (b.similarity === null) return -1;
-		return b.similarity - a.similarity;
+	// Urutkan
+	const hasilTerurut = hasil.sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0));
+
+	console.log('Rekomendasi Obat dalam Penyakit yang Sama:');
+	hasilTerurut.slice(0, 3).forEach((item, idx) => {
+		console.log(`${idx + 1}. ${item.obat} (${item.similarity}) \t (${item.penyakit})`);
 	});
 
-	return hasilTerurut.slice(0, 5);
+	return hasilTerurut.slice(0, 3);
 }
 
 // ✅ Tambahan fungsi getDetailObat
