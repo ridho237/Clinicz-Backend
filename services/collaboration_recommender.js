@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Import data tambahan dari data_obat.js
+const { aturanPakaiObat, efekSampingObat, linkObatSatu, linkObatDua } = require('../data/obat/data_obat');
+
 // Load cosine similarity matrix
 const cosineMatrix = JSON.parse(
 	fs.readFileSync(path.join(__dirname, '../model/obat_recomender/cosine_similarity_matrix.json'))
@@ -122,10 +125,20 @@ function recommendObat(penyakit) {
 	return hasilTerurut.slice(0, 3);
 }
 
-// ✅ Tambahan fungsi getDetailObat
+// Tambahan fungsi getDetailObat
 function getDetailObat(namaObat) {
 	const detail = drugsData.find((item) => item.Obat?.toLowerCase() === namaObat.toLowerCase());
-	return detail ?? null;
+
+	if (!detail) return null;
+
+	return {
+		...detail,
+		AturanPakai: detail.AturanPakai || aturanPakaiObat[namaObat] || 'Tidak tersedia',
+		EfekSamping: detail.EfekSamping || efekSampingObat[namaObat] || 'Tidak tersedia',
+		TokoOnline1: detail.TokoOnline1 || linkObatSatu[namaObat] || '-',
+		TokoOnline2: detail.TokoOnline2 || linkObatDua[namaObat] || '-',
+		Gambar: detail.Gambar || 'https://via.placeholder.com/150?text=No+Image',
+	};
 }
 
 module.exports = { recommendObat, getDetailObat };

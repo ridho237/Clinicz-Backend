@@ -167,7 +167,9 @@ const getDetailObatRekomendasi = async (req, res) => {
 			});
 		}
 
+		// Cari detail obat langsung dari data
 		const detail = getDetailObat(namaObat);
+
 		if (!detail) {
 			return res.status(404).json({
 				status: 'fail',
@@ -175,9 +177,26 @@ const getDetailObatRekomendasi = async (req, res) => {
 			});
 		}
 
+		// Bersihin nilai null biar ada default
+		const safeDetail = {
+			Penyakit: detail.Penyakit ?? '-',
+			Obat: detail.Obat ?? '-',
+			Kategori: detail.Kategori ?? '-',
+			Deskripsi: detail.Deskripsi && detail.Deskripsi.trim() !== '' ? detail.Deskripsi : 'Tidak tersedia',
+			Kandungan: detail.Kandungan ?? '-',
+			Dosis: detail.Dosis ?? '-',
+			AturanPakai: detail.AturanPakai ?? 'Tidak tersedia',
+			EfekSamping: detail.EfekSamping ?? 'Tidak tersedia',
+			TokoOnline1: detail.TokoOnline1 ?? '-',
+			TokoOnline2: detail.TokoOnline2 ?? '-',
+			Sumber: detail.Sumber ?? '-',
+			Gambar: detail.Gambar ?? 'https://via.placeholder.com/150?text=No+Image',
+			ObatPenyakit: detail.ObatPenyakit ?? '-',
+		};
+
 		return res.status(200).json({
 			status: 'success',
-			data: detail,
+			data: safeDetail,
 		});
 	} catch (error) {
 		return res.status(500).json({

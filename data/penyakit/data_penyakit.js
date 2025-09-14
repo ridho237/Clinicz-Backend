@@ -48,6 +48,7 @@ const penyakitLabels = {
 };
 
 const deskripsiPenyakit = {
+	'Demam Berdarah': 'Demam berdarah atau DBD dapat menyerang anak-anak dan orang dewasa. Penyakit ini menular ketika nyamuk pembawa virus Dengue menggigit penderita demam berdarah, kemudian menggigit orang yang sehat. Penyakit ini banyak ditemukan di daerah beriklim tropis, termasuk Indonesia, dan angka kejadian penyakit ini biasanya meningkat ketika musim hujan. Virus Dengue dapat mengakibatkan dua kondisi, yaitu demam dengue dan demam berdarah dengue (DBD). Bedanya, demam berdarah dengue dapat menyebabkan gejala yang berat, sedangkan demam dengue biasanya hanya menimbulkan gejala ringan. Namun, tahap awal kedua kondisi ini memiliki gejala yang mirip.',
 	Migrain:
 		'Migrain merupakan jenis sakit kepala yang terasa seperti berdenyut, dan umumnya hanya terjadi pada satu sisi kepala. Gejala sakit kepala lain yang sering menyertai migrain adalah rasa mual, muntah, pucat, rasa dingin pada ekstremitas, dan sensitif terhadap cahaya dan suara. Penyakit migrain biasanya akan mereda dalam kurun waktu 4 - 72 jam. Belum ada penyebab pasti mengapa seseorang mengalami penyakit migrain. Namun, penyakit ini dapat timbul melalui stress, kelelahan, mengkonsumsi makanan yang mengandung MSG, cokelat, keju.',
 	'Tension Headache':
