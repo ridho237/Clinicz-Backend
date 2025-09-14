@@ -180,8 +180,6 @@ const mappingGejalaPerBagian = {
 		'cairan',
 		'dari',
 		'gatal',
-		'kabur',
-		'kelopak',
 		'keluar',
 		'merah',
 		'nyaman',
@@ -190,6 +188,7 @@ const mappingGejalaPerBagian = {
 		'sensasi',
 		'tidak',
 	],
+	'kelopak mata': ['bengkak', 'sakit'],
 	sendi: ['nyeri'],
 	otot: ['nyeri'],
 	perut: [

@@ -26,7 +26,6 @@ const mappingGejalaSinonim = {
 	'susah tidur': ['sulit tidur', 'gak bisa tidur', 'imsomnia', 'tidak bisa tidur'],
 	'kepala belakang sakit': ['sakit kepala belakang', 'sakit kepala bagian belakang', 'kepala belakang sakit'],
 	'pilek dalam waktu 10 sampai 14 hari': [
-		'pilek',
 		'pilek seminggu',
 		'pilek dua minggu',
 		'pilek 2 minggu',
@@ -240,7 +239,7 @@ const mappingGejalaSinonim = {
 		'nyeri di tepi kelopak mata',
 		'sakit di ujung kelopak mata',
 		'kelopak mata sakit',
-		'kelopak mata nyeri',
+
 		'nyeri ringan saat disentuh',
 	],
 	'mata terasa tidak nyaman': [
@@ -257,7 +256,6 @@ const mappingGejalaSinonim = {
 		'pembengkakan kelopak mata',
 		'kelopak mata sembab',
 		'bengkak merah di kelopak mata',
-		'bengkak pada kelopak mata bagian atas',
 	],
 	'keluar cairan dari mata': [
 		'mata belekan',
@@ -329,18 +327,7 @@ const mappingGejalaSinonim = {
 	'jantung berdebar': ['jantung berdegup kencang', 'deg-degan', 'deg degan', 'berdebar'],
 	'gusi berdarah': ['gusi keluar darah', 'gusi berdarah saat sikat gigi'],
 	'nyeri dada': ['nyeri dada intens', 'sakit di dada', 'dada terasa ditindih', 'dada sesak'],
-	'sesak nafas': [
-		'sulit bernafas',
-		'nafas berat',
-		'sesak napas saat tidur',
-		'sesak nafas mendadak',
-		'sulit bernafas',
-		'nafas pendek',
-		'ngos-ngosan',
-		'sesek napas',
-		'sulit tarik nafas',
-		'ngos ngosan',
-	],
+	'sesak nafas': ['nafas berat', 'ngos-ngosan', 'sesek napas', 'sulit tarik nafas', 'ngos ngosan'],
 	pusing: ['pusing tiba-tiba', 'kepala muter', 'kepala ringan'],
 	gelisah: ['resah', 'tidak tenang'],
 	'keringat dingin': ['badan keringetan dingin', 'panas dingin', 'mengigil'],
@@ -485,7 +472,7 @@ const mappingGejalaSinonim = {
 
 	demam: ['demam ringan', 'panas dingin', 'meriang'],
 
-	'hidung tersumbat': ['hidung mampet', 'pilek', 'hidung buntu'],
+	'hidung tersumbat': ['hidung mampet', 'hidung buntu'],
 	'hidung meler': ['ingusan', 'flu'],
 
 	lelah: [
